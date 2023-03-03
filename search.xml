@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>test1</title>
-      <link href="/2023/02/24/test1/"/>
-      <url>/2023/02/24/test1/</url>
+      <title>gulp</title>
+      <link href="/2023/03/03/gulp/"/>
+      <url>/2023/03/03/gulp/</url>
       
-        <content type="html"><![CDATA[<p>#第一章<br>markdown<br>测试代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(abcd)</span><br><span class="line">print(abcd)</span><br><span class="line">print(abcd)</span><br></pre></td></tr></table></figure><p>#第二章</p><p>内容</p><p>#参考文献</p><p>bilibili</p>]]></content>
+        <content type="html"><![CDATA[<p><img src="/./img/3.jpg" alt="gulp"></p><h1 id="Gulp压缩"><a href="#Gulp压缩" class="headerlink" title="Gulp压缩"></a>Gulp压缩</h1><p>Gulp是一款自动化搭建的工具，拥有很多的插件。而我們只需要使用到几个插件來压缩Html&#x2F;css&#x2F;js。</p><h2 id="安装Gulp"><a href="#安装Gulp" class="headerlink" title="安装Gulp"></a>安装Gulp</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --global gulp-cil</span><br></pre></td></tr></table></figure><hr>]]></content>
       
       
       
