@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C语言第一章：C语言概述 | Barbecue</title><meta name="author" content="Barbecue"><meta name="copyright" content="Barbecue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C语言概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言第一章：C语言概述">
+<meta property="og:url" content="https://barbecue-g.github.io/2023/05/04/C/%E7%AC%AC1%E7%AB%A0%20C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Barbecue">
+<meta property="og:description" content="C语言概述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://barbecue-g.github.io/img/C.png">
+<meta property="article:published_time" content="2023-05-04T01:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-04T15:00:00.000Z">
+<meta property="article:author" content="Barbecue">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://barbecue-g.github.io/img/C.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg"><link rel="canonical" href="https://barbecue-g.github.io/2023/05/04/C/%E7%AC%AC1%E7%AB%A0%20C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-zryT7gwXov"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Barbecue","link":"链接: ","source":"来源: Barbecue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C语言第一章：C语言概述',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-04 23:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/0.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Barbecue"><span class="site-name">Barbecue</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 类别</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C语言第一章：C语言概述<a class="post-edit-link" href="https://github.com/Barbecue-g/Barbecue-g.github.io/tree/master/230_posts/C/第1章 C语言概述.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-04T01:00:00.000Z" title="发表于 2023-05-04 09:00:00">2023-05-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-04T15:00:00.000Z" title="更新于 2023-05-04 23:00:00">2023-05-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C语言第一章：C语言概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第一章：C语言概述"><a href="#第一章：C语言概述" class="headerlink" title="第一章：C语言概述"></a><em><strong>第一章：C语言概述</strong></em></h1><p><img src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/wangdaoC/xmind_C_Day01.png" alt="思维导图"></p>
+<h2 id="1-C语言的起源"><a href="#1-C语言的起源" class="headerlink" title="1. C语言的起源"></a>1. C语言的起源</h2><p>C 语言是贝尔实验室的Ken Thompson、  Dennis Ritchie等人开发的UNIX 操作系统的  “副产品”。Thompson独自编写出了最初版本的 UNIX 操作系统，这套系统运行在只有 16KB内存的 DEC PDP -7计算机上。</p>
+<p>UNIX系统最初是用汇编语言编写的，用汇编语言编写的程序往往难以调试和扩展。   Thompson意识到需要用一种更加高级的编程语言来完成 UNIX 系统未来的开发，于是 他设计了一种小型语言—— B语言。  B语言是在BCPL语言(20世纪60年代中期产生的一 种系统编程语言)的基础上开发的，而BCPL语言又可以追溯到最早的语言之一 ——   Algol 60。</p>
+<p>不久，  Ritchie也加入到UNIX项目中，并且开始着手用B语言编写程序。  1970年，贝尔 实验室为UNIX项目争取到一台PDP -11计算机。当B语言经过改进并能够在PDP -11计 算机上运行后， Thompson用B语言重新编写了部分UNIX代码。到了1971年，  B语言已 经明显不适合PDP -11计算机了，于是Ritchie着手开发B语言的升级版。最初，他将新 开发的语言命名为NB语言(意为“New B”)，但是后来新语言越来越偏离B语言，于是  他将其改名为C语言。</p>
+<p>到了1973年，  C语言已经足够稳定，  可以用来重新编写UNIX系统了。改用C语言编写 程序有一个非常重要的好处：可移植性。只要为其他计算机编写C语言编译器，  UNIX系统就能运行在那些机器上。</p>
+<p>特性：</p>
+<ol>
+<li>能直接和硬件打交道</li>
+<li>C语言追求最高的运行时效率：a . 不会检查数组是否越界 b . 没有异常机制</li>
+<li>和汇编语言有很强的对应关系。</li>
+</ol>
+<h2 id="2-编写一个简单的C程序"><a href="#2-编写一个简单的C程序" class="headerlink" title="2. 编写一个简单的C程序"></a>2. 编写一个简单的C程序</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//HelloWorld .c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span>  <span class="string">&lt;stdio .h&gt;</span>    <span class="comment">//  预处理指令</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span>  <span class="title">main</span><span class="params">(<span class="type">void</span>)</span>  </span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Hello  world .\n&quot;</span>);</span><br><span class="line"><span class="keyword">return</span>  <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序虽然简短，但是它包含了C语言程序的基本结构。接下来，我们对这个程序 做一个简单的说明。</p>
+<p><code>#include&lt;stdio .h&gt;</code> 是一条预处理指令，它表示在程序中 “包含” stdio .h 头文件， 这个头文件中有C语言标准输入&#x2F;输出库的信息。</p>
+<p><code>main</code>函数是程序的入口，  <code>main</code>函数中的第一行代码是用来打印信息的。<code>printf</code>函数来自于标准输入&#x2F;输出库，它可以产生格式化的输出。<code>\n</code>是一个转义序列，它表示换行。</p>
+<p>第二行代码<code>return 0</code> ; 有两个作用：一是终止 <code>main</code>&gt;函数，这样其实也就终止了整 个程序。二是程序终止时会向操作系统返回状态码 0 (0表示正常终止，非0表示异常 终止)。</p>
+<h3 id="2-1-编译和链接-重点"><a href="#2-1-编译和链接-重点" class="headerlink" title="2.1 编译和链接(重点)"></a>2.1 编译和链接(重点)</h3><p>虽然 HelloWorld.c 很简单，但是为了运行这个程序，却需要涉及很多内容。我们需要把文本形式的HelloWorld.c 转换成计算机可以执行的形式。对 C 程序来说，通常包含下面 4 个步骤：</p>
+<ol>
+<li><p><strong>预处理</strong></p>
+<p>首先程序会由预处理器 (preprocessor) 进行处理。预处理器执行以 <code>#</code> 开头的指令。预处理器做的事情很简单，主要是把头文件中内容 copy 到源代码文件中，或者是对宏进行文本替换。</p>
+<ul>
+<li><code>#include</code>：头文件包含 (把头文件中的内容复制到指令所在的位置)</li>
+</ul>
+<ul>
+<li><code>#define N 5</code>：宏定义 (简单的文本替换) </li>
+<li><code>#define FOO(x) (1 + (x) * (x))</code>：带参数的宏 (宏函数) (文本替换：用“实参”替换“形参”)(记得带括号)</li>
+</ul>
+</li>
+<li><p><strong>编译</strong></p>
+<p>经过预处理器处理的文件会交给编译器进行编译。编译器会把程序翻译成对应平台的汇编代码。</p>
+</li>
+<li><p><strong>汇编</strong></p>
+<p>汇编器会把生成的汇编代码翻译成对应平台的机器代码 (目标代码)。然而程序现在是不能运行的，还需要经过最后一个步骤——链接。</p>
+</li>
+<li><p><strong>链接</strong></p>
+<p>在链接阶段，链接器会把由汇编器生成的目标代码和程序需要的其他附加代码整合在一起，生成最终可执行的程序。这些附加代码包括程序中用到的库函数(如 <code>printf</code> 函数)。</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/wangdaoC/C_Day01_1.png"></p>
+<p>幸运的是，这些工作都不需要我们操心，已经由先辈们完成了。我们只需要点几个按钮，或者输入几行命令就行了。</p>
+<p><font color=#0099ff><strong>注意</strong>：在C&#x2F;C++中，编译单元为源文件。也就是说我们会对每一个源文件进行编译，生成对应的目标文件。</font>然后将多个目标文件链接在一起，生成可执行程序。</p>
+<h3 id="2-2-进程虚拟内存空间"><a href="#2-2-进程虚拟内存空间" class="headerlink" title="2.2 进程虚拟内存空间"></a>2.2 进程虚拟内存空间</h3><p>程序经过预处理、编译和链接，最终生成可执行文件。可执行文件被操作系统加载到内存，程序才得以运行。运行的程序我们称之为<strong>进程</strong> (process)。每个进程都有自己的虚拟内存空间，如下所示：</p>
+<img src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/wangdaoC/C_Day01_2.png" style="zoom:70%;" />
+
+<h2 id="3-变量和赋值"><a href="#3-变量和赋值" class="headerlink" title="3. 变量和赋值"></a>3. 变量和赋值</h2><p>很少有程序会像 HelloWorld.c 那样简单。大多数程序在产生输出之前都需要执行一系列的计算，因此需要在程序执行过程中有一种临时存储数据的方法。和大多数编程语言一样，C语言中的这类存储单元被称为<strong>变量</strong> (variable)</p>
+<h3 id="3-1-类型"><a href="#3-1-类型" class="headerlink" title="3.1 类型"></a>3.1 类型</h3><p>每一个变量都必须有一个类型 。类型用来说明变量所存储数据的种类。C语言有各种各样的类型。但是现在，我们只简单地讲两种类型：int 类型和 float 类型。类型会影响变量的存储方式以及允许对变量进行的操作，所以选择合适的类型是非常关键的。int 类型的变量可以存储整数，如：0, 9527, -1 等。float 类型变量可以存储小数，如：3.14, -0.123 等。</p>
+<h3 id="3-2-声明"><a href="#3-2-声明" class="headerlink" title="3.2 声明"></a>3.2 声明</h3><p>在使用变量之前必须对其进行声明，声明的格式如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//类型 变量名;</span></span><br><span class="line"><span class="comment">//例如，我们可以这样声明变量 height 和 profit：</span></span><br><span class="line"><span class="type">int</span> height;</span><br><span class="line"><span class="type">float</span> profit;</span><br><span class="line"><span class="comment">//如果几个变量具有相同的类型，我们可以把它们的声明合并：</span></span><br><span class="line"><span class="type">int</span> height, length, width, volume;</span><br><span class="line"><span class="type">float</span> profit, loss;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-赋值"><a href="#3-3-赋值" class="headerlink" title="3.3 赋值"></a>3.3 赋值</h3><p>变量通过赋值操作获取值。如</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">height = <span class="number">8</span>;</span><br><span class="line">length = <span class="number">12</span>;</span><br><span class="line">width = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//我们通常会把一个浮点数赋值给 float 类型的变量，而且往往会在浮点数后面添加字母f。如：</span></span><br><span class="line">profit = <span class="number">2150.48f</span>;</span><br><span class="line"><span class="comment">//一旦变量被赋值，我们就可以用它来计算其他变量的值：</span></span><br><span class="line">height = <span class="number">8</span>;</span><br><span class="line">length = <span class="number">12</span>;</span><br><span class="line">width = <span class="number">10</span>;</span><br><span class="line">volumn = height * length * width;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-显示变量的值"><a href="#3-4-显示变量的值" class="headerlink" title="3.4 显示变量的值"></a>3.4 显示变量的值</h3><p>我们可以用 <code>printf</code> 显示变量的值。如:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Height: %d\n&quot;</span>, height);</span><br></pre></td></tr></table></figure>
+
+<p>其中 %d 是占位符，我们称之为<strong>转换说明</strong> (conversion specification)，它是用来指明变量 height 在显示中的位置。</p>
+<p>%d 仅适用于 int 类型变量，如果要显示 float 类型变量，需要用 %f 来代替 %d。默认情况下，%f 会显示出小数点后 6 位数字。如果要强制 %f 显示小数点后 p 位数字，可以把 .p 放置在 % 和 f 之间，如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Profit: $%.2f\n&quot;</span>, profit);</span><br></pre></td></tr></table></figure>
+
+<p>C 语言没有限制 <code>printf</code> 可以显示变量的数量，我们可以同时显示多个变量的值：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Height: %d Length: %d Width: %d\n&quot;</span>, height, length, width);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-初始化"><a href="#3-5-初始化" class="headerlink" title="3.5 初始化"></a>3.5 初始化</h3><p>当程序开始执行时，某些变量会被自动设置为零，而大多数变量不会。没有默认值并且尚未在程序中被赋值的变量是<strong>未初始化的</strong>。</p>
+<p><font color=#0099ff><em><strong>注意</strong>：试图访问未初始化的变量，其行为是未定义的。在有些编译器中，可能会得到一个无意义的值；在另一些编译器中，则可能发生更坏的情况 (如程序崩溃)。</em></font></p>
+<p>我们当然可以采用赋值的方式给变量赋初始值，但C语言还提供了一个更简便的方法：在声明变量的同时赋初始值。如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> height = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中数值 8 是一个<strong>初始化式</strong> (initializer)。</p>
+<p>在一个声明语句中，可以对任意数量的变量进行初始化：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> height = <span class="number">8</span>, length = <span class="number">12</span>, width = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意，上面每一个变量都有自己的初始化式。如果写成这样：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> height, length, width = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>则只有变量 width 被初始化了。</p>
+<h2 id="4-标识符"><a href="#4-标识符" class="headerlink" title="4. 标识符"></a>4. 标识符</h2><p>在编写程序时，需要对变量、函数、宏等内容进行命名。这些名字我们称为标识符(identifier)。在C语言中，标识符可以含有字母、数字和下划线，但是必须以字母或者下划线开头。</p>
+<p>下面是一些合法的标识符：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">times10, get_next_char, _done</span><br></pre></td></tr></table></figure>
+
+<p>接下来是一些不合法的标识符 ： </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">10</span>times, get-next-<span class="type">char</span></span><br></pre></td></tr></table></figure>
+
+<p>C语言的标识符是区分大小写的。比如，下面的标识符全都不同：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">job, Job, jOb, joB, JOb, JoB, jOB, JOB</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note</strong>: 上述8个标识符是可以同时使用的 (但强烈不建议这么做)。</p>
+<p>很多C语言程序员会遵循在标识符中只使用小写字母的规范 (宏命名除外)。为了使名字清晰，必要时还会插入下划线：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">symbol_table, current_page, name_and_address</span><br></pre></td></tr></table></figure>
+
+<p>而另外一些程序员，为了避免下划线，他们会把标识符中的单词首字母大写 (驼峰命令法)： </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">symbolTable, currentPage, nameAndAddress</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-关键字"><a href="#4-1-关键字" class="headerlink" title="4.1 关键字"></a>4.1 关键字</h3><p>对 C 编译器有特殊意义的名称，我们称为<strong>关键字</strong> (keyword)。关键字是不能作为标识符来使用的。下表罗列了 C 语言所有的关键字：</p>
+<table>
+<thead>
+<tr>
+<th>auto</th>
+<th align="center">enum</th>
+<th align="center">restrict (C99)</th>
+<th align="center">unsigned</th>
+<th align="center">break</th>
+<th align="center">extern</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>return</td>
+<td align="center">void</td>
+<td align="center">case</td>
+<td align="center">float</td>
+<td align="center">short</td>
+<td align="center">volatile</td>
+</tr>
+<tr>
+<td>char</td>
+<td align="center">for</td>
+<td align="center">signed</td>
+<td align="center">while</td>
+<td align="center">const</td>
+<td align="center">goto</td>
+</tr>
+<tr>
+<td>sizeof</td>
+<td align="center">_Bool (C99)</td>
+<td align="center">continue</td>
+<td align="center">if</td>
+<td align="center">static</td>
+<td align="center">_Complex (C99)</td>
+</tr>
+<tr>
+<td>default</td>
+<td align="center">inline (C99)</td>
+<td align="center">struct</td>
+<td align="center">_Imaginary (C99)</td>
+<td align="center">do</td>
+<td align="center">int</td>
+</tr>
+<tr>
+<td>switch</td>
+<td align="center">double</td>
+<td align="center">long</td>
+<td align="center">typedef</td>
+<td align="center">else</td>
+<td align="center">register</td>
+</tr>
+<tr>
+<td>union</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="5-输入"><a href="#5-输入" class="headerlink" title="5. 输入"></a>5. 输入</h2><p>在 C 标准库有一个与 <code>printf</code> 相对应的函数 <code>scanf</code> ，它可以获取用户的输入。<code>scanf</code> 函数和 <code>printf</code> 函数都需要使用<strong>格式串</strong>来指定输入或输出数据的格式。</p>
+<p>我们可以像下面这样，读入一个 int 类型的值：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;i);</span><br></pre></td></tr></table></figure>
+
+<p>其中 %d 说明 scanf 读入的是一个整数值，i 是一个 int 类型的变量。我们可以使用 %f读入一个 float 类型的值：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>, &amp;x);</span><br></pre></td></tr></table></figure>
+
+<p>其中 x 是一个 float 类型的变量。</p>
+<p> <a href="https://barbecue-g.github.io/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A/#Day01">课堂小练习</a></p>
+<h2 id="6-为常量定义名字"><a href="#6-为常量定义名字" class="headerlink" title="6. 为常量定义名字"></a>6. 为常量定义名字</h2><p>当程序含有一些有特殊意义的常量时 (比如 32.0f)，建议给这些常量定义名字，以免别人在阅读程序不知道这个常量的含义。在 C 语言中我们可以采取<strong>宏定义</strong>的方式给常量命名：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> FREEZING_PT 32.0f</span></span><br></pre></td></tr></table></figure>
+
+<p>在预处理阶段，预处理器会把每一个宏替换为其表示的值。</p>
+<p>我们还可以利用宏来定义表达式，如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SCALE_FACTOR (5.0f / 9.0f)</span></span><br></pre></td></tr></table></figure>
+
+<p>当宏表示一个表达式时，我们最好用括号把表达式括起来。</p>
+<h2 id="课后作业"><a href="#课后作业" class="headerlink" title="课后作业"></a><a href="https://barbecue-g.github.io/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/#Day01">课后作业</a></h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://barbecue-g.github.io">Barbecue</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://barbecue-g.github.io/">https://barbecue-g.github.io/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">此文章版权归Barbeuce所有，如有转载，请注明明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></div><div class="post_share"><div class="social-share" data-image="/./img/C.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A/" title="C语言课堂作业"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C语言课堂作业</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/05/C/%E7%AC%AC2%E7%AB%A0%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="C语言第二章：格式化输入/输出"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言第二章：格式化输入/输出</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A/" title="C语言课堂作业"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-01</div><div class="title">C语言课堂作业</div></div></a></div><div><a href="/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/" title="C语言课后作业"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-01</div><div class="title">C语言课后作业</div></div></a></div><div><a href="/2023/05/13/C/%E7%AC%AC10%E7%AB%A0%20%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="C语言第十章：字符串"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-13</div><div class="title">C语言第十章：字符串</div></div></a></div><div><a href="/2023/05/17/C/%E7%AC%AC13%E7%AB%A0%20%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="C语言第十三章：常用数据结构"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-17</div><div class="title">C语言第十三章：常用数据结构</div></div></a></div><div><a href="/2023/05/15/C/%E7%AC%AC11%E7%AB%A0%20%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%9E%9A%E4%B8%BE/" title="C语言第十一章：结构体和枚举"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-15</div><div class="title">C语言第十一章：结构体和枚举</div></div></a></div><div><a href="/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E6%B1%87%E6%80%BB/" title="C语言汇总"><img class="cover" src=" https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/C.png " alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-01</div><div class="title">C语言汇总</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODExOS8zNDU4Mg=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Barbecue</div><div class="author-info__description">菜鸟的博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Barbecue-g"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Barbecue-g" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2210016303@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="mailto:2210016303@qq.com" target="_blank" title="QQ"><i class="fa-brands fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果发现错误请联系我QQ：2210016303</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9AC%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">第一章：C语言概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-C%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">1. C语言的起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84C%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2. 编写一个简单的C程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%BC%96%E8%AF%91%E5%92%8C%E9%93%BE%E6%8E%A5-%E9%87%8D%E7%82%B9"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 编译和链接(重点)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 进程虚拟内存空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%98%E9%87%8F%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.</span> <span class="toc-text">3. 变量和赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%A3%B0%E6%98%8E"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%98%BE%E7%A4%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 显示变量的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.4.</span> <span class="toc-text">4. 标识符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BE%93%E5%85%A5"><span class="toc-number">1.5.</span> <span class="toc-text">5. 输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B8%BA%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89%E5%90%8D%E5%AD%97"><span class="toc-number">1.6.</span> <span class="toc-text">6. 为常量定义名字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A"><span class="toc-number">1.7.</span> <span class="toc-text">课后作业</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/16/HTTP/" title="HTTP"><img src="/./img/C.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTTP"/></a><div class="content"><a class="title" href="/2023/08/16/HTTP/" title="HTTP">HTTP</a><time datetime="2023-08-16T01:00:00.000Z" title="发表于 2023-08-16 09:00:00">2023-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/28/Redis%E7%9A%84%E9%85%8D%E7%BD%AE/" title="Redis的基本配置"><img src="/./img/C.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis的基本配置"/></a><div class="content"><a class="title" href="/2023/07/28/Redis%E7%9A%84%E9%85%8D%E7%BD%AE/" title="Redis的基本配置">Redis的基本配置</a><time datetime="2023-07-28T01:00:00.000Z" title="发表于 2023-07-28 09:00:00">2023-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/06/C++/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" title="重载运算符"><img src="/./img/C.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重载运算符"/></a><div class="content"><a class="title" href="/2023/07/06/C++/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/" title="重载运算符">重载运算符</a><time datetime="2023-07-06T01:00:00.000Z" title="发表于 2023-07-06 09:00:00">2023-07-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/23/MySQL%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="MySQL基本使用"><img src="/./img/C.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL基本使用"/></a><div class="content"><a class="title" href="/2023/06/23/MySQL%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="MySQL基本使用">MySQL基本使用</a><time datetime="2023-06-23T01:00:00.000Z" title="发表于 2023-06-23 09:00:00">2023-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/22/Linux%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7/" title="Linux创建用户"><img src="/./img/C.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux创建用户"/></a><div class="content"><a class="title" href="/2023/06/22/Linux%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7/" title="Linux创建用户">Linux创建用户</a><time datetime="2023-06-22T01:00:00.000Z" title="发表于 2023-06-22 09:00:00">2023-06-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By Barbecue</div><div class="footer_custom_text"><div><a onclick="window.open('https://www.baidu.com')" class="footer-a"> 备案：123456</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,190,255" opacity="1" zIndex="-1" count="64" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
