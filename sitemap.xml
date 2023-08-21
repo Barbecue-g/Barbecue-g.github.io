@@ -47,15 +47,6 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/06/22/MySQL%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2023-06-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://barbecue-g.github.io/2023/06/22/git/</loc>
     
     <lastmod>2023-06-22</lastmod>
@@ -65,7 +56,16 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A/</loc>
+    <loc>https://barbecue-g.github.io/2023/06/22/MySQL%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2023-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://barbecue-g.github.io/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E6%B1%87%E6%80%BB/</loc>
     
     <lastmod>2023-05-20</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E6%B1%87%E6%80%BB/</loc>
+    <loc>https://barbecue-g.github.io/2023/05/01/C/C%E8%AF%AD%E8%A8%80%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A/</loc>
     
     <lastmod>2023-05-20</lastmod>
     
@@ -227,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/03/29/%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://barbecue-g.github.io/2023/04/04/Python/</loc>
     
     <lastmod>2023-04-04</lastmod>
     
@@ -236,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/04/04/Python/</loc>
+    <loc>https://barbecue-g.github.io/2023/03/29/%E7%BC%96%E7%A8%8B/</loc>
     
     <lastmod>2023-04-04</lastmod>
     
@@ -295,14 +295,14 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/tags/Python/</loc>
+    <loc>https://barbecue-g.github.io/tags/git/</loc>
     <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/tags/git/</loc>
+    <loc>https://barbecue-g.github.io/tags/Python/</loc>
     <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -316,14 +316,14 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/tags/HTTP/</loc>
+    <loc>https://barbecue-g.github.io/tags/C%E8%AF%AD%E8%A8%80/</loc>
     <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/tags/C%E8%AF%AD%E8%A8%80/</loc>
+    <loc>https://barbecue-g.github.io/tags/HTTP/</loc>
     <lastmod>2023-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
