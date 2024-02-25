@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://barbecue-g.github.io/2024/02/26/Tmux/</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://barbecue-g.github.io/2023/08/20/Nginx/</loc>
     
     <lastmod>2023-08-20</lastmod>
@@ -47,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/06/22/git/</loc>
+    <loc>https://barbecue-g.github.io/2023/06/22/MySQL%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2023-06-22</lastmod>
     
@@ -56,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://barbecue-g.github.io/2023/06/22/MySQL%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://barbecue-g.github.io/2023/06/22/git/</loc>
     
     <lastmod>2023-06-22</lastmod>
     
@@ -103,57 +112,64 @@
 
   <url>
     <loc>https://barbecue-g.github.io/</loc>
-    <lastmod>2024-01-26</lastmod>
+    <lastmod>2024-02-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://barbecue-g.github.io/tags/HTTP/</loc>
-    <lastmod>2024-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://barbecue-g.github.io/tags/Linux/</loc>
-    <lastmod>2024-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://barbecue-g.github.io/tags/git/</loc>
-    <lastmod>2024-01-26</lastmod>
+    <lastmod>2024-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://barbecue-g.github.io/tags/MySQL/</loc>
-    <lastmod>2024-01-26</lastmod>
+    <lastmod>2024-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://barbecue-g.github.io/tags/Python/</loc>
-    <lastmod>2024-01-26</lastmod>
+    <lastmod>2024-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://barbecue-g.github.io/tags/HTTP/</loc>
+    <lastmod>2024-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://barbecue-g.github.io/tags/Redis/</loc>
-    <lastmod>2024-01-26</lastmod>
+    <lastmod>2024-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://barbecue-g.github.io/tags/Nginx/</loc>
-    <lastmod>2024-01-26</lastmod>
+    <lastmod>2024-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://barbecue-g.github.io/tags/Tmux/</loc>
+    <lastmod>2024-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://barbecue-g.github.io/tags/git/</loc>
+    <lastmod>2024-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
