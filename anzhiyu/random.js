@@ -1,3 +1,3 @@
-var posts=["Python","HTTP","MySQL配置","MySQL使用方法","Nginx","git","hello-world","Linux创建用户","Redis的配置","Tmux"];function toRandomPost(){
+var posts=["HTTP","Linux创建用户","MySQL使用方法","MySQL配置","Redis的配置","Python","Nginx","Tmux","git","hello-world"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
