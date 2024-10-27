@@ -1,0 +1,988 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>C_数据结构 | Barbecue</title><meta name="keywords" content="C"><meta name="author" content="Barbecue"><meta name="copyright" content="Barbecue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="C_数据结构"><meta name="application-name" content="C_数据结构"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="C_数据结构"><meta property="og:url" content="https://barbecue-g.github.io/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><meta property="og:site_name" content="Barbecue"><meta property="og:description" content="C_常用数据结构最常用的数据结构有：数组，链表，栈，队列，哈希表和二叉搜索树等。网站推荐 数据结构与算法可视化 链表链表是一种动态数据结构，由一系列节点组成，与数组不同，链表中的元素在内存中不需要是连续的，通过指针将元素串联起来。链表的主要特性是其动态性，即可以方便地进行插入和删除操作，而无需像数组"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png"><meta property="article:author" content="Barbecue"><meta property="article:tag" content="Barbecue"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png"><meta name="description" content="C_常用数据结构最常用的数据结构有：数组，链表，栈，队列，哈希表和二叉搜索树等。网站推荐 数据结构与算法可视化 链表链表是一种动态数据结构，由一系列节点组成，与数组不同，链表中的元素在内存中不需要是连续的，通过指针将元素串联起来。链表的主要特性是其动态性，即可以方便地进行插入和删除操作，而无需像数组"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"><link rel="canonical" href="https://barbecue-g.github.io/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Barbecue","link":"链接: ","source":"来源: Barbecue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Barbecue',
+  title: 'C_数据结构',
+  postAI: '',
+  pageFillDescription: 'C_常用数据结构, 链表, 单链表, 数据结构, 基本操作, 性能分析, 应用场景, 双向链表, 数据结构, 基本操作, 性能分析, 应用场景, 栈, 数据结构, 基本操作, 性能分析, 应用场景, 队列, 数据结构, 基本操作, 性能分析, 应用场景, 哈希表, 数据结构, 哈希函数, 冲突解决, 基本操作, 性能分析, 应用场景, 二叉树, 二叉搜索树, 数据结构, 基本操作, 性能分析, 应用场景, 堆, 数据结构, 基本操作, 性能分析, 应用场景, 平衡树, 数据结构, 基本操作, 性能分析, 应用场景, 图, 数据结构, 基本操作, 性能分析, 应用场景常用数据结构最常用的数据结构有数组链表栈队列哈希表和二叉搜索树等网站推荐数据结构与算法可视化链表链表是一种动态数据结构由一系列节点组成与数组不同链表中的元素在内存中不需要是连续的通过指针将元素串联起来链表的主要特性是其动态性即可以方便地进行插入和删除操作而无需像数组需要移动元素链表有多种类型单链表双向链表以及循环链表等循环链表用的一般比较少但是当处理的数据具有环形结构时就特别适合用循环链表约瑟夫环问题单链表数据结构每个节点包含数据部分和指向下一个节点的指针定义链表节点结构数据域指针域指向下一个节点初始化链表头指针为基本操作节点插入头插法创建新节点更新头指针节点插入尾插法链表为空节点删除按值删除当头节点就是要删除的节点搜索要删除的节点未找到节点查找未找到链表反转链表遍历性能分析时间复杂度插入在链表头插入节点的时间复杂度为在链表尾插入节点的时间复杂度为删除删除节点的时间复杂度为查找查找节点的时间复杂度为反转链表反转的时间复杂度为空间复杂度链表节点的空间复杂度为其中为节点数量每个节点的额外空间开销是一个指针的大小应用场景链表适用于以下场景需要频繁插入删除操作尤其是在链表开头或结尾如队列和栈的实现需要动态分配内存且不需要连续的内存块时数据量不大且对随机访问要求不高的情况下链表不适合用于随机访问访问链表中的任意节点需要遍历整个链表时间复杂度为不如数组的高效双向链表双向链表是一种链表数据结构与单链表不同双向链表允许在两个方向上遍历节点从而提高了某些操作的效率双向链表的主要优点是可以更方便地进行前后节点的访问插入和删除操作数据结构每个节点包含三个部分存储数据的区域指向下一个节点的指针和指向前一个节点的指针定义双向链表节点存储数据指向下一个节点的指针指向前一个节点的指针定义链表头节点基本操作初始化链表创建一个空的双向链表节点插入头插法节点插入尾插法节点删除按值删除找到要删除的节点节点未找到删除的是头节点节点查找链表遍历性能分析时间复杂度插入在链表头插入节点的时间复杂度为在链表尾插入节点的时间复杂度为删除删除节点的时间复杂度为查找查找节点的时间复杂度为遍历正向反向遍历链表的时间复杂度为空间复杂度双向链表的空间复杂度为其中是节点数量相较于单链表双向链表由于每个节点多一个指针占用的空间略多总结虽然双向链表更占内存空间但是它某些操作的性能是优于单链表的这是空间换时间的思想应用场景双向链表适用于以下场景当需要在两端频繁插入或删除节点时双向链表比单链表更高效当需要从任意位置尤其是中间节点进行删除操作时双向链表更合适可以直接访问前一个节点适用于需要在两个方向上遍历数据的场景如实现浏览器的前进后退功能不适合用于需要频繁访问任意元素的场景链表的随机访问时间复杂度较高栈栈是一种后进先出的数据结构特点是只能在一端栈顶进行数据的插入和删除操作栈通常用作函数调用的管理表达式求值括号匹配等数据结构栈可以使用数组或链表来实现栈的最大容量栈的存储空间栈顶指针基本操作初始化栈将栈顶指针初始化为表示栈为空压栈在栈未满的情况下将元素压入栈顶弹栈在栈不为空的情况下从栈顶弹出元素栈为空时返回获取栈顶元素获取栈顶元素但不弹出栈为空时返回判断栈是否为空判断栈顶指针是否为判断栈是否已满判断栈顶指针是否等于数组的最大索引数组大小为性能分析时间复杂度插入元素只需要更新栈顶指针并赋值弹出元素只需要读取栈顶指针位置的值并更新指针获取栈顶元素只需访问数组中栈顶指针位置的值空间复杂度空间复杂度为其中是栈的容量栈的空间由数组固定分配应用场景栈在许多算法中有着广泛的应用主要包括但不限于以下几个方面函数调用管理递归函数调用时系统使用栈来保存和恢复函数的上下文信息表达式求值在中缀表达式转后缀表达式或计算后缀表达式时广泛使用栈括号匹配检查代码中括号的匹配情况深度优先搜索在图的深度优先搜索算法中栈用于存储路径信息队列队列是一种特殊的线性数据结构遵循原则即最先进入队列的元素最先被移出队列通常用于需要按顺序处理数据的场景比如任务调度广度优先搜索等数据结构队列可以由队列节点结构和队列结构实现定义队列节点结构数据域指向下一个节点的指针定义队列结构队列头队列尾基本操作初始化队列入队操作将一个元素添加到队列的末尾队列为空时出队操作从队列的头部移除并返回一个元素队列为空时表示队列为空队列为空时查看队列头部元素获取队列头部的元素但不移除它队列为空检查队列是否为空判断队列是否为空性能分析时间复杂度入队因为每次操作都只涉及队列尾部出队因为每次操作都只涉及队列头部查看队列头部只需读取头部元素检查是否为空只需检查指针是否为空空间复杂度空间复杂度为其中是队列中元素的数量每个节点占用固定大小的内存应用场景任务调度例如操作系统中的进程调度保证任务按到达顺序依次处理广度优先搜索在图的遍历中使用队列来按层次访问节点缓冲区管理处理数据流时使用队列作为缓冲区保证数据按顺序被处理消息队列在分布式系统中队列用来缓存和传递消息哈希表哈希表是一种用于快速查找的常用数据结构通过哈希函数将键映射到存储位置从而实现对数据的高效查找插入和删除哈希表的核心思想是利用数组的快速访问特点将键值映射为数组的下标进行查找插入和删除操作的时间复杂度可以接近数据结构哈希函数哈希函数是将键转换为数组索引的函数设计一个好的哈希函数可以减少冲突常见的哈希函数有取模法乘法散列法等取模法冲突解决由于哈希表的有限大小不同的键值可能映射到相同的数组索引位置这种现象称为冲突常见的冲突解决方法有开放地址法和链地址法开放地址法冲突时寻找下一个空闲的数组位置链地址法使用链表将所有冲突的键值存储在同一个数组位置定义链表节点定义链表节点定义哈希表基本操作初始化哈希表插入键值对查找键对应的值表示未找到删除键值对性能分析时间复杂度插入平均情况下最坏情况下所有元素哈希冲突在同一个桶内查找平均情况下最坏情况下删除平均情况下最坏情况下空间复杂度用于存储所有元素外加用于存储桶数组其中是桶的数量应用场景哈希表适用于以下场景快速查找插入删除需要在常数时间内快速查找数据频繁插入和删除元素哈希表提供高效的操作如字典缓存唯一性检查用于快速判断一个元素是否存在如检测重复元素计数器如统计字符频率单词频率等集合操作哈希表可以用于集合操作如求交集并集差集等不适用于需要维持数据有序的场合哈希表无法保持元素的顺序空间有限且哈希表装载因子较高时冲突增多可能导致性能下降哈希表在需要高效键值对操作的场景中表现尤为出色但需要注意选择合适的哈希函数以及处理冲突的方法以避免性能退化二叉树二叉树是一种树形数据结构每个节点最多有两个子节点分别称为左子节点和右子节点二叉树通常用于组织数据以实现快速的查找插入和删除操作满二叉树每一层的结点数目都达到最大值完全二叉树一个二叉树除了最后一层其他层都是满的且最后一层的节点连续排列在最左边满二叉树完全二叉树和非完全二叉树二叉树具有以下性质高度为的二叉树最多有个节点对于个节点的完全二叉树其高度为二叉搜索树二叉搜索树二叉排序树是一种特殊的二叉树其中每个节点都遵循以下规则左子树中所有节点的值都小于根节点的值右子树中所有节点的值都大于根节点的值每个节点的左右子树也都是二叉搜索树二叉搜索树在搜索插入和删除操作时具有较好的性能数据结构二叉搜索树节点的基本结构二叉搜索树节点结构节点的值指向左子树的指针指向右子树的指针基本操作创建新的二叉搜索树节点插入节点插入节点时从根节点开始根据值的大小递归地找到适当的空位置插入新节点如果树为空则创建一个新节点递归地插入到左子树或右子树返回未变更的节点指针搜索节点搜索时根据当前节点的值和目标值的比较结果决定向左子树或右子树递归如果找不到或者找到匹配的节点则返回如果目标值小于当前节点的值继续在左子树中搜索否则继续在右子树中搜索删除节点删除节点分为三种情况要删除的节点是叶子节点无子树要删除的节点有一个子树要删除的节点有两个子树此时需找到右子树中的最小节点或左子树中的最大节点代替被删除的节点基本情况递归找到要删除的节点找到要删除的节点情况节点没有子节点叶子节点情况节点有一个子节点情况节点有两个子节点中序遍历获取有序元素二叉搜索树的中序遍历可以获得有序的节点序列性能分析时间复杂度查找平均情况下为最坏情况下为当树退化为链表时插入平均情况下为最坏情况下为删除平均情况下为最坏情况下为遍历需要访问每个节点一次空间复杂度对于个节点的二叉搜索树空间复杂度为需要存储个节点应用场景二叉搜索树适用于以下场景动态数据集合需要频繁插入删除和查找操作的应用有序数据输出需要频繁获取有序数据的应用需要快速查找中序遍历或范围查询的场景字典集合实现基于键值对操作的数据结构比如实现符号表二叉搜索树适用于需要动态管理有序数据的场景但需注意在最坏情况下树的性能会退化到线性时间复杂度为了保持平衡可以考虑使用自平衡二叉搜索树如红黑树或树来确保更好的性能堆堆是一种特殊的二叉树它可以分为最大堆和最小堆完全二叉树除了最后一层外所有层的节点都被填满最后一层的节点从左到右依次填充最大堆在最大堆中每个父节点的值都大于或等于其子节点的值最小堆在最小堆中每个父节点的值都小于或等于其子节点的值堆通常用数组来实现而非实际的二叉树假设节点的索引为则有以下关系父节点索引为左子节点索引为右子节点索引为数据结构下面是一个简单的堆实现以最大堆为例用数组表示堆当前堆的大小基本操作初始化堆插入操作插入新元素到堆中并维护堆的性质堆满向上调整删除操作删除根节点删除堆顶元素并维护堆的性质堆为空向下调整获取堆顶元素获取堆中最大值最大堆或最小值最小堆时间复杂度为堆为空堆化将一个无序数组调整为堆常用于构建堆排序性能分析插入操作时间复杂度为因为插入元素后最多需要沿着树向上调整次删除操作时间复杂度为因为删除根节点后最多需要沿着树向下调整次获取堆顶元素时间复杂度为因为只需返回根节点的值堆化操作时间复杂度为通常用于构建堆空间复杂度堆通常使用数组实现空间复杂度为其中为堆中元素个数应用场景堆适用于以下场景优先队列堆广泛用于实现优先队列能够以较高效率找到和移除优先级最高的元素排序算法堆排序是经典的排序算法适用于大数据量的排序任务图算法堆在算法和算法中用于高效地选择最短路径或最小生成树中的下一条边任务调度处理多个任务时堆可以用来调度优先级较高的任务平衡树平衡树是一种自动调整的数据结构保证在进行插入删除查找等操作时树的高度始终保持平衡或接近平衡通常平衡树的定义是为了防止树变成一条长链会导致操作效率下降到线性时间在平衡树中操作的时间复杂度能够保持在确保高效的查找插入和删除操作常见的平衡树包括树红黑树等下面的例子将以树为例该树的特性是每个节点的左右子树的高度差不超过数据结构树作为一种平衡二叉搜索树能够有效地保证操作的时间复杂度在范围内适用于对查找插入删除操作都有较高要求的应用场景树的基本数据结构节点值节点的高度左子树右子树基本操作获取节点高度创建新节点新节点的高度为右旋操作右旋是指将某个节点及其左子树向右旋转调整树的平衡该操作用于在插入或删除节点后树变得左重时恢复平衡进行旋转更新高度返回新的根节点左旋操作左旋是指将某个节点及其右子树向左旋转调整树的平衡该操作用于在插入或删除节点后树变得右重时恢复平衡进行旋转更新高度返回新的根节点获取平衡因子树的核心在于维护每个节点的平衡因子平衡因子等于左右子树高度差如果平衡因子的绝对值大于则该节点需要旋转以保持平衡插入节点在树中插入节点后可能会破坏树的平衡此时需要通过旋转来恢复平衡插入时需要判断四种情况左左右右左右右左并选择相应的旋转操作标准的二叉搜索树插入键值已存在返回不做插入更新节点高度获取当前节点的平衡因子如果节点不平衡进行相应旋转左左情况右右情况左右情况右左情况查找节点查找节点与标准的二叉搜索树相同删除节点删除节点后也可能破坏树的平衡因此同样需要进行平衡因子的检查与旋转操作删除的核心与标准二叉搜索树类似之后根据不同的情况调整平衡找到最小值节点找到最左边的叶子节点删除节点并维持平衡标准二叉搜索树删除单子节点或无子节点找到右子树的最小节点更新节点高度检查平衡因子左左情况左右情况右右情况右左情况性能分析时间复杂度插入删除查找操作的时间复杂度均为因为树的高度始终保持在的范围内空间复杂度在最坏情况下树的额外空间复杂度为主要用于存储每个节点的指针以及递归栈的深度应用场景树适用于对查找操作要求较高的场景它能确保树的高度始终平衡查找性能良好在需要频繁插入和删除数据的场景下树也能够通过旋转保持平衡从而保证操作效率图图是一种非常重要的非线性数据结构由顶点和边组成图用于表示对象顶点之间的关系边广泛应用于社交网络网络路由搜索引擎等领域图可分为以下几类无向图边没有方向边与等价有向图边有方向边与不等价加权图边带有权重表示两个顶点之间的距离或代价无权图边没有权重此外图还可以表示为稀疏图和稠密图稀疏图边的数量远小于顶点数的平方稠密图边的数量接近于顶点数的平方数据结构图的数据结构可以通过邻接矩阵或邻接表来实现邻接矩阵邻接矩阵是一种二维数组用于表示图中节点之间的连接关系假设图中有个节点表示节点和节点之间的连接关系若为无向图用二维数组表示图图的顶点数量初始化图初始化矩阵为表示没有边添加边移除边邻接表邻接表是一种链表数组数组中的每个元素都是一个链表用于存储与某个顶点相连的所有顶点用数组存储每个顶点的邻接链表图的顶点数量初始化图初始化链表为空创建节点添加边移除边基本操作图的遍历常见的有两种方式深度优先遍历和广度优先遍历深度优先搜索使用递归实现沿着每一个路径深入到不能再深入为止然后回溯标记当前节点为已访问访问节点广度优先搜索使用队列实现从一个顶点开始先访问其所有邻接顶点然后逐层访问性能分析邻接矩阵时间复杂度添加边移除边检查边存在性遍历所有邻接顶点空间复杂度其中是图中顶点的数量不适合稀疏图会浪费大量空间邻接表时间复杂度添加边移除边检查边存在性遍历所有邻接顶点平均空间复杂度其中是图中边的数量适合稀疏图因为只存储实际存在的边对于稠密图即边的数量接近于顶点数量的平方建议使用邻接矩阵对于稀疏图即边的数量远小于顶点数量的平方建议使用邻接表应用场景邻接矩阵适用于图较小且稠密边较多的情况快速检查两个顶点之间是否有边如社交网络中的好友关系邻接表适用于图较大且稀疏边较少的情况节省空间适合存储大量顶点及其关系如城市间的道路网络常用于解决迷宫问题连通性检测拓扑排序等常用于最短路径问题如无权图的最短路径也用于层次遍历如树的层次遍历',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-28 18:24:04',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">社交</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ.jpg?raw=true" title="QQ"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ-icon.jpg?raw=true" alt="QQ"/><span class="back-menu-item-text">QQ</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg?raw=true" title="微信"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/WeChat-icon.png?raw=true" alt="微信"/><span class="back-menu-item-text">微信</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Barbecue</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>15</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>2</sup></a><a href="/tags/Nginx/" style="font-size: 1.05rem;">Nginx<sup>1</sup></a><a href="/tags/PicGo/" style="font-size: 1.05rem;">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 1.05rem;">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 1.05rem;">Redis<sup>1</sup></a><a href="/tags/posts/" style="font-size: 1.05rem;">_posts<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/" itemprop="url">C</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/C/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>C</span></a></span></div></div><h1 class="post-title" itemprop="name headline">C_数据结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="发表于 2024-09-28 18:24:04">2024-09-28</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="更新于 2024-09-28 18:24:04">2024-09-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">8.8k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>34分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为上海"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>上海</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://barbecue-g.github.io/"><header><a class="post-meta-categories" href="/categories/C/" itemprop="url">C</a><a href="/tags/C/" tabindex="-1" itemprop="url">C</a><h1 id="CrawlerTitle" itemprop="name headline">C_数据结构</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Barbecue</span><time itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="发表于 2024-09-28 18:24:04">2024-09-28</time><time itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="更新于 2024-09-28 18:24:04">2024-09-28</time></header><h1 id="C-常用数据结构"><a href="#C-常用数据结构" class="headerlink" title="C_常用数据结构"></a>C_常用数据结构</h1><p>最常用的数据结构有：数组，链表，栈，队列，哈希表和二叉搜索树等。网站推荐 <a target="_blank" rel="noopener" href="https://www.cs.usfca.edu/~galles/visualization/">数据结构与算法可视化</a></p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表是一种动态数据结构，由一系列节点组成，与数组不同，链表中的元素在内存中不需要是连续的，通过指针将元素串联起来。链表的主要特性是其动态性，即可以方便地进行插入和删除操作，而无需像数组需要移动元素。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8.png" alt="链表"></p>
+<p>链表有多种类型：单链表（Singly Linked List），双向链表（Doubly Linked List），以及循环链表（Circular Linked List）等。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8%E5%88%86%E7%B1%BB.png" alt="链表分类"></p>
+<p>循环链表用的一般比较少，但是当处理的数据具有环形结构时，就特别适合用循环链表（约瑟夫环问题）。</p>
+<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p>每个节点包含数据部分和指向下一个节点的指针。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义链表节点结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;           <span class="comment">// 数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span>  <span class="comment">// 指针域，指向下一个节点</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化链表头指针为 NULL</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">head</span> =</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><ol>
+<li><p><strong>节点插入（头插法）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insertAtHead</span><span class="params">(<span class="type">int</span> data)</span> &#123;</span><br><span class="line">    <span class="comment">// 创建新节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">newNode</span> =</span> (<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    newNode-&gt;data = data;</span><br><span class="line">    newNode-&gt;next = head;</span><br><span class="line">    head = newNode;  <span class="comment">// 更新头指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点插入（尾插法）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insertAtTail</span><span class="params">(<span class="type">int</span> data)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">newNode</span> =</span> (<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    newNode-&gt;data = data;</span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span>) &#123;  <span class="comment">// 链表为空</span></span><br><span class="line">        head = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">struct</span> Node* temp = head;</span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        temp-&gt;next = newNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点删除（按值删除）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">deleteNode</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">prev</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当头节点就是要删除的节点</span></span><br><span class="line">    <span class="keyword">if</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data == key) &#123;</span><br><span class="line">        head = temp-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(temp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 搜索要删除的节点</span></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data != key) &#123;</span><br><span class="line">        prev = temp;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (temp == <span class="literal">NULL</span>) <span class="keyword">return</span>;  <span class="comment">// 未找到</span></span><br><span class="line"></span><br><span class="line">    prev-&gt;next = temp-&gt;next;</span><br><span class="line">    <span class="built_in">free</span>(temp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点查找</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">search</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (temp-&gt;data == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">// 未找到</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链表反转</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">reverseList</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">prev</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">current</span> =</span> head;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        next = current-&gt;next;</span><br><span class="line">        current-&gt;next = prev;</span><br><span class="line">        prev = current;</span><br><span class="line">        current = next;</span><br><span class="line">    &#125;</span><br><span class="line">    head = prev;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链表遍历</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">printList</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d -&gt; &quot;</span>, temp-&gt;data);</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h4><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li><strong>插入</strong>：在链表头插入节点的时间复杂度为 O(1)；在链表尾插入节点的时间复杂度为 O(n)。</li>
+<li><strong>删除</strong>：删除节点的时间复杂度为 O(n)。</li>
+<li><strong>查找</strong>：查找节点的时间复杂度为 O(n)。</li>
+<li><strong>反转</strong>：链表反转的时间复杂度为 O(n)。</li>
+</ul>
+<p><strong>空间复杂度</strong>：</p>
+<ul>
+<li>链表节点的空间复杂度为 O(n)，其中 n 为节点数量。每个节点的额外空间开销是一个指针的大小。</li>
+</ul>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>链表适用于以下场景：</p>
+<ul>
+<li>需要频繁插入、删除操作，尤其是在链表开头或结尾（如队列和栈的实现）。</li>
+<li>需要动态分配内存且不需要连续的内存块时。</li>
+<li>数据量不大，且对随机访问要求不高的情况下。</li>
+</ul>
+<p>链表不适合用于随机访问，访问链表中的任意节点需要遍历整个链表，时间复杂度为 O(n)，不如数组的 O(1) 高效。</p>
+<h3 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h3><p>双向链表是一种链表数据结构，与单链表不同，双向链表允许在两个方向上遍历节点，从而提高了某些操作的效率。双向链表的主要优点是可以更方便地进行前后节点的访问、插入和删除操作。</p>
+<h4 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h4><p>每个节点包含三个部分：存储数据的区域、指向下一个节点的指针和指向前一个节点的指针。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义双向链表节点</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;           <span class="comment">// 存储数据</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span>  <span class="comment">// 指向下一个节点的指针</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">prev</span>;</span>  <span class="comment">// 指向前一个节点的指针</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义链表头节点</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">head</span> =</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h4><ol>
+<li><p><strong>初始化链表</strong></p>
+<p>创建一个空的双向链表：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initialize</span><span class="params">()</span> &#123;</span><br><span class="line">    head = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点插入（头插法）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insertAtBeginning</span><span class="params">(<span class="type">int</span> newData)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">newNode</span> =</span> (<span class="keyword">struct</span> Node*) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    newNode-&gt;data = newData;</span><br><span class="line">    newNode-&gt;next = head;</span><br><span class="line">    newNode-&gt;prev = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (head != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        head-&gt;prev = newNode;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    head = newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点插入（尾插法）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insertAtEnd</span><span class="params">(<span class="type">int</span> newData)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">newNode</span> =</span> (<span class="keyword">struct</span> Node*) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    newNode-&gt;data = newData;</span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        newNode-&gt;prev = <span class="literal">NULL</span>;</span><br><span class="line">        head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    temp-&gt;next = newNode;</span><br><span class="line">    newNode-&gt;prev = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点删除（按值删除）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">deleteNode</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 找到要删除的节点</span></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data != key) &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (temp == <span class="literal">NULL</span>) <span class="keyword">return</span>; <span class="comment">// 节点未找到</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (temp-&gt;prev != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        temp-&gt;prev-&gt;next = temp-&gt;next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        head = temp-&gt;next; <span class="comment">// 删除的是头节点</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        temp-&gt;next-&gt;prev = temp-&gt;prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(temp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>节点查找</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (temp-&gt;data == key)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链表遍历</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">printList</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">temp</span> =</span> head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d -&gt; &quot;</span>, temp-&gt;data);</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h4><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li><strong>插入</strong>：在链表头插入节点的时间复杂度为 O(1)；在链表尾插入节点的时间复杂度为 O(1)。</li>
+<li><strong>删除</strong>：删除节点的时间复杂度为 O(n)。</li>
+<li><strong>查找</strong>：查找节点的时间复杂度为 O(n)。</li>
+<li><strong>遍历</strong>：正向&#x2F;反向遍历链表的时间复杂度为 O(n)。</li>
+</ul>
+<p><strong>空间复杂度</strong>：</p>
+<ul>
+<li>双向链表的空间复杂度为O(n)，其中n是节点数量。相较于单链表，双向链表由于每个节点多一个指针（prev），占用的空间略多。</li>
+</ul>
+<p><font color=#0099ff>总结：虽然双向链表更占内存空间，但是它某些操作的性能是优于单链表的。这是空间换时间的思想。</font></p>
+<h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h4><p>双向链表适用于以下场景：</p>
+<ul>
+<li>当需要在两端频繁插入或删除节点时，双向链表比单链表更高效。</li>
+<li>当需要从任意位置（尤其是中间节点）进行删除操作时，双向链表更合适，可以直接访问前一个节点。</li>
+<li>适用于需要在两个方向上遍历数据的场景，如实现浏览器的前进&#x2F;后退功能。</li>
+</ul>
+<p>不适合用于需要频繁访问任意元素的场景，链表的随机访问时间复杂度较高（O(n)）。</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>栈（Stack）是一种<strong>后进先出（LIFO, Last In First Out）</strong>的数据结构。特点是只能在一端（栈顶）进行数据的插入和删除操作。栈通常用作函数调用的管理、表达式求值、括号匹配等。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88.png" alt="栈"></p>
+<h3 id="数据结构-2"><a href="#数据结构-2" class="headerlink" title="数据结构"></a>数据结构</h3><p>栈可以使用数组或链表来实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 100  <span class="comment">// 栈的最大容量</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[MAX_SIZE];  <span class="comment">// 栈的存储空间</span></span><br><span class="line">    <span class="type">int</span> top;             <span class="comment">// 栈顶指针</span></span><br><span class="line">&#125; Stack;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本操作-2"><a href="#基本操作-2" class="headerlink" title="基本操作"></a>基本操作</h3><ol>
+<li><p><strong>初始化栈</strong>：将栈顶指针<code>top</code>初始化为<code>-1</code>，表示栈为空。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initStack</span><span class="params">(Stack *s)</span> &#123;</span><br><span class="line">    s-&gt;top = <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>压栈</strong>：在栈未满的情况下，将元素压入栈顶。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(Stack *s, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isFull(s)) &#123;</span><br><span class="line">        s-&gt;data[++(s-&gt;top)] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>弹栈</strong>：在栈不为空的情况下，从栈顶弹出元素。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">pop</span><span class="params">(Stack *s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isEmpty(s)) &#123;</span><br><span class="line">        <span class="keyword">return</span> s-&gt;data[(s-&gt;top)--];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 栈为空时返回-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>获取栈顶元素</strong>：获取栈顶元素但不弹出。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">peek</span><span class="params">(Stack *s)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isEmpty(s)) &#123;</span><br><span class="line">        <span class="keyword">return</span> s-&gt;data[s-&gt;top];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 栈为空时返回-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>判断栈是否为空</strong>：判断栈顶指针是否为<code>-1</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(Stack *s)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> s-&gt;top == <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>判断栈是否已满</strong>：判断栈顶指针是否等于数组的最大索引。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">isFull</span><span class="params">(Stack *s)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> s-&gt;top == <span class="number">99</span>; <span class="comment">// 数组大小为100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="性能分析-2"><a href="#性能分析-2" class="headerlink" title="性能分析"></a>性能分析</h3><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li><code>Push</code>：O(1) —— 插入元素只需要更新栈顶指针并赋值。</li>
+<li><code>Pop</code>：O(1) —— 弹出元素只需要读取栈顶指针位置的值并更新指针。</li>
+<li><code>Top</code>：O(1) —— 获取栈顶元素只需访问数组中栈顶指针位置的值。</li>
+</ul>
+<p><strong>空间复杂度</strong>：</p>
+<ul>
+<li>空间复杂度为 O(n)，其中 n 是栈的容量。栈的空间由数组固定分配。</li>
+</ul>
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><p>栈在许多算法中有着广泛的应用，主要包括但不限于以下几个方面：</p>
+<ul>
+<li><strong>函数调用管理</strong>：递归函数调用时，系统使用栈来保存和恢复函数的上下文信息。</li>
+<li><strong>表达式求值</strong>：在中缀表达式转后缀表达式或计算后缀表达式时广泛使用栈。</li>
+<li><strong>括号匹配</strong>：检查代码中括号的匹配情况。</li>
+<li><strong>深度优先搜索（DFS）</strong>：在图的深度优先搜索算法中，栈用于存储路径信息。</li>
+</ul>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p><strong>队列</strong>是一种特殊的线性数据结构，遵循 <strong>FIFO（First In First Out）</strong> 原则，即最先进入队列的元素最先被移出。队列通常用于需要按顺序处理数据的场景，比如任务调度、广度优先搜索等。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97.png" alt="队列"></p>
+<h3 id="数据结构-3"><a href="#数据结构-3" class="headerlink" title="数据结构"></a>数据结构</h3><p>队列可以由队列节点结构和队列结构实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义队列节点结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;              <span class="comment">// 数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span>     <span class="comment">// 指向下一个节点的指针</span></span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义队列结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line">    Node* front;           <span class="comment">// 队列头</span></span><br><span class="line">    Node* rear;            <span class="comment">// 队列尾</span></span><br><span class="line">&#125; Queue;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本操作-3"><a href="#基本操作-3" class="headerlink" title="基本操作"></a>基本操作</h3><ol>
+<li><p><strong>初始化队列</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initQueue</span><span class="params">(Queue* q)</span> &#123;</span><br><span class="line">    q-&gt;front = q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>入队操作（Enqueue）</strong>：</p>
+<p>将一个元素添加到队列的末尾。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">enqueue</span><span class="params">(Queue* q, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    Node* newNode = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">    newNode-&gt;data = value;</span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (q-&gt;rear == <span class="literal">NULL</span>) &#123;    <span class="comment">// 队列为空时</span></span><br><span class="line">        q-&gt;front = q-&gt;rear = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        q-&gt;rear-&gt;next = newNode;</span><br><span class="line">        q-&gt;rear = newNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>出队操作（Dequeue）</strong>：</p>
+<p>从队列的头部移除并返回一个元素。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">dequeue</span><span class="params">(Queue* q)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (q-&gt;front == <span class="literal">NULL</span>) &#123;   <span class="comment">// 队列为空时</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;            <span class="comment">// 表示队列为空</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node* temp = q-&gt;front;</span><br><span class="line">    <span class="type">int</span> value = temp-&gt;data;</span><br><span class="line">    q-&gt;front = q-&gt;front-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (q-&gt;front == <span class="literal">NULL</span>) &#123;   <span class="comment">// 队列为空时</span></span><br><span class="line">        q-&gt;rear = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(temp);</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看队列头部元素（Peek）</strong>：</p>
+<p>获取队列头部的元素，但不移除它。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">peek</span><span class="params">(Queue* q)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (q-&gt;front == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 队列为空</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> q-&gt;front-&gt;data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>检查队列是否为空（IsEmpty）</strong>：</p>
+<p>判断队列是否为空。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(Queue* q)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> q-&gt;front == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="性能分析-3"><a href="#性能分析-3" class="headerlink" title="性能分析"></a>性能分析</h3><p><strong>时间复杂度</strong></p>
+<ul>
+<li><strong>入队（Enqueue）</strong>: O(1)，因为每次操作都只涉及队列尾部。</li>
+<li><strong>出队（Dequeue）</strong>: O(1)，因为每次操作都只涉及队列头部。</li>
+<li><strong>查看队列头部（Peek）</strong>: O(1)，只需读取头部元素。</li>
+<li><strong>检查是否为空（IsEmpty）</strong>: O(1)，只需检查指针是否为空。</li>
+</ul>
+<p><strong>空间复杂度</strong></p>
+<ul>
+<li>空间复杂度为 O(n)，其中 n 是队列中元素的数量。每个节点占用固定大小的内存。</li>
+</ul>
+<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><ol>
+<li><strong>任务调度</strong>: 例如操作系统中的进程调度，保证任务按到达顺序依次处理。</li>
+<li><strong>广度优先搜索(BFS)</strong>: 在图的遍历中使用队列来按层次访问节点。</li>
+<li><strong>缓冲区管理</strong>: 处理数据流时，使用队列作为缓冲区，保证数据按顺序被处理。</li>
+<li><strong>消息队列</strong>: 在分布式系统中，队列用来缓存和传递消息。</li>
+</ol>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>哈希表（Hash Table）是一种用于快速查找的常用数据结构。通过哈希函数（Hash Function）将键（Key）映射到存储位置，从而实现对数据的高效查找、插入和删除。哈希表的核心思想是利用数组的快速访问特点，将键值映射为数组的下标，进行查找、插入和删除操作的时间复杂度可以接近O(1)。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8.png" alt="哈希表"></p>
+<h3 id="数据结构-4"><a href="#数据结构-4" class="headerlink" title="数据结构"></a>数据结构</h3><h4 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h4><p>哈希函数是将键转换为数组索引的函数，设计一个好的哈希函数可以减少冲突。常见的哈希函数有取模法、乘法散列法等。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">hash_function</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> table_size)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> key % table_size;  <span class="comment">// 取模法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h4><p>由于哈希表的有限大小，不同的键值可能映射到相同的数组索引位置，这种现象称为冲突（Collision）。常见的冲突解决方法有开放地址法和链地址法。</p>
+<ol>
+<li><strong>开放地址法（Open Addressing）</strong>: 冲突时寻找下一个空闲的数组位置。</li>
+<li><strong>链地址法（Chaining）</strong>: 使用链表将所有冲突的键值存储在同一个数组位置。</li>
+</ol>
+<p>定义链表节点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TABLE_SIZE 10</span></span><br><span class="line"><span class="comment">// 定义链表节点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> key;</span><br><span class="line">    <span class="type">int</span> value;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125; Node;</span><br></pre></td></tr></table></figure>
+
+<p>定义哈希表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    Node* buckets[TABLE_SIZE];</span><br><span class="line">&#125; HashTable;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本操作-4"><a href="#基本操作-4" class="headerlink" title="基本操作"></a>基本操作</h3><ol>
+<li><p><strong>初始化哈希表</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">init_hash_table</span><span class="params">(HashTable* table)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; TABLE_SIZE; i++) &#123;</span><br><span class="line">        table-&gt;buckets[i] = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>插入键值对</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insert</span><span class="params">(HashTable* table, <span class="type">int</span> key, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> index = hash_function(key, TABLE_SIZE);</span><br><span class="line">    Node* new_node = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">    new_node-&gt;key = key;</span><br><span class="line">    new_node-&gt;value = value;</span><br><span class="line">    new_node-&gt;next = table-&gt;buckets[index];</span><br><span class="line">    table-&gt;buckets[index] = new_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查找键对应的值</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">search</span><span class="params">(HashTable* table, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> index = hash_function(key, TABLE_SIZE);</span><br><span class="line">    Node* node = table-&gt;buckets[index];</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;key == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> node-&gt;value;</span><br><span class="line">        &#125;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 表示未找到</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除键值对</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">delete</span><span class="params">(HashTable* table, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> index = hash_function(key, TABLE_SIZE);</span><br><span class="line">    Node* node = table-&gt;buckets[index];</span><br><span class="line">    Node* prev = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span> &amp;&amp; node-&gt;key != key) &#123;</span><br><span class="line">        prev = node;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prev == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            table-&gt;buckets[index] = node-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            prev-&gt;next = node-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">free</span>(node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="性能分析-4"><a href="#性能分析-4" class="headerlink" title="性能分析"></a>性能分析</h3><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li><strong>插入</strong>：平均情况下 O(1)，最坏情况下 O(n)（所有元素哈希冲突在同一个桶内）。</li>
+<li><strong>查找</strong>：平均情况下 O(1)，最坏情况下 O(n)。</li>
+<li><strong>删除</strong>：平均情况下 O(1)，最坏情况下 O(n)。</li>
+</ul>
+<p><strong>空间复杂度</strong>：O(n) 用于存储所有元素，外加 O(m) 用于存储桶数组（其中 m 是桶的数量）。</p>
+<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><p>哈希表适用于以下场景：</p>
+<ul>
+<li><strong>快速查找&#x2F;插入&#x2F;删除</strong>：需要在常数时间内快速查找数据、频繁插入和删除元素，哈希表提供高效的 O(1) 操作。如字典、缓存。</li>
+<li><strong>唯一性检查</strong>：用于快速判断一个元素是否存在，如检测重复元素。</li>
+<li><strong>计数器</strong>：如统计字符频率、单词频率等。</li>
+<li><strong>集合操作</strong>：哈希表可以用于集合操作，如求交集、并集、差集等。</li>
+</ul>
+<p>不适用于：</p>
+<ul>
+<li>需要维持数据有序的场合，哈希表无法保持元素的顺序。</li>
+<li>空间有限且哈希表装载因子较高时，冲突增多可能导致性能下降。</li>
+</ul>
+<p>哈希表在需要高效键值对操作的场景中表现尤为出色，但需要注意选择合适的哈希函数以及处理冲突的方法，以避免性能退化。</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>二叉树是一种树形数据结构，每个节点最多有两个子节点，分别称为左子节点和右子节点。二叉树通常用于组织数据以实现快速的查找、插入和删除操作。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt="二叉树"></p>
+<ul>
+<li><strong>满二叉树</strong>：每一层的结点数目都达到最大值</li>
+<li><strong>完全二叉树</strong>：一个二叉树除了最后一层，其他层都是满的，且最后一层的节点连续排列在最左边。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%BB%A1or%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt="满or完全二叉树"></p>
+<p>(a)满二叉树；(b)完全二叉树；(c)和(d)非完全二叉树	</p>
+<p>二叉树具有以下性质：</p>
+<ul>
+<li>高度为 <code>h</code> 的二叉树最多有 <code>2^h - 1</code> 个节点。</li>
+<li>对于 <code>n</code> 个节点的完全二叉树，其高度 <code>h</code> 为 <code>log2(n+1)</code>。</li>
+</ul>
+<h3 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h3><p>二叉搜索树（二叉排序树）是一种特殊的二叉树，其中每个节点都遵循以下规则：</p>
+<ul>
+<li>左子树中所有节点的值都小于根节点的值。</li>
+<li>右子树中所有节点的值都大于根节点的值。</li>
+<li>每个节点的左右子树也都是二叉搜索树。</li>
+</ul>
+<p>二叉搜索树在搜索、插入和删除操作时具有较好的性能。</p>
+<h4 id="数据结构-5"><a href="#数据结构-5" class="headerlink" title="数据结构"></a>数据结构</h4><p>二叉搜索树节点的基本结构：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 二叉搜索树节点结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> val;                <span class="comment">// 节点的值</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">left</span>;</span>  <span class="comment">// 指向左子树的指针</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">right</span>;</span> <span class="comment">// 指向右子树的指针</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基本操作-5"><a href="#基本操作-5" class="headerlink" title="基本操作"></a>基本操作</h4><ol>
+<li><p><strong>创建新的二叉搜索树节点</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> TreeNode* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">newNode</span> =</span> (<span class="keyword">struct</span> TreeNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> TreeNode));</span><br><span class="line">    newNode-&gt;val = val;</span><br><span class="line">    newNode-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">    newNode-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>插入节点</strong>：</p>
+<p>插入节点时，从根节点开始，根据值的大小递归地找到适当的空位置插入新节点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> TreeNode* <span class="title function_">insertNode</span><span class="params">(<span class="keyword">struct</span> TreeNode* root, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">    <span class="comment">// 如果树为空，则创建一个新节点</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> createNode(val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归地插入到左子树或右子树</span></span><br><span class="line">    <span class="keyword">if</span> (val &lt; root-&gt;val) &#123;</span><br><span class="line">        root-&gt;left = insertNode(root-&gt;left, val);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val &gt; root-&gt;val) &#123;</span><br><span class="line">        root-&gt;right = insertNode(root-&gt;right, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回（未变更的）节点指针</span></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>搜索节点</strong>：</p>
+<p>搜索时，根据当前节点的值和目标值的比较结果决定向左子树或右子树递归。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> TreeNode* <span class="title function_">searchNode</span><span class="params">(<span class="keyword">struct</span> TreeNode* root, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">    <span class="comment">// 如果找不到或者找到匹配的节点，则返回</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span> || root-&gt;val == val) &#123;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果目标值小于当前节点的值，继续在左子树中搜索</span></span><br><span class="line">    <span class="keyword">if</span> (val &lt; root-&gt;val) &#123;</span><br><span class="line">        <span class="keyword">return</span> searchNode(root-&gt;left, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 否则继续在右子树中搜索</span></span><br><span class="line">    <span class="keyword">return</span> searchNode(root-&gt;right, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除节点</strong>：</p>
+<p>删除节点分为三种情况：</p>
+<ul>
+<li>要删除的节点是叶子节点（无子树）。</li>
+<li>要删除的节点有一个子树。</li>
+<li>要删除的节点有两个子树：此时需找到右子树中的最小节点（或左子树中的最大节点）代替被删除的节点。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> TreeNode* <span class="title function_">findMinNode</span><span class="params">(<span class="keyword">struct</span> TreeNode* node)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">current</span> =</span> node;</span><br><span class="line">    <span class="keyword">while</span> (current &amp;&amp; current-&gt;left != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        current = current-&gt;left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> TreeNode* <span class="title function_">deleteNode</span><span class="params">(<span class="keyword">struct</span> TreeNode* root, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">    <span class="comment">// 基本情况</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归找到要删除的节点</span></span><br><span class="line">    <span class="keyword">if</span> (val &lt; root-&gt;val) &#123;</span><br><span class="line">        root-&gt;left = deleteNode(root-&gt;left, val);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val &gt; root-&gt;val) &#123;</span><br><span class="line">        root-&gt;right = deleteNode(root-&gt;right, val);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 找到要删除的节点</span></span><br><span class="line">        <span class="comment">// 情况1：节点没有子节点（叶子节点）</span></span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left == <span class="literal">NULL</span> &amp;&amp; root-&gt;right == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="built_in">free</span>(root);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 情况2：节点有一个子节点</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (root-&gt;left == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">struct</span> TreeNode* temp = root-&gt;right;</span><br><span class="line">            <span class="built_in">free</span>(root);</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root-&gt;right == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">struct</span> TreeNode* temp = root-&gt;left;</span><br><span class="line">            <span class="built_in">free</span>(root);</span><br><span class="line">            <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 情况3：节点有两个子节点</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>* <span class="title">temp</span> =</span> findMinNode(root-&gt;right);</span><br><span class="line">        root-&gt;val = temp-&gt;val;</span><br><span class="line">        root-&gt;right = deleteNode(root-&gt;right, temp-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>中序遍历（获取有序元素）</strong>：</p>
+<p>二叉搜索树的中序遍历可以获得有序的节点序列。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">inorderTraversal</span><span class="params">(<span class="keyword">struct</span> TreeNode* root)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (root != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        inorderTraversal(root-&gt;left);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, root-&gt;val);</span><br><span class="line">        inorderTraversal(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="性能分析-5"><a href="#性能分析-5" class="headerlink" title="性能分析"></a>性能分析</h4><p><strong>时间复杂度</strong>:</p>
+<ul>
+<li><strong>查找</strong>: 平均情况下为O(log n)，最坏情况下为O(n)（当树退化为链表时）。</li>
+<li><strong>插入</strong>: 平均情况下为O(log n)，最坏情况下为O(n)。</li>
+<li><strong>删除</strong>: 平均情况下为O(log n)，最坏情况下为O(n)。</li>
+<li><strong>遍历</strong>: O(n)，需要访问每个节点一次。</li>
+</ul>
+<p><strong>空间复杂度</strong>:</p>
+<ul>
+<li>对于n个节点的二叉搜索树，空间复杂度为O(n)，需要存储n个节点。</li>
+</ul>
+<h4 id="应用场景-5"><a href="#应用场景-5" class="headerlink" title="应用场景"></a>应用场景</h4><p>二叉搜索树适用于以下场景：</p>
+<ul>
+<li><strong>动态数据集合</strong>：需要频繁插入、删除和查找操作的应用。</li>
+<li><strong>有序数据输出</strong>：需要频繁获取有序数据的应用。需要快速查找、中序遍历或范围查询的场景。</li>
+<li><strong>字典、集合实现</strong>：基于键值对操作的数据结构，比如实现符号表。</li>
+</ul>
+<p>二叉搜索树适用于需要动态管理有序数据的场景，但需注意在最坏情况下，树的性能会退化到线性时间复杂度。为了保持平衡，可以考虑使用自平衡二叉搜索树（如红黑树或AVL树）来确保更好的性能。</p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆（Heap）是一种特殊的二叉树，它可以分为<strong>最大堆</strong>和<strong>最小堆</strong>。</p>
+<ul>
+<li><p><strong>完全二叉树</strong>：除了最后一层外，所有层的节点都被填满，最后一层的节点从左到右依次填充。</p>
+</li>
+<li><p><strong>最大堆</strong>：在最大堆中，每个父节点的值都大于或等于其子节点的值。</p>
+</li>
+<li><p><strong>最小堆</strong>：在最小堆中，每个父节点的值都小于或等于其子节点的值。</p>
+</li>
+</ul>
+<p>堆通常用<strong>数组</strong>来实现，而非实际的二叉树。假设节点的索引为<code>i</code>，则有以下关系：</p>
+<ul>
+<li>父节点索引为 <code>(i - 1) / 2</code></li>
+<li>左子节点索引为 <code>2 * i + 1</code></li>
+<li>右子节点索引为 <code>2 * i + 2</code></li>
+</ul>
+<h4 id="数据结构-6"><a href="#数据结构-6" class="headerlink" title="数据结构"></a>数据结构</h4><p>下面是一个简单的堆实现（以最大堆为例）:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[MAX_SIZE];  <span class="comment">// 用数组表示堆</span></span><br><span class="line">    <span class="type">int</span> size;            <span class="comment">// 当前堆的大小</span></span><br><span class="line">&#125; Heap;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基本操作-6"><a href="#基本操作-6" class="headerlink" title="基本操作"></a>基本操作</h4><ol>
+<li><p><strong>初始化堆</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initHeap</span><span class="params">(Heap *h)</span> &#123;</span><br><span class="line">    h-&gt;size = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>插入操作</strong>：</p>
+<p>插入新元素到堆中，并维护堆的性质。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insert</span><span class="params">(Heap *h, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (h-&gt;size &gt;= MAX_SIZE) <span class="keyword">return</span>;  <span class="comment">// 堆满</span></span><br><span class="line">    <span class="type">int</span> i = h-&gt;size++;</span><br><span class="line">    h-&gt;data[i] = value;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 向上调整</span></span><br><span class="line">    <span class="keyword">while</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="type">int</span> parent = (i - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (h-&gt;data[i] &lt;= h-&gt;data[parent]) <span class="keyword">break</span>;</span><br><span class="line">        <span class="type">int</span> temp = h-&gt;data[i];</span><br><span class="line">        h-&gt;data[i] = h-&gt;data[parent];</span><br><span class="line">        h-&gt;data[parent] = temp;</span><br><span class="line">        i = parent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除操作（删除根节点）</strong>：</p>
+<p>删除堆顶元素，并维护堆的性质。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">deleteMax</span><span class="params">(Heap *h)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (h-&gt;size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 堆为空</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> max = h-&gt;data[<span class="number">0</span>];</span><br><span class="line">    h-&gt;data[<span class="number">0</span>] = h-&gt;data[--h-&gt;size];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 向下调整</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">2</span> * i + <span class="number">1</span> &lt; h-&gt;size) &#123;</span><br><span class="line">        <span class="type">int</span> leftChild = <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> rightChild = <span class="number">2</span> * i + <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span> largest = i;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (leftChild &lt; h-&gt;size &amp;&amp; h-&gt;data[leftChild] &gt; h-&gt;data[largest]) &#123;</span><br><span class="line">            largest = leftChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rightChild &lt; h-&gt;size &amp;&amp; h-&gt;data[rightChild] &gt; h-&gt;data[largest]) &#123;</span><br><span class="line">            largest = rightChild;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (largest == i) <span class="keyword">break</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> temp = h-&gt;data[i];</span><br><span class="line">        h-&gt;data[i] = h-&gt;data[largest];</span><br><span class="line">        h-&gt;data[largest] = temp;</span><br><span class="line">        i = largest;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>获取堆顶元素</strong>：</p>
+<p>获取堆中最大值（最大堆）或最小值（最小堆），时间复杂度为 O(1)。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getMax</span><span class="params">(Heap *h)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (h-&gt;size == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 堆为空</span></span><br><span class="line">    <span class="keyword">return</span> h-&gt;data[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>堆化（Heapify）</strong>：</p>
+<p>将一个无序数组调整为堆，常用于构建堆排序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">heapify</span><span class="params">(Heap *h, <span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="type">int</span> leftChild = <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> rightChild = <span class="number">2</span> * i + <span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span> largest = i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (leftChild &lt; h-&gt;size &amp;&amp; h-&gt;data[leftChild] &gt; h-&gt;data[largest]) &#123;</span><br><span class="line">        largest = leftChild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rightChild &lt; h-&gt;size &amp;&amp; h-&gt;data[rightChild] &gt; h-&gt;data[largest]) &#123;</span><br><span class="line">        largest = rightChild;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (largest != i) &#123;</span><br><span class="line">        <span class="type">int</span> temp = h-&gt;data[i];</span><br><span class="line">        h-&gt;data[i] = h-&gt;data[largest];</span><br><span class="line">        h-&gt;data[largest] = temp;</span><br><span class="line">        heapify(h, largest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="性能分析-6"><a href="#性能分析-6" class="headerlink" title="性能分析"></a>性能分析</h4><ul>
+<li><p><strong>插入操作</strong>：时间复杂度为 O(log⁡n)，因为插入元素后，最多需要沿着树向上调整 log⁡n 次。</p>
+</li>
+<li><p><strong>删除操作</strong>：时间复杂度为 O(log⁡n)，因为删除根节点后，最多需要沿着树向下调整 log⁡n 次。</p>
+</li>
+<li><p><strong>获取堆顶元素</strong>：时间复杂度为 O(1)，因为只需返回根节点的值。</p>
+</li>
+<li><p><strong>堆化操作</strong>：时间复杂度为 O(n)，通常用于构建堆。</p>
+</li>
+<li><p><strong>空间复杂度</strong>：堆通常使用数组实现，空间复杂度为 O(n)，其中 n 为堆中元素个数。</p>
+</li>
+</ul>
+<h4 id="应用场景-6"><a href="#应用场景-6" class="headerlink" title="应用场景"></a>应用场景</h4><p>堆适用于以下场景：</p>
+<ul>
+<li><p><strong>优先队列</strong>：堆广泛用于实现优先队列，能够以较高效率找到和移除优先级最高的元素。</p>
+</li>
+<li><p><strong>排序算法</strong>：堆排序是经典的<code>O(nlogn)</code>排序算法，适用于大数据量的排序任务。</p>
+</li>
+<li><p><strong>图算法</strong>：堆在Dijkstra算法和Prim算法中用于高效地选择最短路径或最小生成树中的下一条边。</p>
+</li>
+<li><p><strong>任务调度</strong>：处理多个任务时，堆可以用来调度优先级较高的任务。</p>
+</li>
+</ul>
+<h3 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h3><p>平衡树是一种自动调整的数据结构，保证在进行插入、删除、查找等操作时，树的高度始终保持平衡（或接近平衡）。通常平衡树的定义是为了防止树变成一条长链，会导致操作效率下降到 O(n)（线性时间）。在平衡树中，操作的时间复杂度能够保持在 O(log n)，确保高效的查找、插入和删除操作。</p>
+<p>常见的平衡树包括 AVL 树、红黑树等。下面的例子将以 <strong>AVL树</strong> 为例，该树的特性是：每个节点的左右子树的高度差不超过 1。</p>
+<h4 id="数据结构-7"><a href="#数据结构-7" class="headerlink" title="数据结构"></a>数据结构</h4><p>AVL 树作为一种平衡二叉搜索树，能够有效地保证操作的时间复杂度在 O(log n) 范围内，适用于对查找、插入、删除操作都有较高要求的应用场景。 <code>AVL</code> 树的基本数据结构：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> key;  <span class="comment">// 节点值</span></span><br><span class="line">    <span class="type">int</span> height;  <span class="comment">// 节点的高度</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">left</span>;</span>  <span class="comment">// 左子树</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">right</span>;</span>  <span class="comment">// 右子树</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基本操作-7"><a href="#基本操作-7" class="headerlink" title="基本操作"></a>基本操作</h4><ol>
+<li><p><strong>获取节点高度</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">height</span><span class="params">(<span class="keyword">struct</span> AVLNode* node)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> node-&gt;height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建新节点</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">node</span> =</span> (<span class="keyword">struct</span> AVLNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> AVLNode));</span><br><span class="line">    node-&gt;key = key;</span><br><span class="line">    node-&gt;left = node-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    node-&gt;height = <span class="number">1</span>;  <span class="comment">// 新节点的高度为1</span></span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>右旋操作</strong>：</p>
+<p>右旋是指将某个节点及其左子树向右旋转，调整树的平衡。该操作用于在插入或删除节点后，树变得左重时恢复平衡。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">rightRotate</span><span class="params">(<span class="keyword">struct</span> AVLNode* y)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">x</span> =</span> y-&gt;left;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">T2</span> =</span> x-&gt;right;</span><br><span class="line">    <span class="comment">// 进行旋转</span></span><br><span class="line">    x-&gt;right = y;</span><br><span class="line">    y-&gt;left = T2;</span><br><span class="line">    <span class="comment">// 更新高度</span></span><br><span class="line">    y-&gt;height = max(height(y-&gt;left), height(y-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    x-&gt;height = max(height(x-&gt;left), height(x-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 返回新的根节点</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>左旋操作</strong>：</p>
+<p>左旋是指将某个节点及其右子树向左旋转，调整树的平衡。该操作用于在插入或删除节点后，树变得右重时恢复平衡。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">leftRotate</span><span class="params">(<span class="keyword">struct</span> AVLNode* x)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">y</span> =</span> x-&gt;right;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">T2</span> =</span> y-&gt;left;</span><br><span class="line">    <span class="comment">// 进行旋转</span></span><br><span class="line">    y-&gt;left = x;</span><br><span class="line">    x-&gt;right = T2;</span><br><span class="line">    <span class="comment">// 更新高度</span></span><br><span class="line">    x-&gt;height = max(height(x-&gt;left), height(x-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    y-&gt;height = max(height(y-&gt;left), height(y-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 返回新的根节点</span></span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>获取平衡因子</strong>：</p>
+<p>AVL 树的核心在于维护每个节点的平衡因子，平衡因子等于左右子树高度差。如果平衡因子的绝对值大于 1，则该节点需要旋转以保持平衡。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getBalance</span><span class="params">(<span class="keyword">struct</span> AVLNode* node)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> height(node-&gt;left) - height(node-&gt;right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>插入节点</strong>：</p>
+<p>在 AVL 树中插入节点后，可能会破坏树的平衡，此时需要通过旋转来恢复平衡。插入时，需要判断四种情况：左左、右右、左右、右左，并选择相应的旋转操作。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">insert</span><span class="params">(<span class="keyword">struct</span> AVLNode* node, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="comment">// 标准的二叉搜索树插入</span></span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> createNode(key);</span><br><span class="line">    <span class="keyword">if</span> (key &lt; node-&gt;key)</span><br><span class="line">        node-&gt;left = insert(node-&gt;left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; node-&gt;key)</span><br><span class="line">        node-&gt;right = insert(node-&gt;right, key);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> node; <span class="comment">// 键值已存在，返回不做插入</span></span><br><span class="line">    <span class="comment">// 更新节点高度</span></span><br><span class="line">    node-&gt;height = <span class="number">1</span> + max(height(node-&gt;left), height(node-&gt;right));</span><br><span class="line">    <span class="comment">// 获取当前节点的平衡因子</span></span><br><span class="line">    <span class="type">int</span> balance = getBalance(node);</span><br><span class="line">    <span class="comment">// 如果节点不平衡，进行相应旋转</span></span><br><span class="line">    <span class="comment">// 左左情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &gt; <span class="number">1</span> &amp;&amp; key &lt; node-&gt;left-&gt;key)</span><br><span class="line">        <span class="keyword">return</span> rightRotate(node);</span><br><span class="line">    <span class="comment">// 右右情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &lt; <span class="number">-1</span> &amp;&amp; key &gt; node-&gt;right-&gt;key)</span><br><span class="line">        <span class="keyword">return</span> leftRotate(node);</span><br><span class="line">    <span class="comment">// 左右情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &gt; <span class="number">1</span> &amp;&amp; key &gt; node-&gt;left-&gt;key) &#123;</span><br><span class="line">        node-&gt;left = leftRotate(node-&gt;left);</span><br><span class="line">        <span class="keyword">return</span> rightRotate(node);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 右左情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &lt; <span class="number">-1</span> &amp;&amp; key &lt; node-&gt;right-&gt;key) &#123;</span><br><span class="line">        node-&gt;right = rightRotate(node-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> leftRotate(node);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查找节点</strong>：</p>
+<p>查找节点与标准的二叉搜索树相同。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">search</span><span class="params">(<span class="keyword">struct</span> AVLNode* root, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span> || root-&gt;key == key)</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span> (key &lt; root-&gt;key)</span><br><span class="line">        <span class="keyword">return</span> search(root-&gt;left, key);</span><br><span class="line">    <span class="keyword">return</span> search(root-&gt;right, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除节点</strong>：</p>
+<p>删除节点后也可能破坏树的平衡，因此同样需要进行平衡因子的检查与旋转操作。删除的核心与标准二叉搜索树类似，之后根据不同的情况调整平衡。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到最小值节点</span></span><br><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">minValueNode</span><span class="params">(<span class="keyword">struct</span> AVLNode* node)</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">current</span> =</span> node;</span><br><span class="line">    <span class="comment">// 找到最左边的叶子节点</span></span><br><span class="line">    <span class="keyword">while</span> (current-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">        current = current-&gt;left;</span><br><span class="line">    <span class="keyword">return</span> current;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除节点并维持平衡</span></span><br><span class="line"><span class="keyword">struct</span> AVLNode* <span class="title function_">deleteNode</span><span class="params">(<span class="keyword">struct</span> AVLNode* root, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="comment">// 标准二叉搜索树删除</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    <span class="keyword">if</span> (key &lt; root-&gt;key)</span><br><span class="line">        root-&gt;left = deleteNode(root-&gt;left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; root-&gt;key)</span><br><span class="line">        root-&gt;right = deleteNode(root-&gt;right, key);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 单子节点或无子节点</span></span><br><span class="line">        <span class="keyword">if</span> ((root-&gt;left == <span class="literal">NULL</span>) || (root-&gt;right == <span class="literal">NULL</span>)) &#123;</span><br><span class="line">            <span class="keyword">struct</span> AVLNode* temp = root-&gt;left ? root-&gt;left : root-&gt;right;</span><br><span class="line">            <span class="keyword">if</span> (temp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">                temp = root;</span><br><span class="line">                root = <span class="literal">NULL</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                *root = *temp;</span><br><span class="line">            <span class="built_in">free</span>(temp);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 找到右子树的最小节点</span></span><br><span class="line">            <span class="keyword">struct</span> AVLNode* temp = minValueNode(root-&gt;right);</span><br><span class="line">            root-&gt;key = temp-&gt;key;</span><br><span class="line">            root-&gt;right = deleteNode(root-&gt;right, temp-&gt;key);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    <span class="comment">// 更新节点高度</span></span><br><span class="line">    root-&gt;height = <span class="number">1</span> + max(height(root-&gt;left), height(root-&gt;right));</span><br><span class="line">    <span class="comment">// 检查平衡因子</span></span><br><span class="line">    <span class="type">int</span> balance = getBalance(root);</span><br><span class="line">    <span class="comment">// 左左情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &gt; <span class="number">1</span> &amp;&amp; getBalance(root-&gt;left) &gt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> rightRotate(root);</span><br><span class="line">    <span class="comment">// 左右情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &gt; <span class="number">1</span> &amp;&amp; getBalance(root-&gt;left) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        root-&gt;left = leftRotate(root-&gt;left);</span><br><span class="line">        <span class="keyword">return</span> rightRotate(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 右右情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &lt; <span class="number">-1</span> &amp;&amp; getBalance(root-&gt;right) &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> leftRotate(root);</span><br><span class="line">    <span class="comment">// 右左情况</span></span><br><span class="line">    <span class="keyword">if</span> (balance &lt; <span class="number">-1</span> &amp;&amp; getBalance(root-&gt;right) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        root-&gt;right = rightRotate(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> leftRotate(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="性能分析-7"><a href="#性能分析-7" class="headerlink" title="性能分析"></a>性能分析</h4><p><strong>时间复杂度</strong>：</p>
+<ul>
+<li>插入、删除、查找操作的时间复杂度均为 O(log n)，因为 AVL 树的高度始终保持在 O(log n) 的范围内。</li>
+</ul>
+<p><strong>空间复杂度</strong>：</p>
+<ul>
+<li>在最坏情况下，AVL 树的额外空间复杂度为 O(n)，主要用于存储每个节点的指针以及递归栈的深度。</li>
+</ul>
+<h4 id="应用场景-7"><a href="#应用场景-7" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li><p><code>AVL</code> 树适用于对查找操作要求较高的场景，它能确保树的高度始终平衡，查找性能良好。</p>
+</li>
+<li><p>在需要频繁插入和删除数据的场景下，<code>AVL</code> 树也能够通过旋转保持平衡，从而保证操作效率。</p>
+</li>
+</ul>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><p>图（Graph）是一种非常重要的非线性数据结构，由<strong>顶点（Vertex）</strong>和<strong>边（Edge）</strong>组成。图用于表示对象（顶点）之间的关系（边），广泛应用于社交网络、网络路由、搜索引擎等领域。图可分为以下几类：</p>
+<ul>
+<li><p><strong>无向图</strong>：边没有方向，边<code>(u, v)</code>与<code>(v, u)</code>等价。</p>
+</li>
+<li><p><strong>有向图</strong>：边有方向，边<code>(u, v)</code>与<code>(v, u)</code>不等价。</p>
+</li>
+<li><p><strong>加权图</strong>：边带有权重（Weight），表示两个顶点之间的距离或代价。</p>
+</li>
+<li><p><strong>无权图</strong>：边没有权重。</p>
+</li>
+</ul>
+<p>此外，图还可以表示为<strong>稀疏图</strong>（Sparse Graph）和<strong>稠密图</strong>（Dense Graph）：</p>
+<ul>
+<li><strong>稀疏图</strong>：边的数量远小于顶点数的平方。</li>
+<li><strong>稠密图</strong>：边的数量接近于顶点数的平方。</li>
+</ul>
+<h3 id="数据结构-8"><a href="#数据结构-8" class="headerlink" title="数据结构"></a>数据结构</h3><p>图的数据结构可以通过<strong>邻接矩阵</strong>（Adjacency Matrix）或<strong>邻接表</strong>（Adjacency List）来实现。</p>
+<ul>
+<li><p><strong>邻接矩阵</strong></p>
+<p>邻接矩阵是一种二维数组，用于表示图中节点之间的连接关系。假设图中有 <code>n</code> 个节点，<code>matrix[i][j]</code> 表示节点 <code>i</code> 和节点 <code>j</code> 之间的连接关系。若为无向图，<code>matrix[i][j] = matrix[j][i]</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_VERTICES 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> matrix[MAX_VERTICES][MAX_VERTICES];  <span class="comment">// 用二维数组表示图</span></span><br><span class="line">    <span class="type">int</span> numVertices;                         <span class="comment">// 图的顶点数量</span></span><br><span class="line">&#125; Graph;</span><br></pre></td></tr></table></figure>
+
+<p><strong>初始化图</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initGraph</span><span class="params">(Graph* g, <span class="type">int</span> numVertices)</span> &#123;</span><br><span class="line">    g-&gt;numVertices = numVertices;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numVertices; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; numVertices; j++) &#123;</span><br><span class="line">            g-&gt;matrix[i][j] = <span class="number">0</span>; <span class="comment">// 初始化矩阵为0，表示没有边</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加边</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">addEdge</span><span class="params">(Graph* g, <span class="type">int</span> src, <span class="type">int</span> dest)</span> &#123;</span><br><span class="line">    g-&gt;matrix[src][dest] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>移除边</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">removeEdge</span><span class="params">(Graph* g, <span class="type">int</span> src, <span class="type">int</span> dest)</span> &#123;</span><br><span class="line">    g-&gt;matrix[src][dest] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>邻接表</strong></p>
+<p>邻接表是一种链表数组，数组中的每个元素都是一个链表，用于存储与某个顶点相连的所有顶点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_VERTICES 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> vertex;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125; Node;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    Node* <span class="built_in">list</span>[MAX_VERTICES];  <span class="comment">// 用数组存储每个顶点的邻接链表</span></span><br><span class="line">    <span class="type">int</span> numVertices;           <span class="comment">// 图的顶点数量</span></span><br><span class="line">&#125; Graph;</span><br></pre></td></tr></table></figure>
+
+<p><strong>初始化图</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">initGraph</span><span class="params">(Graph* g, <span class="type">int</span> numVertices)</span> &#123;</span><br><span class="line">    g-&gt;numVertices = numVertices;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; numVertices; i++) &#123;</span><br><span class="line">        g-&gt;<span class="built_in">list</span>[i] = <span class="literal">NULL</span>;  <span class="comment">// 初始化链表为空</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建节点</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Node* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> vertex)</span> &#123;</span><br><span class="line">    Node* newNode = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">    newNode-&gt;vertex = vertex;</span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加边</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">addEdge</span><span class="params">(Graph* g, <span class="type">int</span> src, <span class="type">int</span> dest)</span> &#123;</span><br><span class="line">    Node* newNode = createNode(dest);</span><br><span class="line">    newNode-&gt;next = g-&gt;<span class="built_in">list</span>[src];</span><br><span class="line">    g-&gt;<span class="built_in">list</span>[src] = newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>移除边</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">removeEdge</span><span class="params">(Graph* g, <span class="type">int</span> src, <span class="type">int</span> dest)</span> &#123;</span><br><span class="line">    Node* temp = g-&gt;<span class="built_in">list</span>[src];</span><br><span class="line">    Node* prev = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;vertex != dest) &#123;</span><br><span class="line">        prev = temp;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (prev != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            prev-&gt;next = temp-&gt;next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            g-&gt;<span class="built_in">list</span>[src] = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">free</span>(temp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="基本操作-8"><a href="#基本操作-8" class="headerlink" title="基本操作"></a>基本操作</h3><p>图的遍历常见的有两种方式：<strong>深度优先遍历</strong>（DFS）和<strong>广度优先遍历</strong>（BFS）。</p>
+<ul>
+<li><p><strong>DFS（深度优先搜索）</strong>: 使用递归实现，沿着每一个路径深入到不能再深入为止，然后回溯。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">DFS</span><span class="params">(Graph* g, <span class="type">int</span> vertex, <span class="type">int</span> visited[])</span> &#123;</span><br><span class="line">    visited[vertex] = <span class="number">1</span>; <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, vertex); <span class="comment">// 访问节点</span></span><br><span class="line"></span><br><span class="line">    Node* adjList = g-&gt;<span class="built_in">list</span>[vertex];</span><br><span class="line">    Node* temp = adjList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="type">int</span> connectedVertex = temp-&gt;vertex;</span><br><span class="line">        <span class="keyword">if</span> (visited[connectedVertex] == <span class="number">0</span>) &#123;</span><br><span class="line">            DFS(g, connectedVertex, visited);</span><br><span class="line">        &#125;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>BFS（广度优先搜索）</strong>: 使用队列实现，从一个顶点开始，先访问其所有邻接顶点，然后逐层访问。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">BFS</span><span class="params">(Graph* g, <span class="type">int</span> startVertex)</span> &#123;</span><br><span class="line">    <span class="type">int</span> visited[MAX_VERTICES] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    Queue* <span class="built_in">queue</span> = createQueue();</span><br><span class="line"></span><br><span class="line">    visited[startVertex] = <span class="number">1</span>;</span><br><span class="line">    enqueue(<span class="built_in">queue</span>, startVertex);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!isEmpty(<span class="built_in">queue</span>)) &#123;</span><br><span class="line">        <span class="type">int</span> currentVertex = dequeue(<span class="built_in">queue</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, currentVertex);</span><br><span class="line"></span><br><span class="line">        Node* temp = g-&gt;<span class="built_in">list</span>[currentVertex];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (temp) &#123;</span><br><span class="line">            <span class="type">int</span> adjVertex = temp-&gt;vertex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (visited[adjVertex] == <span class="number">0</span>) &#123;</span><br><span class="line">                visited[adjVertex] = <span class="number">1</span>;</span><br><span class="line">                enqueue(<span class="built_in">queue</span>, adjVertex);</span><br><span class="line">            &#125;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="性能分析-8"><a href="#性能分析-8" class="headerlink" title="性能分析"></a>性能分析</h3><p><strong>邻接矩阵</strong>：</p>
+<ul>
+<li><strong>时间复杂度</strong>：添加边、移除边、检查边存在性：O(1)；遍历所有邻接顶点：O(V)</li>
+<li><strong>空间复杂度</strong>：O(V^2)，其中V是图中顶点的数量。不适合稀疏图，会浪费大量空间。</li>
+</ul>
+<p><strong>邻接表</strong>：</p>
+<ul>
+<li><strong>时间复杂度</strong>：添加边：O(1)；移除边、检查边存在性、遍历所有邻接顶点：O(E&#x2F;V) 平均</li>
+<li><strong>空间复杂度</strong>：O(V + E)，其中E是图中边的数量。适合稀疏图，因为只存储实际存在的边。</li>
+</ul>
+<p>对于稠密图（即边的数量接近于顶点数量的平方），建议使用邻接矩阵。对于稀疏图（即边的数量远小于顶点数量的平方），建议使用邻接表。</p>
+<h3 id="应用场景-8"><a href="#应用场景-8" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><p><strong>邻接矩阵</strong>：适用于图较小且稠密（边较多）的情况，快速检查两个顶点之间是否有边。如社交网络中的好友关系。</p>
+</li>
+<li><p><strong>邻接表</strong>：适用于图较大且稀疏（边较少）的情况，节省空间，适合存储大量顶点及其关系。如城市间的道路网络。</p>
+</li>
+<li><p><strong>DFS</strong>常用于解决迷宫问题、连通性检测、拓扑排序等。</p>
+</li>
+<li><p><strong>BFS</strong>常用于最短路径问题（如无权图的最短路径），也用于层次遍历（如树的层次遍历）。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"></a><div class="post-copyright__author_name">Barbecue</div><div class="post-copyright__author_desc">今天学习了吗</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://barbecue-g.github.io/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://barbecue-g.github.io/')">C_数据结构</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://barbecue-g.github.io/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=C_数据结构&amp;url=https://barbecue-g.github.io/&amp;pic=https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">此文章版权归Barbeuce所有，如有转载，请注明明来自原作者</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/C/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>C<span class="categoryesPageCount">15</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/C/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>C<span class="tagsPageCount">15</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Language/C/C_%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" onerror="onerror=null;src='/img/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C_格式化输入输出</div></div></a></div><div class="next-post pull-right"><a href="/Language/C/C_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%9F%A5%E6%89%BE"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" onerror="onerror=null;src='/img/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C_排序与查找</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/Language/C/C_%E5%87%BD%E6%95%B0" title="C_函数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_函数</div></div></a></div><div><a href="/Language/C/C_%E5%8E%86%E5%8F%B2" title="C_历史"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_历史</div></div></a></div><div><a href="/Language/C/C_%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="C_基本数据类型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_基本数据类型</div></div></a></div><div><a href="/Language/C/C_%E5%AD%97%E7%AC%A6%E4%B8%B2" title="C_字符串"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_字符串</div></div></a></div><div><a href="/Language/C/C_%E6%8C%87%E9%92%88" title="C_指针"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_指针</div></div></a></div><div><a href="/Language/C/C_%E6%8C%87%E9%92%88%E7%9A%84%E5%BA%94%E7%94%A8" title="C_指针的应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_指针的应用</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">C_常用数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-text">双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-1"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-1"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-text">应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-2"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-2"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text">队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-3"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-3"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4"><span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-text">哈希函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3"><span class="toc-text">冲突解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-4"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-4"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-5"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-5"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-5"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86"><span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-6"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-6"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-6"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-text">平衡树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-7"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-7"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-7"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-7"><span class="toc-text">应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-8"><span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-8"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-8"><span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-8"><span class="toc-text">应用场景</span></a></li></ol></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2024 By <a class="footer-bar-link" href="/" title="Barbecue" target="_blank">Barbecue</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="赣ICP备-2024039887号">赣ICP备-2024039887号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">社交</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ.jpg?raw=true" title="QQ"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ-icon.jpg?raw=true" alt="QQ"/><span class="back-menu-item-text">QQ</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg?raw=true" title="微信"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/WeChat-icon.png?raw=true" alt="微信"/><span class="back-menu-item-text">微信</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Git/" style="font-size: 0.88rem; color: rgb(145, 79, 37);">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem; color: rgb(86, 79, 40);">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem; color: rgb(31, 174, 12);">MySQL<sup>2</sup></a><a href="/tags/Nginx/" style="font-size: 0.88rem; color: rgb(39, 103, 95);">Nginx<sup>1</sup></a><a href="/tags/PicGo/" style="font-size: 0.88rem; color: rgb(9, 98, 162);">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 0.88rem; color: rgb(43, 124, 85);">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 0.88rem; color: rgb(60, 90, 92);">Redis<sup>1</sup></a><a href="/tags/posts/" style="font-size: 0.88rem; color: rgb(196, 162, 46);">_posts<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 0.88rem; color: rgb(186, 108, 142);">hexo<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2024 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Barbecue 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+      appKey: 'R50Ps7cdwVouTiBALXFKiUzI',
+      avatar: '“identicon”',
+      serverURLs: '',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=“identicon”'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://hnelsWgo.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+        "X-LC-Key": 'R50Ps7cdwVouTiBALXFKiUzI',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script id="canvas_nest" defer="defer" color="0,190,255" opacity="1" zIndex="-1" count="64" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

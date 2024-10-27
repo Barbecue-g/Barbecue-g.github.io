@@ -1,0 +1,883 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>C_基本数据类型 | Barbecue</title><meta name="keywords" content="C"><meta name="author" content="Barbecue"><meta name="copyright" content="Barbecue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="C_基本数据类型"><meta name="application-name" content="C_基本数据类型"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="C_基本数据类型"><meta property="og:url" content="https://barbecue-g.github.io/Language/C/C_%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><meta property="og:site_name" content="Barbecue"><meta property="og:description" content="C_基本数据类型基本数据类型主要包括：整数类型，浮点数类型和字符类型，其中字符类型也可以看作是整数类型中的一种。 整数类型整数类型可以分为两大类：有符号整数和无符号整数。 默认情况下，C 语言的整数类型都是有符号的；若要声明为无符号整数，则需要加 unsigned 关键字。C 语言的整数类型有以下这"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png"><meta property="article:author" content="Barbecue"><meta property="article:tag" content="Barbecue"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png"><meta name="description" content="C_基本数据类型基本数据类型主要包括：整数类型，浮点数类型和字符类型，其中字符类型也可以看作是整数类型中的一种。 整数类型整数类型可以分为两大类：有符号整数和无符号整数。 默认情况下，C 语言的整数类型都是有符号的；若要声明为无符号整数，则需要加 unsigned 关键字。C 语言的整数类型有以下这"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"><link rel="canonical" href="https://barbecue-g.github.io/Language/C/C_%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Barbecue","link":"链接: ","source":"来源: Barbecue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Barbecue',
+  title: 'C_基本数据类型',
+  postAI: '',
+  pageFillDescription: 'C_基本数据类型, 整数类型, 整数字面值, 读x2F写整数, 整数类型编码, 浮点数类型, 浮点数字面值, 读x2F写浮点数, 字符类型, 字符操作, 转义字符, 空白字符, 字符处理函数, 读x2F写字符, scanf 和 printf 读x2F写字符, getchar 和 putchar 读x2F写字符, 类型转换, 常用算术转换, 强制类型转换, 定义别名, uint8_t uint16_t uint32_t uint64_t, sizeof运算符基本数据类型基本数据类型主要包括整数类型浮点数类型和字符类型其中字符类型也可以看作是整数类型中的一种整数类型整数类型可以分为两大类有符号整数和无符号整数默认情况下语言的整数类型都是有符号的若要声明为无符号整数则需要加关键字语言的整数类型有以下这些语言整数类型的取值范围根据机器的不同而不同但是编译器都必须遵循的原则标准规定了的最小字节长度标准规定了各个整数类型的字节长度满足下面的关系下表是位机器上整数类型的常见取值范围类型字节长度最小值最大值整数字面值语言允许使用十进制八进制或者十六进制来书写整数字面值十进制字面值包含数字但是不能以开头如八进制字面值包含数字而且必须以开头如十六进制字面值包含数字和字母而且总以开头如十六进制字面值中的字母即可以是大写也可以是小写如注意整数字面值也是有类型的十进制整数字面值的类型通常是但如果该字面值超出了的表示范围那么它的类型是和中能表示该值的最小类型对八进制和十六进制整数字面值来说可能的类型顺序为和要指明某个整数字面值为一个类型需要在后面加字母或要指明整数字面值是类型需要在后面加或要指明整数常量是无符号的需要在后面加字母或还可以和结合使用且字母和的顺序可以颠倒如读写整数使用和函数读写无符号整数短整数和长整数则需要其它的转换说明符只适用于读写类型的数据读写时使用字母或替代转换说明符中的其中表明无符号整数是十进制形式表明无符号整数是八进制形式表明是十六进制形式读写时在或着前面加字母读写时在或者前面加字母读写时在或者前面加字母整数类型编码无符号整数和有符号整数的编码是不一样的无符号整数的编码无符号整数采用二进制编码只需要将二进制转换成十进制有符号整数的编码有符号整数的编码方式为补码利用加法器做运算时候更方便浮点数类型语言提供了三种浮点数类型对应三种不同的浮点数格式当对精度要求不高时一位小数的运算可以使用类型大多数情况下会使用类型在极少数对精度要求非常高的情况下才会使用语言标准并没有规定类型精度但大多数计算机都遵循标准类型没有显示在此表中最常见的是位和位下表展示了遵循标准的浮点数的特征类型规范化的最小正值最大值精度位数字位数字浮点数字面值浮点数常量有多种书写方式例如下面都是的有效表示方式浮点数必须包含小数点或者是指数字母或后面的数字表示以为底的指数默认情况下浮点常量是类型单精度方式存储可以在末尾加字母或如以方式存储则在后面加或如读写浮点数读写和类型所需的说明符与略有不同读写类型的值时读写类型的值时需要在前面添加字母读写类型的值时需要在前面添加字母字符类型不同的机器可能使用不同的字符集类型的值可能不同字符集使用位来表示个字符如下图所示需要记住的类型的变量可以存储单个字符注意字符字面值应该用单引号括起来字符操作语言是把字符当作小的整数进行处理的语言会使用字符对应的整数值如下面的代码可以把小写字母变成大写字母不推荐更好在头文件中下面使用循环遍历所有的大写字母把字符当作整数来处理但也可以导致写出无意义的表达式不要这么做转义字符转义序列分为两种字符转义序列和数字转义序列下表给出了字符转义序列的完整集合字符转义序列没有包含所有的不可打印的字符而且它也不能表示以外的字符数字转义序列可以表示任意一个字符可以使用八进制或者十六进制来书写数字转义序列八进制转义序列由和一个最多位的八进制数字组成例如的编码为用八进制表示就是因此可以表示成或者转义字符中的八进制数不需要以开头但八进制整数需要十六进制转义序列由和十六进制数组成例如的编码为用十六进制表示就是因此字符可以写成或的形式转义字符中的十六进制数需要以开头且必须小写但是后面的十六进制数字不限大小写当转义序列作为字符常量使用时必须用一对单引号括起来比如或空白字符空白字符是指在文本中不可见的字符空白字符不会在屏幕上显示但可以影响文本的布局和解释空白字符的说明空格符用于在文本中分隔单词或语句制表符用于在文本中垂直方向上对齐文本或者在代码中用来缩进换行符表示文本中的换行将光标移动到下一行开头回车符在某些操作系统中用来表示换行用来实现回车换行的效果垂直制表符在某些系统中用于在文本中垂直方向上对齐文本换页符在打印输出中用于分页通常在控制台输出中不常见字符处理函数头文件中声明了许多字符处理函数主要分为两大类字符分类函数和大小写转换函数字符分类函数大小写转换函数大小写转换函数读写字符和读写字符和可以使用转换说明符对单个字符进行读写操作函数在读字符时不会跳过前面的空白字符需要跳过前面的空白字符则要在转换说明符前面加一个空格格式串中的空格意味着跳过零个或着多个空白字符和读写字符用于读单个字符从中读入一个字符并且把读入的字符返回读到文件的末尾或者在读的过程中发生错误返回用于写单个字符向标准输出写入一个字符写入成功则返回写入的字符否则返回和函数的执行效率要高于和函数常用于一些惯用法中如类型转换语言则允许在表达式中混合使用基本类型表达式中可以组合整数浮点数甚至是字符编译器生成指令将某些操作数转换成其它类型的数据使得硬件可以对表达式进行求值类型转换分为两种隐式转换和显式转换发生下列情况时语言会进行隐式转换当算术表达式或逻辑表达式中操作数的类型不相同时当赋值运算符右侧表达式的类型和左侧变量的类型不匹配时当函数调用中的实参类型和其对应的行参类型不匹配时当语句中表达式的类型和函数返回值的类型不匹配时注意尽量减少或禁止隐式转换当给定的类型与需要的类型不同时就可能发生隐式转换常用算术转换给每个整数类型都定义了整数转换等级从高到低依次为语言常用算术转换整数提升操作数中有任何低于和的类型会首先将该操作数转换为类型或者类型同一转换等级的有符号整数和无符号整数一起参与运算时有符号整数会转换成对应的无符号整数最好尽量避免使用无符号整数特别是不要把它和有符号整数混合使用无符号整数一般用于底层开发中在应用层面很少会使用赋值过程中的转换赋值运算规则把赋值运算右边的表达式转换为左边变量的类型当变量的类型至少和表达式类型一样宽转换是没有任何问题的把浮点数赋值给整型变量会丢失小数部分值在变量类型的表示范围之外将会得到无意义的结果甚至更糟将浮点常量赋值给类型变量时可以在常量后面加字符如如果没有后缀常量是类型会引发隐式转换尽量减少或禁止隐式转换强制类型转换强制类型转换的格式如下语言把看作是一元运算符一元运算符的优先级是高于二元运算符使用强制类型转换计算浮点数的小数部分使用强制类型转换显示表明肯定会发生的转换使用强制类型转换进行需要的类型转换使用强制类型转换来避免溢出定义别名使用给类型定义别名类型别名使用定义别名编译器会把别名加入其所能识别的类型名列表中可以像使用内置类型一样使用别名编译器会把看作的同义词是一个普通的类型变量使用别名主要有以下两个优点增加代码的可读性前提是选择合适的类型名增加代码的可移植性语言库也经常使用去定义一些类型这些类型名经常以结尾是一个结构的标注可以理解为的缩写表示它是通过定义的而不是其它数据类型如和类型的定义可能不同增加代码的可移植性下面是它们的典型定义是一种无符号整数类型通常被定义为能够表示系统中最大可能的对象大小的无符号整数类型在大多数情况下和在大小上相似按照标准一般整形对应的类型为字节字节字节字节运算符运算符可以计算某一类型变量所需的内存空间大小以字节为单位其格式为表达式的值为类型无符号长整形运算符也可以应用于常量变量和表达式如在一个典型的和的机器上上面三个表达式的值都为',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-28 18:24:04',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">社交</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ.jpg?raw=true" title="QQ"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ-icon.jpg?raw=true" alt="QQ"/><span class="back-menu-item-text">QQ</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg?raw=true" title="微信"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/WeChat-icon.png?raw=true" alt="微信"/><span class="back-menu-item-text">微信</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Barbecue</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>15</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>2</sup></a><a href="/tags/Nginx/" style="font-size: 1.05rem;">Nginx<sup>1</sup></a><a href="/tags/PicGo/" style="font-size: 1.05rem;">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 1.05rem;">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 1.05rem;">Redis<sup>1</sup></a><a href="/tags/posts/" style="font-size: 1.05rem;">_posts<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/" itemprop="url">C</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/C/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>C</span></a></span></div></div><h1 class="post-title" itemprop="name headline">C_基本数据类型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="发表于 2024-09-28 18:24:04">2024-09-28</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="更新于 2024-09-28 18:24:04">2024-09-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">4.1k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为上海"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>上海</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://barbecue-g.github.io/"><header><a class="post-meta-categories" href="/categories/C/" itemprop="url">C</a><a href="/tags/C/" tabindex="-1" itemprop="url">C</a><h1 id="CrawlerTitle" itemprop="name headline">C_基本数据类型</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Barbecue</span><time itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="发表于 2024-09-28 18:24:04">2024-09-28</time><time itemprop="dateCreated datePublished" datetime="2024-09-28T10:24:04.000Z" title="更新于 2024-09-28 18:24:04">2024-09-28</time></header><h1 id="C-基本数据类型"><a href="#C-基本数据类型" class="headerlink" title="C_基本数据类型"></a>C_基本数据类型</h1><p>基本数据类型主要包括：<strong>整数类型</strong>，<strong>浮点数类型</strong>和<strong>字符类型</strong>，其中字符类型也可以看作是整数类型中的一种。</p>
+<h2 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h2><p>整数类型可以分为两大类：<strong>有符号整数</strong>和<strong>无符号整数</strong>。</p>
+<p>默认情况下，C 语言的整数类型都是有符号的；若要声明为无符号整数，则需要加 <code>unsigned</code> 关键字。C 语言的整数类型有以下这些：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> (<span class="type">int</span>)</span><br><span class="line"><span class="type">unsigned</span> <span class="title function_">short</span> <span class="params">(<span class="type">int</span>)</span></span><br><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">unsigned</span> <span class="params">(<span class="type">int</span>)</span>  </span><br><span class="line"><span class="title function_">long</span> <span class="params">(<span class="type">int</span>)</span></span><br><span class="line"><span class="type">unsigned</span> <span class="title function_">long</span> <span class="params">(<span class="type">int</span>)</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">long</span> <span class="params">(<span class="type">int</span>)</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">long</span> <span class="title function_">long</span> <span class="params">(<span class="type">int</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p><font color=#0099ff><strong>C</strong> <strong>语言整数类型的取值范围根据机器的不同而不同。</strong></font>但是编译器都必须遵循的原则：</p>
+<ol>
+<li><p>C 标准规定了 short(2), int(2), long(4), long long(8) 的最小字节长度。</p>
+</li>
+<li><p>C 标准规定了各个整数类型的字节长度满足下面的关系：</p>
+<blockquote>
+<p>short &lt;&#x3D; int &lt;&#x3D; long &lt;&#x3D; long long</p>
+</blockquote>
+</li>
+</ol>
+<p>下表是64 位机器上整数类型的常见取值范围：</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">字节长度</th>
+<th align="center">最小值</th>
+<th align="center">最大值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">short</td>
+<td align="center">2</td>
+<td align="center">-32768</td>
+<td align="center">32767</td>
+</tr>
+<tr>
+<td align="center">unsigned short</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">65535</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">-2147483 648</td>
+<td align="center">2147483647</td>
+</tr>
+<tr>
+<td align="center">unsigned int</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">4294967295</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">8</td>
+<td align="center">-9223372036854775808</td>
+<td align="center">9223372036854775807</td>
+</tr>
+<tr>
+<td align="center">unsigned long</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">18446744073709551615</td>
+</tr>
+<tr>
+<td align="center">long long</td>
+<td align="center">8</td>
+<td align="center">-9223372036854775808</td>
+<td align="center">9223372036854775807</td>
+</tr>
+<tr>
+<td align="center">unsigned long long</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">18446744073709551615</td>
+</tr>
+</tbody></table>
+<h3 id="整数字面值"><a href="#整数字面值" class="headerlink" title="整数字面值"></a>整数字面值</h3><p>C 语言允许使用十进制 (decimal)，八进制 (octal) 或者十六进制 (hexadecimal) 来书写整数字面值。</p>
+<ul>
+<li><p>十进制字面值包含数字 0~9，但是<strong>不能</strong>以 <code>0</code> 开头。如：15, 255, 32767</p>
+</li>
+<li><p>八进制字面值包含数字 0~7，而且<strong>必须</strong>以 <code>0</code> 开头。如：017, 0377, 077777。</p>
+</li>
+<li><p>十六进制字面值包含数字 0<del>9 和字母 a</del>f，而且总以 <code>0x</code> 开头。如：0xf, 0xff, 0x7ff。</p>
+<p>十六进制字面值中的字母即可以是大写也可以是小写，如：0xff, 0xfF, 0xFF, 0Xff, 0XfF, 0XFF。</p>
+</li>
+</ul>
+<p><font color=#0099ff><strong>注意：整数字面值也是有类型的</strong></font></p>
+<p>十进制整数字面值的类型通常是<code>int</code>，但如果该字面值超出了<code>int</code>的表示范围，那么它的类型是 <code>int</code>, <code>long</code> 和 <code>long long</code> 中能表示该值的 “最小” 类型。</p>
+<p>对八进制和十六进制整数字面值来说，可能的类型顺序为：<code>int</code>, <code>unsigned int</code> ，<code>long, unsigned long</code>, <code>long long</code> 和 <code>unsigned long long</code>。</p>
+<p>要指明某个整数字面值为一个 long 类型，需要在后面加字母 L (或 l)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15L</span>, <span class="number">0377L</span>, <span class="number">0x7fff</span>L</span><br></pre></td></tr></table></figure>
+
+<p>要指明整数字面值是 long long 类型，需要在后面加 LL (或 ll)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15LL</span>, <span class="number">0377LL</span>, <span class="number">0x7fff</span>LL</span><br></pre></td></tr></table></figure>
+
+<p>要指明整数常量是无符号的，需要在后面加字母 U (或 u)： </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15U</span>, <span class="number">0377U</span>, <span class="number">0x7fff</span>U</span><br></pre></td></tr></table></figure>
+
+<p>L、LL还可以和 U 结合使用，且字母 L, LL 和 U 的顺序可以颠倒。如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0xffffffff</span>UL, <span class="number">0x12345678</span>ULL</span><br></pre></td></tr></table></figure>
+
+<h3 id="读-写整数"><a href="#读-写整数" class="headerlink" title="读&#x2F;写整数"></a>读&#x2F;写整数</h3><p>使用 <code>scanf</code> 和 <code>printf</code> 函数读写无符号整数、短整数和长整数，则需要其它的转换说明符。(<code>%d </code>只适用于读写 <code>int</code> 类型的数据。)</p>
+<ul>
+<li><p>读写 <code>unsigned int</code> 时，使用字母 <code>u</code>, <code>o</code> 或 <code>x</code> 替代<strong>转换说明符</strong>中的 <code>d</code>。其中 <code>u</code> 表明无符号整数是十进制形式；<code>o</code> 表明无符号整数是八进制形式；<code>x</code>表明是十六进制形式。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;n); <span class="comment">/* reads n in base 10 */</span> </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%u&quot;</span>, n); <span class="comment">/* writes n in base 10 */</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%o&quot;</span>, &amp;n); <span class="comment">/* reads n in base 8 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%o&quot;</span>, n); <span class="comment">/* writes n in base 8 */</span></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%x&quot;</span>, &amp;n); <span class="comment">/* reads n in base 16 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%x&quot;</span>, n); <span class="comment">/* writes n in base 16 */</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读写 <code>short</code> 时，在 <code>d</code>, <code>u</code>, <code>o</code> 或着 <code>x</code> 前面加字母 <code>h</code> (s<strong>h</strong>ort)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%hd&quot;</span>, &amp;n);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%hd&quot;</span>, n);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读写 <code>long</code> 时，在<code>d</code>, <code>u</code>, <code>o</code> 或者 <code>x</code> 前面加字母 <code>l</code> (<strong>l</strong>ong)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%ld&quot;</span>, &amp;n);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%ld&quot;</span>, n);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读写 <code>long long</code> 时，在 <code>d</code>, <code>u</code>, <code>o</code> 或者 <code>x</code> 前面加字母 <code>ll</code> (<strong>l</strong>ong<strong>l</strong>ong)： </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="type">long</span> n;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;n);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, n);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="整数类型编码"><a href="#整数类型编码" class="headerlink" title="整数类型编码"></a>整数类型编码</h3><p>无符号整数和有符号整数的编码是不一样的。</p>
+<p><strong>无符号整数的编码</strong>：无符号整数采用二进制编码，只需要将二进制转换成十进制。</p>
+<p><strong>有符号整数的编码</strong>：有符号整数的编码方式为<strong>补码</strong>。利用加法器做运算时候更方便。</p>
+<h2 id="浮点数类型"><a href="#浮点数类型" class="headerlink" title="浮点数类型"></a>浮点数类型</h2><p>C 语言提供了三种浮点数类型，对应三种不同的浮点数格式：</p>
+<ul>
+<li>float</li>
+<li>double</li>
+<li>long double</li>
+</ul>
+<p>当对精度要求不高时 (一位小数的运算)，可以使用 <code>float</code> 类型；大多数情况下，会使用 <code>double</code> 类型；在极少数对精度要求非常高的情况下，才会使用 <code>long double</code>。</p>
+<p>C 语言标准并没有规定 <code>float</code>, <code>double</code>, <code>long double</code> 类型精度,但大多数计算机都遵循 IEEE 754标准 。<code>long double</code> 类型没有显示在此表中，最常见的是 80 位和 128 位。</p>
+<p>下表展示了遵循 IEEE 标准的浮点数的特征：</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">规范化的最小正值</th>
+<th align="center">最大值</th>
+<th align="center">精度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">float</td>
+<td align="center">1.175 49 x 10^-38</td>
+<td align="center">3.402 82 x 10^38</td>
+<td align="center">6位数字</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">2.225 07 x 10^-308</td>
+<td align="center">1.797 69 x 10^308</td>
+<td align="center">15位数字</td>
+</tr>
+</tbody></table>
+<h3 id="浮点数字面值"><a href="#浮点数字面值" class="headerlink" title="浮点数字面值"></a>浮点数字面值</h3><p>浮点数常量有多种书写方式。例如，下面都是 <code>57.0</code> 的有效表示方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">57.0</span>  <span class="number">57.</span>  <span class="number">57.0e0</span>  <span class="number">57E0</span>  <span class="number">5.7e1</span>  <span class="number">5.7e+1</span> <span class="number">.57e2</span>  <span class="number">570.e-1</span></span><br></pre></td></tr></table></figure>
+
+<p>浮点数必须包含小数点或者是指数；字母 E (或 e) 后面的数字表示以 10 为底的指数。</p>
+<p>默认情况下，浮点常量是 <code>double</code> 类型。单精度方式存储可以在末尾加字母 <code>F</code> 或 <code>f</code>，如 <code>57.0F</code> 。以 <code>long double</code> 方式存储，则在后面加 <code>L</code> 或 <code>l</code>，如 <code>57.0L</code> 。 </p>
+<h3 id="读-写浮点数"><a href="#读-写浮点数" class="headerlink" title="读&#x2F;写浮点数"></a>读&#x2F;写浮点数</h3><p>读写 <code>double</code>和 <code>long double</code> 类型所需的说明符与 float 略有不同。</p>
+<ul>
+<li><p>读写 <code>float</code> 类型的值时：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> d;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>, &amp;d);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f&quot;</span>, d);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读写 <code>double</code> 类型的值时，需要在 <code>f</code> 前面添加字母 <code>l</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> d;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;d);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%lf&quot;</span>, d);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读写 <code>long double</code> 类型的值时，需要在 <code>f</code> 前面添加字母 <code>L</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="type">double</span> ld;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%Lf&quot;</span>, &amp;ld);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%Lf&quot;</span>, ld);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><p>不同的机器可能使用不同的字符集，char类型的值可能不同。<strong>ASCII</strong>(American Standard Code for Information Interchange) 字符集使用 7 位来表示 128 个字符，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C_%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/ASCII.png" alt="ASCII"></p>
+<blockquote>
+<p>需要记住的：<code>&#39; &#39;</code> &#x3D; 32, <code>&#39;0&#39;</code> &#x3D; 48, <code>&#39;A&#39;</code> &#x3D; 65, <code>&#39;a&#39;</code> &#x3D; 97。</p>
+</blockquote>
+<p>char 类型的变量可以存储单个字符，注意：字符字面值应该用单引号括起来。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ch;</span><br><span class="line">ch = <span class="string">&#x27;a&#x27;</span>; </span><br><span class="line">ch = <span class="string">&#x27;A&#x27;</span>; </span><br><span class="line">ch = <span class="string">&#x27;0&#x27;</span>; </span><br><span class="line">ch = <span class="string">&#x27; &#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符操作"><a href="#字符操作" class="headerlink" title="字符操作"></a>字符操作</h3><p><font color=#0099ff><strong>C</strong> <strong>语言是把字符当作小的整数进行处理的</strong></font>。C 语言会使用字符对应的整数值，如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ch;</span><br><span class="line"><span class="type">int</span> i; </span><br><span class="line"></span><br><span class="line">i = <span class="string">&#x27;a&#x27;</span>; 			<span class="comment">/* i is now 97 */</span></span><br><span class="line">ch = <span class="number">65</span>; 			<span class="comment">/* ch is now &#x27;A&#x27; */</span></span><br><span class="line">ch = ch + <span class="number">1</span>; 	<span class="comment">/* ch is now &#x27;B&#x27; */</span></span><br><span class="line">ch++; 				<span class="comment">/* ch is now &#x27;C&#x27; */</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的代码可以把小写字母变成大写字母：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 不推荐。toupper()，tolower()更好，在&lt;ctype.h&gt;头文件中*/</span></span><br><span class="line"><span class="keyword">if</span> (ch &gt;= <span class="string">&#x27;a&#x27;</span> &amp;&amp; ch &lt;= <span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">    ch = ch - <span class="string">&#x27;a&#x27;</span> + <span class="string">&#x27;A&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>下面使用 for 循环遍历所有的大写字母：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (ch = <span class="string">&#x27;A&#x27;</span>; ch &lt;= <span class="string">&#x27;Z&#x27;</span>; ch++) ...</span><br></pre></td></tr></table></figure>
+
+<p>把字符当作整数来处理，但也可以导致写出无意义的表达式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a&#x27;</span> * <span class="string">&#x27;b&#x27;</span> / <span class="string">&#x27;c&#x27;</span>;   <span class="comment">/* 不要这么做 */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><p>转义序列分为两种：字符转义序列和数字转义序列。下表给出了字符转义序列的完整集合：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Name</strong></th>
+<th align="center"><strong>Escape Sequence</strong></th>
+<th align="center"><strong>Name</strong></th>
+<th align="center"><strong>Escape Sequence</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Alert (bell)</td>
+<td align="center">\a</td>
+<td align="center">Vertical tab</td>
+<td align="center">\v</td>
+</tr>
+<tr>
+<td align="center">Backspace</td>
+<td align="center">\b</td>
+<td align="center">Backslash</td>
+<td align="center">\</td>
+</tr>
+<tr>
+<td align="center">Form feed</td>
+<td align="center">\f</td>
+<td align="center">Question mark</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="center">New line</td>
+<td align="center">\n</td>
+<td align="center">Single quote</td>
+<td align="center">&#39;</td>
+</tr>
+<tr>
+<td align="center">Carriage return</td>
+<td align="center">\r</td>
+<td align="center">Double quote</td>
+<td align="center">&quot;</td>
+</tr>
+<tr>
+<td align="center">Horizontal tab</td>
+<td align="center">\t</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>字符转义序列：没有包含所有的不可打印的 ASCII 字符，而且它也不能表示 ASCII 以外的字符。</p>
+<p>数字转义序列：可以表示任意一个字符。可以使用<code>八进制</code>或者<code>十六进制</code>来书写数字转义序列。</p>
+<ul>
+<li><p><strong>八进制转义序列</strong>：由 <code>\</code> 和一个<code>最多 3 位</code>的八进制数字组成。例如 <code>ESC</code> 的编码为<code>27</code>，用八进制表示就是 <code>33</code>，因此 <code>ESC</code> 可以表示成<code>\33</code>或者<code>\033</code>。</p>
+<blockquote>
+<p>转义字符中的八进制数不需要以<code>0</code>开头，但八进制整数需要。</p>
+</blockquote>
+</li>
+<li><p><strong>十六进制转义序列</strong>：由 <code>\x</code> 和十六进制数组成。例如<code>ESC</code>的编码为<code>27</code>，用十六进制表示就是<code>1b</code>，因此 <code>ESC</code>字符可以写成<code>\x1b</code>或<code>\x1B</code>的形式。</p>
+<blockquote>
+<p>转义字符中的十六进制数需要以<code>x</code>开头，且<code>x</code>必须小写，但是后面的十六进制数字不限大小写。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>当转义序列作为字符常量使用时，必须用一对单引号括起来。比如：<code>&#39;\n&#39;</code>, <code>&#39;\33&#39;</code>或<code>&#39;\x1B&#39;</code>。 </p>
+</blockquote>
+<h3 id="空白字符"><a href="#空白字符" class="headerlink" title="空白字符"></a>空白字符</h3><p>空白字符是指在文本中不可见的字符，空白字符不会在屏幕上显示，但可以影响文本的布局和解释。</p>
+<p>空白字符的说明：</p>
+<ul>
+<li>空格符（<code> </code>）：用于在文本中分隔单词或语句。</li>
+<li>制表符（<code>\t</code>）：用于在文本中垂直方向上对齐文本或者在代码中用来缩进。</li>
+<li>换行符（<code>\n</code>）：表示文本中的换行，将光标移动到下一行开头。</li>
+<li>回车符（<code>\r</code>）：在某些操作系统中用来表示换行，用来实现回车换行的效果。</li>
+<li>垂直制表符（<code>\v</code>）：在某些系统中，用于在文本中垂直方向上对齐文本。</li>
+<li>换页符（<code>\f</code>）：在打印输出中用于分页，通常在控制台输出中不常见。</li>
+</ul>
+<h3 id="字符处理函数"><a href="#字符处理函数" class="headerlink" title="字符处理函数"></a>字符处理函数</h3><p>头文件 <code>&lt;ctype.h&gt;</code> 中声明了许多字符处理函数，主要分为两大类：字符分类函数和大小写转换函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符分类函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isalnum</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c alphanumeric? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isalpha</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c alphabetic? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isblank</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a blank? i.e. &#x27; &#x27; or &#x27;\t&#x27; */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">iscntrl</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a control character? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isdigit</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a decimal digit? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isgraph</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a printing character (other than a space)? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">islower</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a lower-case letter? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isprint</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a printing character (including a space)? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">ispunct</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c punctuation? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isspace</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a white-space character? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isupper</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c an upper-case letter? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isxdigit</span><span class="params">(<span class="type">int</span> c)</span>; <span class="comment">/* Is c a hexadecimal digit? */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">tolower</span><span class="params">(<span class="type">int</span> c)</span>;<span class="comment">// 大小写转换函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">toupper</span><span class="params">(<span class="type">int</span> c)</span>;<span class="comment">// 大小写转换函数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="读-写字符"><a href="#读-写字符" class="headerlink" title="读&#x2F;写字符"></a>读&#x2F;写字符</h3><h4 id="scanf-和-printf-读-写字符"><a href="#scanf-和-printf-读-写字符" class="headerlink" title="scanf 和 printf 读&#x2F;写字符"></a><code>scanf</code> 和 <code>printf</code> 读&#x2F;写字符</h4><p><code>scanf</code> 和 <code>printf</code> 可以使用转换说明符 %c 对单个字符进行读写操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> ch;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>, &amp;ch); <span class="comment">/* reads a single character */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, ch); <span class="comment">/* writes a single character */</span></span><br></pre></td></tr></table></figure>
+
+<p><code>scanf</code> 函数在读字符时，不会跳过前面的空白字符。需要跳过前面的空白字符，则要在转换说明符 <code>%c</code> 前面加一个空格:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot; %c&quot;</span>, &amp;ch); <span class="comment">/* skip white-space characters, then reads ch */</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>scanf</code> 格式串中的空格意味着”跳过”零个或着多个空白字符。</p>
+</blockquote>
+<h4 id="getchar-和-putchar-读-写字符"><a href="#getchar-和-putchar-读-写字符" class="headerlink" title="getchar 和 putchar 读&#x2F;写字符"></a><code>getchar</code> 和 <code>putchar</code> 读&#x2F;写字符</h4><p><code>getchar</code> 用于读单个字符：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getchar</span><span class="params">(<span class="type">void</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>从 <code>stdin</code> 中读入一个字符，并且把读入的字符返回。读到文件的末尾，或者在读的过程中发生错误，返回 <code>EOF</code>。</p>
+<p><code>putchar</code> 用于写单个字符：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">putchar</span><span class="params">(<span class="type">int</span> c)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>向标准输出 <code>stdout</code> 写入一个字符。写入成功，则返回写入的字符，否则返回 <code>EOF</code>。</p>
+<blockquote>
+<p><code>putchar</code> 和 <code>getchar</code> 函数的执行效率要高于 <code>printf</code> 和 <code>scanf</code>。</p>
+</blockquote>
+<p>getchar 函数常用于一些惯用法中。如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (getchar() != <span class="string">&#x27;\n&#x27;</span>) <span class="comment">/* skips rest of line */</span></span><br><span class="line"> ;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>C 语言则允许在表达式中混合使用基本类型，表达式中可以组合整数、浮点数甚至是字符。C 编译器生成指令将某些操作数转换成其它类型的数据，使得硬件可以对表达式进行求值。</p>
+<p>类型转换分为两种：<strong>隐式转换</strong>和<strong>显式转换</strong></p>
+<p><font color=#0099ff>发生下列情况时，C 语言会进行<strong>隐式转换</strong></font>：</p>
+<ul>
+<li><p>当算术表达式或逻辑表达式中操作数的类型不相同时。</p>
+</li>
+<li><p>当赋值运算符右侧表达式的类型和左侧变量的类型不匹配时。</p>
+</li>
+<li><p>当函数调用中的实参类型和其对应的行参类型不匹配时。</p>
+</li>
+<li><p>当 return 语句中表达式的类型和函数返回值的类型不匹配时</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：尽量减少或禁止隐式转换，当给定的类型与需要的类型不同时，就可能发生隐式转换。</p>
+</blockquote>
+<h3 id="常用算术转换"><a href="#常用算术转换" class="headerlink" title="常用算术转换"></a>常用算术转换</h3><p>C99 给每个整数类型都定义了”整数转换等级”，从高到低依次为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(1) long long int, unsigned long long int</span><br><span class="line">(2) long int, unsigned long int</span><br><span class="line">(3) int, unsigned int</span><br><span class="line">(4) short int, unsigned short int</span><br><span class="line">(5) char, signed char, unsigned char</span><br></pre></td></tr></table></figure>
+
+<p>C 语言常用算术转换：</p>
+<ol>
+<li><p><strong>整数提升</strong>：操作数中有任何低于 <code>int</code> 和 <code>unsigned int</code> 的类型，会首先将该操作数转换为 <code>int</code>类型或者 <code>unsigned int</code> 类型。</p>
+</li>
+<li><pre><code>int -&gt; long -&gt; long long -&gt; float -&gt; double -&gt; long double
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. **同一转换等级**的有符号整数和无符号整数一起参与运算时：有符号整数会转换成对应的无符号整数。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+signed -&gt; unsigned
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   最好尽量避免使用无符号整数，特别是不要把它和有符号整数混合使用。(无符号整数一般用于底层开发中，在应用层面很少会使用)。</span><br><span class="line"></span><br><span class="line">### 赋值过程中的转换</span><br><span class="line"></span><br><span class="line">**赋值运算规则**：把赋值运算右边的表达式转换为左边变量的类型。</span><br><span class="line"></span><br><span class="line">当变量的类型至少和表达式类型一样&quot;宽&quot;，转换是没有任何问题的。</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line">char c;int i;float f;double d;</span><br><span class="line">i = c;f = i;d = f;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<p>把浮点数赋值给整型变量会丢失小数部分：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line">i = <span class="number">842.97</span>; <span class="comment">/* i is now 842 */</span></span><br><span class="line">i = <span class="number">-842.97</span>; <span class="comment">/* i is now -842 */</span></span><br></pre></td></tr></table></figure>
+
+<p>值在变量类型的表示范围之外，将会得到无意义的结果 (甚至更糟)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> c;<span class="type">int</span> i;<span class="type">float</span> f;</span><br><span class="line">c = <span class="number">10000</span>; <span class="comment">/* WRONG */</span></span><br><span class="line">i = <span class="number">1.0e20</span>; <span class="comment">/* WRONG */</span></span><br><span class="line">f = <span class="number">1.0e100</span>; <span class="comment">/* WRONG */</span></span><br></pre></td></tr></table></figure>
+
+<p>将浮点常量赋值给 <code>float</code> 类型变量时，可以在常量后面加字符 <code>f</code>，如：<code>f = 3.14f </code>。如果没有后缀 <code>f</code>，常量 3.14 是 <code>double</code> 类型，会引发<code>隐式转换</code>。(尽量减少或禁止隐式转换)</p>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>强制类型转换的格式如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(type-name) expression</span><br></pre></td></tr></table></figure>
+
+<p>C 语言把 (type_name) 看作是一元运算符，一元运算符的优先级是高于二元运算符。</p>
+<ul>
+<li><p>使用强制类型转换计算浮点数的小数部分：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> f, frac_part;</span><br><span class="line">frac_part = f - (<span class="type">int</span>) f;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用强制类型转换显示表明肯定会发生的转换：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = (<span class="type">int</span>) f;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用强制类型转换进行需要的类型转换：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> quotient;</span><br><span class="line"><span class="type">int</span> dividend, divisor;</span><br><span class="line">quotient = dividend / divisor;</span><br><span class="line">quotient = (<span class="type">float</span>) dividend / divisor;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用强制类型转换来避免溢出：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> i;</span><br><span class="line"><span class="type">int</span> j = <span class="number">1000</span>; </span><br><span class="line">i = j * j; <span class="comment">/* overflow may occur */</span></span><br><span class="line">i = (<span class="type">long</span>) (j * j); <span class="comment">/* overflow may occur */</span></span><br><span class="line">i = (<span class="type">long</span>) j * j;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="定义别名"><a href="#定义别名" class="headerlink" title="定义别名"></a>定义别名</h2><p>使用 typedef 给类型定义别名：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> 类型 别名;</span><br></pre></td></tr></table></figure>
+
+<p>使用 typedef 定义别名，编译器会把别名加入其所能识别的类型名列表中。可以像使用内置类型一样使用别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Bool;</span><br><span class="line">...</span><br><span class="line">Bool flag; <span class="comment">/* same as int flag */</span></span><br></pre></td></tr></table></figure>
+
+<p>编译器会把 <code>Bool</code> 看作 <code>int</code> 的同义词；<code>flag</code> 是一个普通的 <code>int</code> 类型变量。</p>
+<p>使用别名主要有以下两个优点：</p>
+<ol>
+<li>增加代码的可读性 (前提是选择合适的类型名)。</li>
+<li>增加代码的可移植性。</li>
+</ol>
+<p>C 语言库也经常使用 <code>typedef</code> 去定义一些类型；这些类型名经常以 _t 结尾，<code>_t</code>是一个结构的标注，可以理解为<code>type</code>&#x2F;<code>typedef</code>的缩写，表示它是通过<code>typedef</code>定义的，而不是其它数据类型。</p>
+<p>如：<code>size_t</code>, <code>ptrdiff_t</code> 和 <code>wchar_t</code>，类型的定义可能不同(增加代码的可移植性)。下面是它们的典型定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">int</span> <span class="type">ptrdiff_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">int</span> <span class="type">size_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">wchar_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>size_t</code> 是一种无符号整数类型，通常被定义为能够表示系统中最大可能的对象大小的无符号整数类型。在大多数情况下 <code>size_t</code> 和 <code>unsigned long</code> 在大小上相似。</p>
+<h3 id="uint8-t-uint16-t-uint32-t-uint64-t"><a href="#uint8-t-uint16-t-uint32-t-uint64-t" class="headerlink" title="uint8_t, uint16_t, uint32_t, uint64_t"></a>uint8_t, uint16_t, uint32_t, uint64_t</h3><p>按照<code>posix</code>标准，一般整形对应的*_t类型为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1字节     uint8_t</span><br><span class="line">2字节     uint16_t</span><br><span class="line">4字节     uint32_t</span><br><span class="line">8字节     uint64_t</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="sizeof运算符"><a href="#sizeof运算符" class="headerlink" title="sizeof运算符"></a>sizeof运算符</h2><p><code>sizeof</code> 运算符可以计算某一类型变量所需的内存空间大小 (以字节为单位)。其格式为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(type_name)</span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof</code> 表达式的值为 <code>size_t</code> 类型(无符号长整形)。</p>
+<p><code>sizeof</code> 运算符也可以应用于常量、变量和表达式。如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"><span class="keyword">sizeof</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">sizeof</span>(i);</span><br><span class="line"><span class="keyword">sizeof</span>(i + j);</span><br></pre></td></tr></table></figure>
+
+<p>在一个典型的 32-bit 和 64-bit 的机器上，上面三个表达式的值都为 <code>4</code>。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"></a><div class="post-copyright__author_name">Barbecue</div><div class="post-copyright__author_desc">今天学习了吗</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://barbecue-g.github.io/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://barbecue-g.github.io/')">C_基本数据类型</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://barbecue-g.github.io/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=C_基本数据类型&amp;url=https://barbecue-g.github.io/&amp;pic=https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">此文章版权归Barbeuce所有，如有转载，请注明明来自原作者</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/C/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>C<span class="categoryesPageCount">15</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/C/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>C<span class="tagsPageCount">15</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Language/C/C_%E5%AD%97%E7%AC%A6%E4%B8%B2"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" onerror="onerror=null;src='/img/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C_字符串</div></div></a></div><div class="next-post pull-right"><a href="/Language/C/C_%E5%8E%86%E5%8F%B2"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" onerror="onerror=null;src='/img/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C_历史</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/Language/C/C_%E5%87%BD%E6%95%B0" title="C_函数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_函数</div></div></a></div><div><a href="/Language/C/C_%E5%8E%86%E5%8F%B2" title="C_历史"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_历史</div></div></a></div><div><a href="/Language/C/C_%E5%AD%97%E7%AC%A6%E4%B8%B2" title="C_字符串"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_字符串</div></div></a></div><div><a href="/Language/C/C_%E6%8C%87%E9%92%88" title="C_指针"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_指针</div></div></a></div><div><a href="/Language/C/C_%E6%8C%87%E9%92%88%E7%9A%84%E5%BA%94%E7%94%A8" title="C_指针的应用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_指针的应用</div></div></a></div><div><a href="/Language/C/C_%E6%95%B0%E7%BB%84" title="C_数组"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Language/C/C-icon.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2024-09-28</div><div class="title">C_数组</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">C_基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">整数类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-text">整数字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB-%E5%86%99%E6%95%B4%E6%95%B0"><span class="toc-text">读&#x2F;写整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%BC%96%E7%A0%81"><span class="toc-text">整数类型编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">浮点数类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-text">浮点数字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB-%E5%86%99%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">读&#x2F;写浮点数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B"><span class="toc-text">字符类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C"><span class="toc-text">字符操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-text">转义字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6"><span class="toc-text">空白字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-text">字符处理函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB-%E5%86%99%E5%AD%97%E7%AC%A6"><span class="toc-text">读&#x2F;写字符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#scanf-%E5%92%8C-printf-%E8%AF%BB-%E5%86%99%E5%AD%97%E7%AC%A6"><span class="toc-text">scanf 和 printf 读&#x2F;写字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getchar-%E5%92%8C-putchar-%E8%AF%BB-%E5%86%99%E5%AD%97%E7%AC%A6"><span class="toc-text">getchar 和 putchar 读&#x2F;写字符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AE%97%E6%9C%AF%E8%BD%AC%E6%8D%A2"><span class="toc-text">常用算术转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">强制类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%88%AB%E5%90%8D"><span class="toc-text">定义别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uint8-t-uint16-t-uint32-t-uint64-t"><span class="toc-text">uint8_t, uint16_t, uint32_t, uint64_t</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sizeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">sizeof运算符</span></a></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2024 By <a class="footer-bar-link" href="/" title="Barbecue" target="_blank">Barbecue</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="赣ICP备-2024039887号">赣ICP备-2024039887号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">社交</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ.jpg?raw=true" title="QQ"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ-icon.jpg?raw=true" alt="QQ"/><span class="back-menu-item-text">QQ</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg?raw=true" title="微信"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/WeChat-icon.png?raw=true" alt="微信"/><span class="back-menu-item-text">微信</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Git/" style="font-size: 0.88rem; color: rgb(145, 79, 37);">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem; color: rgb(86, 79, 40);">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem; color: rgb(31, 174, 12);">MySQL<sup>2</sup></a><a href="/tags/Nginx/" style="font-size: 0.88rem; color: rgb(39, 103, 95);">Nginx<sup>1</sup></a><a href="/tags/PicGo/" style="font-size: 0.88rem; color: rgb(9, 98, 162);">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 0.88rem; color: rgb(43, 124, 85);">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 0.88rem; color: rgb(60, 90, 92);">Redis<sup>1</sup></a><a href="/tags/posts/" style="font-size: 0.88rem; color: rgb(196, 162, 46);">_posts<sup>2</sup></a><a href="/tags/hexo/" style="font-size: 0.88rem; color: rgb(186, 108, 142);">hexo<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2024 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Barbecue 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+      appKey: 'R50Ps7cdwVouTiBALXFKiUzI',
+      avatar: '“identicon”',
+      serverURLs: '',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=“identicon”'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://hnelsWgo.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+        "X-LC-Key": 'R50Ps7cdwVouTiBALXFKiUzI',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script id="canvas_nest" defer="defer" color="0,190,255" opacity="1" zIndex="-1" count="64" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
