@@ -1,3 +1,3 @@
-var posts=["HTTP","Linux创建用户","MySQL使用方法","MySQL配置","Nginx","Python","Tmux","Redis的配置","hello-world","git"];function toRandomPost(){
+var posts=["Linux创建用户","MySQL配置","HTTP","Nginx","MySQL使用方法","Python","Tmux","hello-world","Redis的配置","git","DataBase/Redis/Redis的配置","Language/C/10C_字符串","Language/C/11C_结构体和枚举","Language/C/13C_数据结构","Language/C/15C_文件","Language/C/14C_排序与查找","FrameWork/Skynet/Skynet","Language/C/2C_概述","Other/正则表达式/正则表达式","Language/C/4C_基本数据类型","Language/C/1C_历史","Language/C/6C_语句","Language/C/5C_表达式","Language/C/7C_数组","Language/C/9C_指针","Language/C/8C_函数","Language/C/3C_格式化输入输出","Language/C/12C_指针的应用","Tools/Git/soursetree","DataBase/MySQL/MySQL配置","DataBase/MySQL/MySQL的基本使用","Tools/Git/git","Tools/Git/代码提交规范","FrameWork/UE5/Skynet","Tools/Hexo/Hexo","Tools/Postman/Postman 汉化教程","Tools/PicGo/PicGo","Tools/Nginx/Nginx"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };

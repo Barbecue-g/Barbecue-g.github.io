@@ -1,0 +1,1159 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Barbecue | Barbecue</title><meta name="keywords" content="Barbecue"><meta name="author" content="Barbecue"><meta name="copyright" content="Barbecue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Barbecue"><meta name="application-name" content="Barbecue"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Barbecue"><meta property="og:url" content="https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><meta property="og:site_name" content="Barbecue"><meta property="og:description" content="正则表达式正则表达式简介正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”），可以用来描述和匹配字符串的特定模式。 正则表达式是一种用于模式匹配和搜索文本的工具，提供了一种灵活且强大的方式来查找、替换、验证和提取文"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg?_r_=a9164eb8-1afa-c574-bc3b-1422b397be20"><meta property="article:author" content="Barbecue"><meta property="article:tag" content="Barbecue"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg?_r_=a9164eb8-1afa-c574-bc3b-1422b397be20"><meta name="description" content="正则表达式正则表达式简介正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”），可以用来描述和匹配字符串的特定模式。 正则表达式是一种用于模式匹配和搜索文本的工具，提供了一种灵活且强大的方式来查找、替换、验证和提取文"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"><link rel="canonical" href="https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Barbecue","link":"链接: ","source":"来源: Barbecue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Barbecue',
+  title: 'Barbecue',
+  postAI: '',
+  pageFillDescription: '正则表达式, 正则表达式简介, 正则表达式的模式, 正则表达式简易使用, 字符匹配, 量词, 字符类, 边界匹配, 分组和捕获, 特殊字符, 正则表达式语法, 普通字符, 非打印字符, 特殊字符, 限定符, 定位符, 选择(未完成), 反向引用(未完成), 正则表达式 - 修饰符, g 修饰符, i 修饰符, m 修饰符, s 修饰符, 正则表达式 - 元字符, 实例, 正则表达式 - 运算符优先级正则表达式正则表达式简介正则表达式是一种文本模式包括普通字符例如到之间的字母和特殊字符称为元字符可以用来描述和匹配字符串的特定模式正则表达式是一种用于模式匹配和搜索文本的工具提供了一种灵活且强大的方式来查找替换验证和提取文本数据可以应用于各种编程语言和文本处理工具中简单示例我们在写用户注册表单时只允许用户名包含字符数字下划线和连接字符并设置用户名的长度我们就可以使用以下正则表达式来设定表示匹配字符串的开头表示字符集包含小写字母大写字母数字下划线和连接字符表示前面的字符集最少出现次最多出现次从而限制了用户名的长度在到个字符之间表示匹配字符串的结尾正则表达式的模式正则表达式的模式可以包括以下内容字面值字符例如字母数字空格等可以直接匹配它们自身特殊字符例如点号星号加号问号等它们具有特殊的含义和功能字符类用方括号包围的字符集合用于匹配方括号内的任意一个字符元字符例如等用于匹配特定类型的字符如数字字母空白字符等量词例如等用于指定匹配的次数或范围边界符号例如等用于匹配字符串的开头结尾或单词边界位置正则表达式简易使用字符匹配普通字符普通字符按照字面意义进行匹配例如匹配字母将匹配到文本中的字符元字符元字符具有特殊的含义例如匹配任意数字字符匹配任意字母数字字符匹配任意字符除了换行符等量词匹配前面的模式零次或多次匹配前面的模式一次或多次匹配前面的模式零次或一次匹配前面的模式恰好次匹配前面的模式至少次匹配前面的模式至少次且不超过次字符类匹配括号内的任意一个字符例如匹配字符或匹配除了括号内的字符以外的任意一个字符例如匹配除了字符或以外的任意字符边界匹配匹配字符串的开头匹配字符串的结尾匹配单词边界匹配非单词边界分组和捕获用于分组和捕获子表达式用于分组但不捕获子表达式特殊字符转义字符用于匹配特殊字符本身匹配任意字符除了换行符用于指定多个模式的选择正则表达式语法普通字符普通字符包括没有显式指定为元字符的所有可打印和不可打印字符这包括所有大写和小写字母所有数字所有标点符号和一些其他符号字符描述匹配中的所有字符例如匹配字符串中所有的字母匹配除了中字符的所有字符例如匹配字符串中除了字母的所有字符表示一个区间匹配所有大写字母表示所有小写字母匹配除换行符之外的任何单个字符相等于匹配所有是匹配所有空白符包括换行非空白符不包括换行匹配字母数字下划线等价于匹配任意一个阿拉伯数字到等价于非打印字符非打印字符也可以是正则表达式的组成部分下表列出了表示非打印字符的转义序列字符描述匹配由指明的控制字符例如匹配一个或回车符的值必须为或之一否则将视为一个原义的字符匹配一个换页符等价于和匹配一个换行符等价于和匹配一个回车符等价于和匹配任何空白字符包括空格制表符换页符等等等价于注意正则表达式会匹配全角空格符匹配任何非空白字符等价于匹配一个制表符等价于和匹配一个垂直制表符等价于和特殊字符所谓特殊字符就是一些有特殊含义的字符如果要查找字符串中的符号则需要对进行转义即在其前加一个许多元字符要求在试图匹配它们时特别对待若要匹配这些特殊字符必须首先使字符转义即将反斜杠字符放在它们前面下表列出了正则表达式中的特殊字符特别字符描述匹配输入字符串的结尾位置如果设置了对象的属性则也匹配或要匹配字符本身请使用标记一个子表达式的开始和结束位置子表达式可以获取供以后使用要匹配这些字符请使用和匹配前面的子表达式零次或多次要匹配字符请使用匹配前面的子表达式一次或多次要匹配字符请使用匹配除换行符之外的任何单字符要匹配请使用标记一个中括号表达式的开始要匹配请使用匹配前面的子表达式零次或一次或指明一个非贪婪限定符要匹配字符请使用将下一个字符标记为或特殊字符或原义字符或向后引用或八进制转义符例如匹配字符匹配换行符序列匹配而则匹配匹配输入字符串的开始位置除非在方括号表达式中使用当该符号在方括号表达式中使用时表示不接受该方括号表达式中的字符集合要匹配字符本身请使用标记限定符表达式的开始要匹配请使用限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配有或或或或或共种正则表达式的限定符有字符描述匹配前面的子表达式零次或多次例如能匹配以及等价于匹配前面的子表达式一次或多次例如能匹配以及但不能匹配等价于匹配前面的子表达式零次或一次例如可以匹配中的和等价于是一个非负整数匹配确定的次例如不能匹配中的但是能匹配中的两个是一个非负整数至少匹配次例如不能匹配中的但能匹配中的所有等价于则等价于和均为非负整数其中最少匹配次且最多匹配次例如将匹配中的前三个等价于请注意在逗号和两个数之间不能有空格注意限定符出现在范围表达式之后因此它应用于整个范围表达式通过在或限定符之后放置该表达式从贪婪表达式转换为非贪婪表达式或者最小匹配和限定符都是贪婪的因为它们会尽可能多的匹配文字只有在它们的后面加上一个就可以实现非贪婪或最小匹配例如搜索文档以查找在标签内的内容代码如下贪婪下面的表达式匹配从开始小于符号到关闭标记的大于符号之间的所有内容即匹配非贪婪如果您只需要匹配开始和结束标签下面的非贪婪表达式只匹配即匹配也可以使用以下正则表达式来匹配标签表达式则是定位符定位符使您能够将正则表达式固定到行首或行尾它们还使您能够创建这样的正则表达式这些正则表达式出现在一个单词内在一个单词的开头或者一个单词的结尾定位符用来描述字符串或单词的边界和分别指字符串的开始与结束描述单词的前或后边界表示非单词边界正则表达式的定位符有字符描述匹配输入字符串开始的位置如果设置了对象的属性还会与或之后的位置匹配匹配输入字符串结尾的位置如果设置了对象的属性还会与或之前的位置匹配匹配一个单词边界即字与空格间的位置表达式匹配单词的表达式匹配单词中的字符串但表达式不匹配中的字符串非单词边界匹配表达式匹配中的字符串但不匹配中的字符串注意不能将限定符与定位符一起使用由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置因此不允许诸如之类的表达式若要匹配一行文本开始处的文本请在正则表达式的开始使用字符不要将的这种用法与中括号表达式内的用法混淆若要匹配一行文本的结束处的文本请在正则表达式的结束处使用字符字符的位置是非常重要的如果它位于要匹配的字符串的开始它在单词的开始处查找匹配项如果它位于字符串的结尾它在单词的结尾处查找匹配项非单词边界运算符不可以匹配单词的开头或结尾单词边界在正则表达式中是一个特殊的元字符表示单词边界它匹配一个单词的开始或结束的位置而不匹配任何实际的字符具体来说匹配以下三种情况之一单词的开头如果出现在一个字母或数字之前或者在字符串的开头它会匹配一个单词的开始位置单词的结尾如果出现在一个字母或数字之后或者在字符串的末尾它会匹配一个单词的结束位置单词的内部如果出现在两个连续的字母或数字之间它不会匹配任何内容因为没有单词边界以下是一些元字符的实例正则表达式匹配整个单词但不匹配或正则表达式匹配一个完整的数字例如但不匹配正则表达式匹配一个完整的大写字母单词例如但不匹配需要注意的是是一个零宽度断言它不匹配实际的字符只匹配位置因此当你想要匹配一个实际的字符时不要使用而应该使用其他字符或字符组合非单词边界在正则表达式中是的反义符号它表示非单词边界即匹配不在单词边界处的位置具体来说匹配以下情况之一单词的内部如果出现在两个连续的字母或数字之间它会匹配这两个字符之间的位置表示它们不是单词的边界非单词的开头或结尾如果出现在一个字母或数字之前或之后它会匹配这个位置表示它不是单词的开头或结尾以下是一些元字符的实例正则表达式匹配中的但不匹配或正则表达式匹配中的但不匹配或正则表达式匹配中的和但不匹配或需要注意的是也是一个零宽度断言它不匹配实际的字符只匹配位置因此当你想要匹配一个实际的字符时不要使用而应该使用其他字符或字符组合选择未完成用圆括号将所有选择项括起来相邻的选择项之间用分隔表示捕获分组会把每个分组里的匹配的值保存起来多个匹配值可以通过数字来查看是一个数字表示第个捕获组的内容但用圆括号会有一个副作用使相关的匹配会被缓存此时可用放在第一个选项前来消除这种副作用其中是非捕获元之一还有两个非捕获元是和这两个还有更多的含义前者为正向预查在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串后者为负向预查在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串更多内容可以参考正则表达式的先行断言和后行断言反向引用未完成对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储缓冲区编号从开始最多可存储个捕获的子表达式每个缓冲区都可以使用访问其中为一个标识特定缓冲区的一位或两位十进制数可以使用非捕获元字符或来重写捕获忽略对相关匹配的保存反向引用的最简单的最有用的应用之一是提供查找文本中两个相同的相邻单词的匹配项的能力正则表达式修饰符标记也称为修饰符正则表达式的标记用于指定额外的匹配策略标记不写在正则表达式里标记位于表达式之外格式如下下表列出了正则表达式常用的修饰符全局匹配查找字符串中所有的匹配项不区分大小写将匹配设置为不区分大小写搜索时不区分大小写和没有区别多行匹配将匹配多行而不是整个字符串的开头和结尾特殊字符圆点中包含换行符默认情况下的圆点是匹配除换行符之外的任何字符加上修饰符之后中包含换行符例如搜索字符串普通搜索即匹配第一次匹配项修饰符修饰符可以查找字符串中所有的匹配项只匹配的第一次匹配的行即匹配第一次匹配到的行的匹配项修饰符修饰符为不区分大小写匹配但是单的情况下只能匹配一个一般和联用即匹配第一次匹配到的行的匹配项修饰符修饰符可以使和匹配一段文本中每行的开始和结束位置但是单的情况下只能匹配一个一般和联用只匹配第一行添加之后实现多行即匹配修饰符默认情况下的圆点是匹配除换行符之外的任何字符加上之后中包含换行符情况没有使用无匹配没有使用无法匹配情况使用使用匹配即匹配正则表达式元字符下表包含了元字符的完整列表以及它们在正则表达式上下文中的行为字符描述将下一个字符标记为一个特殊字符或一个原义字符或一个向后引用或一个八进制转义符例如匹配字符匹配一个换行符序列匹配而则匹配匹配输入字符串的开始位置如果设置了对象的属性也匹配或之后的位置匹配输入字符串的结束位置如果设置了对象的属性也匹配或之前的位置匹配前面的子表达式零次或多次例如能匹配以及等价于匹配前面的子表达式一次或多次例如能匹配以及但不能匹配等价于匹配前面的子表达式零次或一次例如可以匹配或等价于是一个非负整数匹配确定的次例如不能匹配中的但是能匹配中的两个是一个非负整数至少匹配次例如不能匹配中的但能匹配中的所有等价于则等价于和均为非负整数其中最少匹配次且最多匹配次例如将匹配中的前三个等价于请注意在逗号和两个数之间不能有空格当该字符紧跟在任何一个其他限制符后面时匹配模式是非贪婪的非贪婪模式尽可能少的匹配所搜索的字符串而默认的贪婪模式则尽可能多的匹配所搜索的字符串例如对于字符串将匹配单个而将匹配所有匹配除换行符之外的任何单个字符要匹配包括在内的任何字符请使用像的模式匹配并获取这一匹配所获取的匹配可以从产生的集合得到在中使用集合在中则使用属性要匹配圆括号字符请使用或匹配但不获取匹配结果也就是说这是一个非获取匹配不进行存储供以后使用这在使用或字符来组合一个模式的各个部分是很有用例如就是一个比更简略的表达式正向肯定预查在任何匹配的字符串开始处匹配查找字符串这是一个非获取匹配也就是说该匹配不需要获取供以后使用例如能匹配中的但不能匹配中的预查不消耗字符也就是说在一个匹配发生后在最后一次匹配之后立即开始下一次匹配的搜索而不是从包含预查的字符之后开始正向否定预查在任何不匹配的字符串开始处匹配查找字符串这是一个非获取匹配也就是说该匹配不需要获取供以后使用例如能匹配中的但不能匹配中的预查不消耗字符也就是说在一个匹配发生后在最后一次匹配之后立即开始下一次匹配的搜索而不是从包含预查的字符之后开始反向肯定预查与正向肯定预查类似只是方向相反例如反向否定预查与正向否定预查类似只是方向相反例如匹配或例如能匹配或则匹配或字符集合匹配所包含的任意一个字符例如可以匹配中的负值字符集合匹配未包含的任意字符例如可以匹配中的字符范围匹配指定范围内的任意字符例如可以匹配到范围内的任意小写字母字符负值字符范围匹配任何不在指定范围内的任意字符例如可以匹配任何不在到范围内的任意字符匹配一个单词边界也就是指单词和空格间的位置例如可以匹配中的但不能匹配中的匹配非单词边界能匹配中的但不能匹配中的匹配由指明的控制字符例如匹配一个或回车符的值必须为或之一否则将视为一个原义的字符匹配一个数字字符等价于匹配一个非数字字符等价于匹配一个换页符等价于和匹配一个换行符等价于和匹配一个回车符等价于和匹配任何空白字符包括空格制表符换页符等等等价于匹配任何非空白字符等价于匹配一个制表符等价于和匹配一个垂直制表符等价于和匹配字母数字下划线等价于匹配非字母数字下划线等价于匹配其中为十六进制转义值十六进制转义值必须为确定的两个数字长例如匹配则等价于正则表达式中可以使用编码匹配其中是一个正整数对所获取的匹配的引用例如匹配两个连续的相同字符标识一个八进制转义值或一个向后引用如果之前至少个获取的子表达式则为向后引用否则如果为八进制数字则为一个八进制转义值标识一个八进制转义值或一个向后引用如果之前至少有个获得子表达式则为向后引用如果之前至少有个获取则为一个后跟文字的向后引用如果前面的条件都不满足若和均为八进制数字则将匹配八进制转义值如果为八进制数字且和均为八进制数字则匹配八进制转义值匹配其中是一个用四个十六进制数字表示的字符例如匹配版权符号实例分析一个匹配邮箱的正则表达式匹配以下文本以下的文本是获得的匹配的表达式匹配邮箱的正则表达式解析正则表达式运算符优先级正则表达式从左到右进行计算并遵循优先级顺序这与算术表达式非常类似相同优先级的从左到右进行运算不同优先级的运算先高后低下表从最高到最低说明了各种正则表达式运算符的优先级顺序运算符描述转义符圆括号和方括号限定符任何元字符任何字符定位点和序列即位置和顺序以下是一些常见正则表达式运算符按照优先级从高到低的顺序转义符号是用于转义其他特殊字符的转义符号它具有最高的优先级示例等其中匹配数字匹配点号括号圆括号用于创建子表达式具有高于其他运算符的优先级示例匹配一次或多次量词量词指定前面的元素可以重复的次数示例匹配零个或多个字符类字符类使用方括号表示用于匹配括号内的任意字符示例匹配任何一个元音字母断言断言是用于检查字符串中特定位置的条件的元素示例表示行的开头表示行的结尾连接连接在没有其他运算符的情况下表示字符之间的简单连接示例匹配管道管道符号表示或关系用于在多个模式之间选择一个示例匹配或接下来我们看下以下正则表达式的优先级说明匹配两到三个数字表示或匹配一个或多个小写字母匹配零个或多个',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-09 18:06:01',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">社交</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ.jpg?raw=true" title="QQ"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ-icon.jpg?raw=true" alt="QQ"/><span class="back-menu-item-text">QQ</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg?raw=true" title="微信"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/WeChat-icon.png?raw=true" alt="微信"/><span class="back-menu-item-text">微信</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Barbecue</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/HTTP/" style="font-size: 1.05rem;">HTTP<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/Nginx/" style="font-size: 1.05rem;">Nginx<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 1.05rem;">Redis<sup>1</sup></a><a href="/tags/posts/" style="font-size: 1.05rem;">_posts<sup>7</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-03-09T10:06:01.613Z" title="发表于 2024-03-09 18:06:01">2024-03-09</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-03-09T10:06:01.613Z" title="更新于 2024-03-09 18:06:01">2024-03-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">6.9k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为上海"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>上海</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg?_r_=a9164eb8-1afa-c574-bc3b-1422b397be20"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><header><h1 id="CrawlerTitle" itemprop="name headline">无题</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Barbecue</span><time itemprop="dateCreated datePublished" datetime="2024-03-09T10:06:01.613Z" title="发表于 2024-03-09 18:06:01">2024-03-09</time><time itemprop="dateCreated datePublished" datetime="2024-03-09T10:06:01.613Z" title="更新于 2024-03-09 18:06:01">2024-03-09</time></header><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="正则表达式简介"><a href="#正则表达式简介" class="headerlink" title="正则表达式简介"></a>正则表达式简介</h2><p>正则表达式(<code>Regular Expression</code>)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”），可以用来描述和匹配字符串的特定模式。</p>
+<p>正则表达式是一种用于模式匹配和搜索文本的工具，提供了一种灵活且强大的方式来查找、替换、验证和提取文本数据，可以应用于各种编程语言和文本处理工具中。</p>
+<p>简单示例：</p>
+<p>我们在写用户注册表单时，只允许用户名包含***字符、数字、下划线和连接字符-***，并设置用户名的长度，我们就可以使用以下正则表达式来设定。</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[a-zA-Z0-9_-]&#123;3,15&#125;$</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>^</code> 表示匹配字符串的开头。</li>
+<li><code>[a-zA-Z0-9_-]</code> 表示字符集，包含小写字母、大写字母、数字、下划线和连接字符 **-**。</li>
+<li><code>&#123;3,15&#125;</code> 表示前面的字符集最少出现 3 次，最多出现 15 次，从而限制了用户名的长度在 3 到 15 个字符之间。</li>
+<li><code>$</code> 表示匹配字符串的结尾。</li>
+</ul>
+<h2 id="正则表达式的模式"><a href="#正则表达式的模式" class="headerlink" title="正则表达式的模式"></a>正则表达式的模式</h2><p>正则表达式的模式可以包括以下内容：</p>
+<ul>
+<li>字面值字符：例如字母、数字、空格等，可以直接匹配它们自身。</li>
+<li>特殊字符：例如点号 <code>.</code>、星号 <code>*</code>、加号 <code>+</code>、问号 <code>?</code> 等，它们具有特殊的含义和功能。</li>
+<li>字符类：用方括号 <code>[ ]</code> 包围的字符集合，用于匹配方括号内的任意一个字符。</li>
+<li>元字符：例如 <code>\d</code>、<code>\w</code>、<code>\s</code> 等，用于匹配特定类型的字符，如数字、字母、空白字符等。</li>
+<li>量词：例如 <code>&#123;n&#125;</code>、<code>&#123;n,&#125;</code>、<code>&#123;n,m&#125;</code> 等，用于指定匹配的次数或范围。</li>
+<li>边界符号：例如 <code>^</code>、<code>$</code>、<code>\b</code>、<code>\B</code> 等，用于匹配字符串的开头、结尾或单词边界位置。</li>
+</ul>
+<h2 id="正则表达式简易使用"><a href="#正则表达式简易使用" class="headerlink" title="正则表达式简易使用"></a>正则表达式简易使用</h2><h3 id="字符匹配"><a href="#字符匹配" class="headerlink" title="字符匹配"></a>字符匹配</h3><ul>
+<li>普通字符：普通字符按照字面意义进行匹配，例如匹配字母 “a” 将匹配到文本中的 “a” 字符。</li>
+<li>元字符：元字符具有特殊的含义，例如 <code>\d</code> 匹配任意数字字符，<code>\w</code> 匹配任意字母数字字符，<code>.</code> 匹配任意字符（除了换行符）等。</li>
+</ul>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><ul>
+<li><code>*</code>：匹配前面的模式零次或多次。</li>
+<li><code>+</code>：匹配前面的模式一次或多次。</li>
+<li><code>?</code>：匹配前面的模式零次或一次。</li>
+<li><code>&#123;n&#125;</code>：匹配前面的模式恰好 n 次。</li>
+<li><code>&#123;n,&#125;</code>：匹配前面的模式至少 n 次。</li>
+<li><code>&#123;n,m&#125;</code>：匹配前面的模式至少 n 次且不超过 m 次。</li>
+</ul>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><ul>
+<li><code>[ ]</code>：匹配括号内的任意一个字符。例如，<code>[abc]</code> 匹配字符 “a”、”b” 或 “c”。</li>
+<li><code>[^ ]</code>：匹配除了括号内的字符以外的任意一个字符。例如，<code>[^abc]</code> 匹配除了字符 “a”、”b” 或 “c” 以外的任意字符。</li>
+</ul>
+<h3 id="边界匹配"><a href="#边界匹配" class="headerlink" title="边界匹配"></a>边界匹配</h3><ul>
+<li><code>^</code>：匹配字符串的开头。</li>
+<li><code>$</code>：匹配字符串的结尾。</li>
+<li><code>\b</code>：匹配单词边界。</li>
+<li><code>\B</code>：匹配非单词边界。</li>
+</ul>
+<h3 id="分组和捕获"><a href="#分组和捕获" class="headerlink" title="分组和捕获"></a>分组和捕获</h3><ul>
+<li><code>( )</code>：用于分组和捕获子表达式。</li>
+<li><code>(?: )</code>：用于分组但不捕获子表达式。</li>
+</ul>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><ul>
+<li><code>\</code>：转义字符，用于匹配特殊字符本身。</li>
+<li><code>.</code>：匹配任意字符（除了换行符）。</li>
+<li><code>|</code>：用于指定多个模式的选择。</li>
+</ul>
+<h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>[ABC]</code></td>
+<td align="left">匹配 <code>[...]</code> 中的所有字符，例如 <code>[aeiou]</code> 匹配字符串”google runoob taobao”中所有的 e o u a 字母。</td>
+</tr>
+<tr>
+<td align="left"><code>[^ABC]</code></td>
+<td align="left">匹配除了 <code>[...]</code> 中字符的所有字符，例如 <code>[^aeiou]</code> 匹配字符串”google runoob taobao”中除了 e o u a 字母的所有字符。</td>
+</tr>
+<tr>
+<td align="left"><code>[A-Z]</code></td>
+<td align="left"><code>[A-Z]</code> 表示一个区间，匹配所有大写字母，<code>[a-z]</code> 表示所有小写字母。</td>
+</tr>
+<tr>
+<td align="left"><code>.</code></td>
+<td align="left">匹配除换行符<code>\n</code>、<code>\r</code>之外的任何单个字符，相等于 <code>[^\n\r]</code>。<a href="%E5%9C%A8md%E6%96%87%E6%A1%A3%E4%B8%AD%60%5B%5Eabc%5D%60%E4%B8%BAabc%E7%9A%84%E5%BC%95%E7%94%A8%E6%B3%A8%E9%87%8A,%E5%8F%AF%E4%BB%A5%E8%B7%B3%E8%BD%AC">^\n\r</a></td>
+</tr>
+<tr>
+<td align="left"><code>[\s\S]</code></td>
+<td align="left">匹配所有。<code>\s</code> 是匹配所有空白符，包括换行，<code>\S</code> 非空白符，不包括换行。</td>
+</tr>
+<tr>
+<td align="left"><code>\w</code></td>
+<td align="left">匹配字母、数字、下划线。等价于 <code>[A-Za-z0-9_]</code></td>
+</tr>
+<tr>
+<td align="left"><code>\d</code></td>
+<td align="left">匹配任意一个阿拉伯数字（0 到 9）。等价于 <code>[0-9]</code></td>
+</tr>
+</tbody></table>
+<h3 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h3><p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>\cx</code></td>
+<td align="left">匹配由<code>x</code>指明的控制字符。例如， <code>\cM</code> 匹配一个 <code>Control-M </code>或<code>回车符</code>。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td align="left"><code>\f</code></td>
+<td align="left">匹配一个<code>换页符</code>。等价于 <code>\x0c</code> 和 <code>\cL</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>\n</code></td>
+<td align="left">匹配一个<code>换行符</code>。等价于 <code>\x0a</code> 和 <code>\cJ</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>\r</code></td>
+<td align="left">匹配一个<code>回车符</code>。等价于 <code>\x0d</code> 和 <code>\cM</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>\s</code></td>
+<td align="left">匹配任何<code>空白字符</code>，包括空格、制表符、换页符等等。等价于 <code>[ \f\n\r\t\v]</code> 。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+<td align="left"><code>\S</code></td>
+<td align="left">匹配任何<code>非空白字符</code>。等价于 <code>[^ \f\n\r\t\v]</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>\t</code></td>
+<td align="left">匹配一个<code>制表符</code>。等价于 <code>\x09</code> 和 <code>\cI</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>\v</code></td>
+<td align="left">匹配一个<code>垂直制表符</code>。等价于 <code>\x0b</code> 和 <code>\cK</code>。</td>
+</tr>
+</tbody></table>
+<h3 id="特殊字符-1"><a href="#特殊字符-1" class="headerlink" title="特殊字符"></a>特殊字符</h3><p>所谓特殊字符，就是一些有特殊含义的字符,如果要查找字符串中的 ***** 符号，则需要对 <code>*</code> 进行转义，即在其前加一个 <code>\</code> 。</p>
+<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符<code>\</code> 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
+<table>
+<thead>
+<tr>
+<th align="left">特别字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>$</code></td>
+<td align="left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 <code>$</code> 也匹配 <code>\n</code> 或 <code>\r</code> 。要匹配 <code>$</code> 字符本身，请使用 <code>\$</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>( )</code></td>
+<td align="left">标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 <code>\(</code> 和 <code>\)</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>*</code></td>
+<td align="left">匹配前面的子表达式零次或多次。要匹配 <code>*</code> 字符，请使用 <code>\*</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>+</code></td>
+<td align="left">匹配前面的子表达式一次或多次。要匹配 <code>+</code> 字符，请使用 <code>\+</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>.</code></td>
+<td align="left">匹配除换行符 <code>\n</code> 之外的任何单字符。要匹配 <code>.</code> ，请使用 <code>\.</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>[</code></td>
+<td align="left">标记一个中括号表达式的开始。要匹配 <code>[</code>，请使用 <code>\[</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>?</code></td>
+<td align="left">匹配前面的子表达式零次或一次，或指明一个<em><strong>非贪婪限定符</strong></em>。要匹配 <code>?</code> 字符，请使用 <code>\?</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>\</code></td>
+<td align="left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， <code>n</code> 匹配字符 <code>n</code>。<code>\n</code> 匹配换行符。序列 <code>\\</code> 匹配 <code>\</code>，而 <code>\(</code> 则匹配 <code>(</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>^</code></td>
+<td align="left">匹配输入字符串的开始位置，<strong>除非在方括号表达式中使用</strong>，当该符号在方括号表达式中使用时，表示<strong>不接受该方括号表达式中的字符集合</strong>。要匹配 <code>^</code> 字符本身，请使用 <code>\^</code> 。</td>
+</tr>
+<tr>
+<td align="left"><code>&#123;</code></td>
+<td align="left">标记限定符表达式的开始。要匹配 <code>&#123;</code>，请使用 <code>\&#123;</code> 。</td>
+</tr>
+<tr>
+<td align="left">&#96;</td>
+<td align="left">&#96;</td>
+</tr>
+</tbody></table>
+<h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 <code>*</code> 或 <code>+</code> 或 <code>?</code> 或 <code>&#123;n&#125;</code> 或 <code>&#123;n,&#125;</code> 或 <code>&#123;n,m&#125;</code> 共6种。</p>
+<p>正则表达式的限定符有：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">匹配前面的子表达式<code>零次或多次</code>。例如，<strong>zo*</strong> 能匹配 <strong>“z”</strong> 以及 <strong>“zoo”<strong>。</strong></strong>* 等价于 **{0,}**。</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">匹配前面的子表达式<code>一次或多次</code>。例如，<strong>zo+</strong> 能匹配 <strong>“zo”</strong> 以及 “**zoo”**，但不能匹配 <strong>“z”<strong>。</strong>+</strong> 等价于 **{1,}**。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配前面的子表达式<code>零次或一次</code>。例如，<strong>do(es)?</strong> 可以匹配 <strong>“do”</strong> 、 **”does”**、 <strong>“doxy”</strong> 中的 <strong>“do”</strong> 和 <strong>“does”<strong>。</strong>?</strong> 等价于 **{0,1}**。</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td align="left">n 是一个非负整数。<code>匹配确定的n次</code>。例如，<strong>o{2}</strong> 不能匹配 <strong>“Bob”</strong> 中的 <strong>o</strong>，但是能匹配 <strong>“food”</strong> 中的两个 <strong>o</strong>。</td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td align="left">n 是一个非负整数。<code>至少匹配n 次</code>。例如，<strong>o{2,}</strong> 不能匹配 <strong>“Bob”</strong> 中的 <strong>o</strong>，但能匹配 <strong>“foooood”</strong> 中的所有 <strong>o</strong>。<strong>o{1,}</strong> 等价于 <strong>o+<strong>。</strong>o{0,}</strong> 则等价于 **o***。</td>
+</tr>
+<tr>
+<td align="left">{n,m}</td>
+<td align="left">m 和 n 均为非负整数，其中 n &lt;&#x3D; m。<code>最少匹配 n 次且最多匹配 m 次</code>。例如，<strong>o{1,3}</strong> 将匹配 <strong>“fooooood”</strong> 中的前三个 <strong>o</strong>。<strong>o{0,1}</strong> 等价于 **o?**。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><p>限定符出现在范围表达式之后。因此，它应用于整个范围表达式。</p>
+</li>
+<li><p>通过在 <code>*</code>、<code>+</code> 或 <code>?</code> 限定符之后放置 <code>?</code> ，该表达式从**”贪婪”<strong>表达式转换为</strong>“非贪婪”**表达式或者最小匹配。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong><code>*</code> 和 <code>+</code> 限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个 ? 就可以实现非贪婪或最小匹配。</strong></p>
+<p>例如，搜索 HTML 文档，以查找在 <strong>h1</strong> 标签内的内容。HTML 代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Barbecue<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>贪婪：</strong>下面的表达式匹配从开始小于符号 (&lt;) 到关闭 h1 标记的大于符号 (&gt;) 之间的所有内容。</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;.*&gt;</span><br></pre></td></tr></table></figure>
+
+<p>即匹配：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Barbecue<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>非贪婪：</strong>如果您只需要匹配开始和结束 h1 标签，下面的非贪婪表达式只匹配 <code>&lt;h1&gt;</code>。</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;.*?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>即匹配：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用以下正则表达式来匹配 h1 标签，表达式则是：</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;\w+?&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="定位符"><a href="#定位符" class="headerlink" title="定位符"></a>定位符</h3><p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
+<p>定位符用来描述字符串或单词的边界，<code>^</code> 和 <code>$</code> 分别指字符串的开始与结束， <code>\b</code> 描述单词的前或后边界， <code>\B</code> 表示非单词边界。</p>
+<p>正则表达式的定位符有：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^</td>
+<td align="left">匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，<code>^</code> 还会与 <code>\n</code> 或 <code>\r</code>  之后的位置匹配。</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，<code>$</code> 还会与 <code>\n</code> 或 <code>\r</code> 之前的位置匹配。</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">匹配一个单词边界，即字与空格间的位置。表达式<code>\bCha</code>匹配单词 Chapter 的Cha，表达式<code>ter\b</code>匹配单词 Chapter 中的字符串 ter。但表达式<code>\bapt</code>不匹配 Chapter 中的字符串 apt。</td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">非单词边界匹配。表达式<code>\Bapt</code>匹配 Chapter 中的字符串 apt，但不匹配 aptitude 中的字符串 apt。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 <code>^*</code> 之类的表达式。</li>
+<li>若要匹配一行文本开始处的文本，请在正则表达式的开始使用 <code>^</code> 字符。不要将 <code>^</code> 的这种用法与中括号表达式内的用法混淆。</li>
+<li>若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 <code>$</code> 字符。</li>
+<li><code>\b</code> 字符的位置是非常重要的。如果它位于要匹配的字符串的开始，它在单词的开始处查找匹配项。如果它位于字符串的结尾，它在单词的结尾处查找匹配项。</li>
+<li><code>\B</code> 非单词边界运算符，不可以匹配单词的开头或结尾。</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>单词边界 \b</strong></li>
+</ul>
+<p>在正则表达式中，<strong>\b</strong> 是一个特殊的元字符，表示单词边界。它匹配一个单词的开始或结束的位置，而不匹配任何实际的字符。</p>
+<p>具体来说，<strong>\b</strong> 匹配以下三种情况之一：</p>
+<ul>
+<li>单词的开头：如果 <code>\b</code> 出现在一个字母或数字之前，或者在字符串的开头，它会匹配一个单词的开始位置。</li>
+<li>单词的结尾：如果 <code>\b</code> 出现在一个字母或数字之后，或者在字符串的末尾，它会匹配一个单词的结束位置。</li>
+<li>单词的内部：如果 <code>\b</code> 出现在两个连续的字母或数字之间，它不会匹配任何内容，因为没有单词边界。</li>
+</ul>
+<p>以下是一些元字符 <strong>\b</strong> 的实例：</p>
+<ul>
+<li>正则表达式 <code>\bword\b</code> 匹配整个单词 “word”，但不匹配 “words” 或 “sword”。</li>
+<li>正则表达式 <code>\b\d+\b</code> 匹配一个完整的数字，例如 “123”，但不匹配 “abc123”。</li>
+<li>正则表达式 <code>\b[A-Z]+\b</code> 匹配一个完整的大写字母单词，例如 “HELLO”，但不匹配 “hello”。</li>
+</ul>
+<p>需要注意的是，<strong>\b</strong> 是一个零宽度断言，它不匹配实际的字符，只匹配位置，因此，当你想要匹配一个实际的字符时，不要使用 <strong>\b</strong>，而应该使用其他字符或字符组合。</p>
+<ul>
+<li><strong>非单词边界 \B</strong></li>
+</ul>
+<p>在正则表达式中，<strong>\B</strong> 是 <strong>\b</strong> 的反义符号，它表示非单词边界，即匹配不在单词边界处的位置。</p>
+<p>具体来说，<strong>\B</strong> 匹配以下情况之一：</p>
+<ul>
+<li>单词的内部：如果 <code>\B</code> 出现在两个连续的字母或数字之间，它会匹配这两个字符之间的位置，表示它们不是单词的边界。</li>
+<li>非单词的开头或结尾：如果 <code>\B</code> 出现在一个字母或数字之前或之后，它会匹配这个位置，表示它不是单词的开头或结尾。</li>
+</ul>
+<p>以下是一些元字符 <strong>\B</strong> 的实例：</p>
+<ul>
+<li>正则表达式 <code>\Bword\B</code> 匹配 “sword1” 中的 “word”，但不匹配 “password” 或 “words”。</li>
+<li>正则表达式 <code>\B\d+\B</code> 匹配 “abc123def” 中的 “123”，但不匹配 “123” 或 “abc123xyz”。</li>
+<li>正则表达式 <code>\B[A-Z]+\B</code> 匹配 “HELLO WORLD” 中的 “ELL” 和 “ORL”，但不匹配 “HELLO” 或 “WORLD”。</li>
+</ul>
+<p>需要注意的是，<strong>\B</strong> 也是一个零宽度断言，它不匹配实际的字符，只匹配位置，因此，当你想要匹配一个实际的字符时，不要使用 <strong>\b</strong>，而应该使用其他字符或字符组合。</p>
+<h3 id="选择-未完成"><a href="#选择-未完成" class="headerlink" title="选择(未完成)"></a>选择(未完成)</h3><p>用圆括号 <code>()</code> 将所有选择项括起来，相邻的选择项之间用 <code>| </code>分隔。</p>
+<p><code>()</code> 表示捕获分组，<code>()</code> 会把每个分组里的匹配的值保存起来， 多个匹配值可以通过数字 n 来查看(<strong>n</strong> 是一个数字，表示第 n 个捕获组的内容)。</p>
+<p>但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用 <strong>?:</strong> 放在第一个选项前来消除这种副作用。其中<code> ?:</code> 是非捕获元之一，还有两个非捕获元是 <code>?=</code> 和 <code>?!</code>，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。</p>
+<p><em>更多内容可以参考：</em><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/reg-lookahead-lookbehind.html">正则表达式的先行断言(lookahead)和后行断言(lookbehind)</a></p>
+<h3 id="反向引用-未完成"><a href="#反向引用-未完成" class="headerlink" title="反向引用(未完成)"></a>反向引用(未完成)</h3><p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 <strong>\n</strong> 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</p>
+<p>可以使用非捕获元字符<code>?:</code>、<code>?=</code> 或 <code>?!</code> 来重写捕获，忽略对相关匹配的保存。</p>
+<p>反向引用的最简单的、最有用的应用之一，是提供查找文本中两个相同的相邻单词的匹配项的能力。</p>
+<h2 id="正则表达式-修饰符"><a href="#正则表达式-修饰符" class="headerlink" title="正则表达式 - 修饰符"></a>正则表达式 - 修饰符</h2><p>标记也称为修饰符，正则表达式的标记用于指定额外的匹配策略。</p>
+<p>标记不写在正则表达式里，标记位于表达式之外，格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/pattern/flags</span><br></pre></td></tr></table></figure>
+
+<p>下表列出了正则表达式常用的修饰符:</p>
+<table>
+<thead>
+<tr>
+<th>g</th>
+<th>global - 全局匹配</th>
+<th>查找字符串中所有的匹配项。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>ignore - 不区分大小写</td>
+<td>将匹配设置为不区分大小写，搜索时不区分大小写， A 和 a 没有区别。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>multi line - 多行匹配</td>
+<td>将匹配多行，而不是整个字符串的开头和结尾。</td>
+</tr>
+<tr>
+<td>s</td>
+<td>特殊字符圆点 <strong>.</strong> 中包含换行符 <code>\n</code></td>
+<td>默认情况下的圆点 <code>.</code> 是匹配除换行符 <code>\n</code> 之外的任何字符，加上 <code>s</code> 修饰符之后, <code>.</code> 中包含换行符 <code>\n</code>。</td>
+</tr>
+</tbody></table>
+<p>例如搜索字符串:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BarBeCue Super barbecue landing barbecue</span><br><span class="line">Squirrel</span><br><span class="line">barbecue</span><br></pre></td></tr></table></figure>
+
+<p>普通搜索：</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/barbecue/</span><br></pre></td></tr></table></figure>
+
+<p>即匹配第一次匹配项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barbecue</span><br></pre></td></tr></table></figure>
+
+<h3 id="g-修饰符"><a href="#g-修饰符" class="headerlink" title="g 修饰符"></a>g 修饰符</h3><p>g 修饰符可以查找字符串中所有的匹配项，g只匹配的第一次匹配的行：</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/barbecue/g</span><br></pre></td></tr></table></figure>
+
+<p>即匹配第一次匹配到的行的匹配项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barbecue barbecue</span><br></pre></td></tr></table></figure>
+
+<h3 id="i-修饰符"><a href="#i-修饰符" class="headerlink" title="i 修饰符"></a>i 修饰符</h3><p>i 修饰符为不区分大小写匹配，但是单i的情况下只能匹配一个，一般和g联用：</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/barbecue/gi</span><br></pre></td></tr></table></figure>
+
+<p>即匹配第一次匹配到的行的匹配项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BarBeCue barbecue barbecue</span><br></pre></td></tr></table></figure>
+
+<h3 id="m-修饰符"><a href="#m-修饰符" class="headerlink" title="m 修饰符"></a>m 修饰符</h3><p>m 修饰符可以使 <code>^</code> 和 <code>$</code> 匹配一段文本中每行的开始和结束位置。但是单m的情况下只能匹配一个，一般和g联用。</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^barbecue/gm</span><br></pre></td></tr></table></figure>
+
+<p>g 只匹配第一行，添加 m 之后实现多行，即匹配：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">barbecue barbecue</span><br><span class="line">barbecue</span><br></pre></td></tr></table></figure>
+
+<h3 id="s-修饰符"><a href="#s-修饰符" class="headerlink" title="s 修饰符"></a>s 修饰符</h3><p>默认情况下的圆点 <code>.</code> 是 匹配除换行符 <code>\n</code> 之外的任何字符，加上 <code>s</code> 之后, <code>.</code> 中包含换行符 <code>\n</code>。</p>
+<ol>
+<li><p>情况1，没有使用 <code>s</code> </p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Squirrel./</span><br></pre></td></tr></table></figure>
+
+<p>无匹配，没有使用 <code>s</code>，无法匹配<code>\n</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">   </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>情况2，使用 <code>s</code></p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Squirrel./s</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>s</code>，匹配<code>\n</code> ，即匹配:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Squirrel\n</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="正则表达式-元字符"><a href="#正则表达式-元字符" class="headerlink" title="正则表达式 - 元字符"></a>正则表达式 - 元字符</h2><p>下表包含了元字符的完整列表以及它们在正则表达式上下文中的行为：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\</td>
+<td align="left">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\‘ 匹配 “&quot; 而 “(“ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td align="left">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
+</tr>
+<tr>
+<td align="left">{n,m}</td>
+<td align="left">m 和 n 均为非负整数，其中n &lt;&#x3D; m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”<strong>(.|\n)</strong>“的模式。</td>
+</tr>
+<tr>
+<td align="left">(pattern)</td>
+<td align="left">匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)‘。</td>
+</tr>
+<tr>
+<td align="left">(?:pattern)</td>
+<td align="left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (|) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y|ies) 就是一个比 ‘industry|industries’ 更简略的表达式。</td>
+</tr>
+<tr>
+<td align="left">(?&#x3D;pattern)</td>
+<td align="left">正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?&#x3D;95|98|NT|2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td align="left">(?!pattern)</td>
+<td align="left">正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95|98|NT|2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td align="left">(?&lt;&#x3D;pattern)</td>
+<td align="left">反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。例如，”&#96;(?&lt;&#x3D;95</td>
+</tr>
+<tr>
+<td align="left">(?&lt;!pattern)</td>
+<td align="left">反向否定预查，与正向否定预查类似，只是方向相反。例如”&#96;(?&lt;!95</td>
+</tr>
+<tr>
+<td align="left">x|y</td>
+<td align="left">匹配 x 或 y。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</td>
+</tr>
+<tr>
+<td align="left">[xyz]</td>
+<td align="left">字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
+</tr>
+<tr>
+<td align="left">[^xyz]</td>
+<td align="left">负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、’l’、’i’、’n’。</td>
+</tr>
+<tr>
+<td align="left">[a-z]</td>
+<td align="left">字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</td>
+</tr>
+<tr>
+<td align="left">[^a-z]</td>
+<td align="left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td align="left">\cx</td>
+<td align="left">匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">匹配非字母、数字、下划线。等价于 ‘[^A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td align="left">\xn</td>
+<td align="left">匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，’\x41’ 匹配 “A”。’\x041’ 则等价于 ‘\x04’ &amp; “1”。正则表达式中可以使用 ASCII 编码。</td>
+</tr>
+<tr>
+<td align="left">\num</td>
+<td align="left">匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
+</tr>
+<tr>
+<td align="left">\nm</td>
+<td align="left">标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
+</tr>
+<tr>
+<td align="left">\nml</td>
+<td align="left">如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
+</tr>
+<tr>
+<td align="left">\un</td>
+<td align="left">匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
+</tr>
+</tbody></table>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>分析一个匹配邮箱的正则表达式：</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]&#123;2,6&#125;\b/g</span><br></pre></td></tr></table></figure>
+
+<p>匹配以下文本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abcd Barbecue@gmail.com 1234</span><br></pre></td></tr></table></figure>
+
+<p>以下的文本是获得的匹配的表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Barbecue@gmail.com</span><br></pre></td></tr></table></figure>
+
+<p>匹配邮箱的正则表达式解析</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%8C%B9%E9%85%8D%E9%82%AE%E7%AE%B1.png?raw=true" alt="匹配邮箱的正则表达式解析"></p>
+<h2 id="正则表达式-运算符优先级"><a href="#正则表达式-运算符优先级" class="headerlink" title="正则表达式 - 运算符优先级"></a>正则表达式 - 运算符优先级</h2><p>正则表达式从左到右进行计算，并遵循优先级顺序，这与算术表达式非常类似。</p>
+<p>相同优先级的从左到右进行运算，不同优先级的运算先高后低。下表从最高到最低说明了各种正则表达式运算符的优先级顺序：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>\</code></td>
+<td align="left">转义符</td>
+</tr>
+<tr>
+<td align="left"><code>()</code>, <code>(?:)</code>, <code>(?=)</code>, <code>[]</code></td>
+<td align="left">圆括号和方括号</td>
+</tr>
+<tr>
+<td align="left"><code>*</code>, <code>+</code>, <code>?</code>, <code>&#123;n&#125;</code>, <code>&#123;n,&#125;</code>, <code>&#123;n,m&#125;</code></td>
+<td align="left">限定符</td>
+</tr>
+<tr>
+<td align="left"><code>^</code>, <code>$</code>,<code> \任何元字符</code>、<code>任何字符</code></td>
+<td align="left">定位点和序列（即：位置和顺序）</td>
+</tr>
+<tr>
+<td align="left">&#96;</td>
+<td align="left">&#96;</td>
+</tr>
+</tbody></table>
+<p>以下是一些常见正则表达式运算符按照优先级从高到低的顺序：</p>
+<ul>
+<li><p><strong>转义符号：</strong> <code>\</code> 是用于转义其他特殊字符的转义符号。它具有最高的优先级。</p>
+<p>示例：<code>\d</code>、<code>\.</code> 等，其中 <code>\d</code> 匹配数字，<code>\.</code> 匹配点号。</p>
+</li>
+<li><p><strong>括号：</strong> 圆括号 <code>()</code> 用于创建子表达式，具有高于其他运算符的优先级。</p>
+<p>示例：<code>(abc)+</code> 匹配 “abc” 一次或多次。</p>
+</li>
+<li><p><strong>量词：</strong> 量词指定前面的元素可以重复的次数。</p>
+<p>示例：<code>a*</code> 匹配零个或多个 “a”。</p>
+</li>
+<li><p><strong>字符类：</strong> 字符类使用方括号 <code>[]</code> 表示，用于匹配括号内的任意字符。</p>
+<p>示例：<code>[aeiou]</code> 匹配任何一个元音字母。</p>
+</li>
+<li><p><strong>断言：</strong> 断言是用于检查字符串中特定位置的条件的元素。</p>
+<p>示例：<code>^</code> 表示行的开头，<code>$</code> 表示行的结尾。</p>
+</li>
+<li><p><strong>连接：</strong> 连接在没有其他运算符的情况下表示字符之间的简单连接。</p>
+<p>示例：<code>abc</code> 匹配 “abc”。</p>
+</li>
+<li><p><strong>管道：</strong> 管道符号 <code>|</code> 表示”或”关系，用于在多个模式之间选择一个。</p>
+<p>示例：<code>cat|dog</code> 匹配 “cat” 或 “dog”。</p>
+</li>
+</ul>
+<p>接下来我们看下以下正则表达式的优先级说明：</p>
+<figure class="highlight plaintext"><figcaption><span>Expression</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\d&#123;2,3&#125;|[a-z]+(abc)*</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>\d&#123;2,3&#125;</code> 匹配两到三个数字。</li>
+<li><code>|</code> 表示或。</li>
+<li><code>[a-z]+</code> 匹配一个或多个小写字母。</li>
+<li><code>(abc)*</code> 匹配零个或多个 “abc”。</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"></a><div class="post-copyright__author_name">Barbecue</div><div class="post-copyright__author_desc">今天学习了吗</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F')">Barbecue</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Barbecue&amp;url=https://barbecue-g.github.io/Other/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F&amp;pic=https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg?_r_=a9164eb8-1afa-c574-bc3b-1422b397be20" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://barbecue-g.github.io" target="_blank">Barbecue</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Tools/Git/soursetree"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg?_r_=4e26d184-1be7-4bd9-c578-ee7987893605" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/Tools/Git/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg?_r_=eb447c14-dba2-f640-409a-9d48a059827a" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="toc-text">正则表达式简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E6%A8%A1%E5%BC%8F"><span class="toc-text">正则表达式的模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="toc-text">正则表达式简易使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%8C%B9%E9%85%8D"><span class="toc-text">字符匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E8%AF%8D"><span class="toc-text">量词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%B1%BB"><span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%95%8C%E5%8C%B9%E9%85%8D"><span class="toc-text">边界匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%92%8C%E6%8D%95%E8%8E%B7"><span class="toc-text">分组和捕获</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-text">特殊字符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95"><span class="toc-text">正则表达式语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E7%AC%A6"><span class="toc-text">普通字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6"><span class="toc-text">非打印字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6-1"><span class="toc-text">特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-text">限定符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="toc-text">定位符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">选择(未完成)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E5%BC%95%E7%94%A8-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">反向引用(未完成)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">正则表达式 - 修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#g-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">g 修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">i 修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">m 修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#s-%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">s 修饰符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">正则表达式 - 元字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">正则表达式 - 运算符优先级</span></a></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2024 By <a class="footer-bar-link" href="/" title="Barbecue" target="_blank">Barbecue</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="赣ICP备-2024039887号">赣ICP备-2024039887号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">2</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">社交</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ.jpg?raw=true" title="QQ"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/QQ-icon.jpg?raw=true" alt="QQ"/><span class="back-menu-item-text">QQ</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechat.jpg?raw=true" title="微信"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/WeChat-icon.png?raw=true" alt="微信"/><span class="back-menu-item-text">微信</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/HTTP/" style="font-size: 0.88rem; color: rgb(190, 187, 2);">HTTP<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem; color: rgb(67, 176, 24);">Hexo<sup>1</sup></a><a href="/tags/Nginx/" style="font-size: 0.88rem; color: rgb(3, 20, 66);">Nginx<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 0.88rem; color: rgb(157, 190, 160);">Redis<sup>1</sup></a><a href="/tags/posts/" style="font-size: 0.88rem; color: rgb(171, 71, 26);">_posts<sup>7</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2024 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Barbecue 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+      appKey: 'R50Ps7cdwVouTiBALXFKiUzI',
+      avatar: '“identicon”',
+      serverURLs: '',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=“identicon”'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://hnelsWgo.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+        "X-LC-Key": 'R50Ps7cdwVouTiBALXFKiUzI',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script id="canvas_nest" defer="defer" color="0,190,255" opacity="1" zIndex="-1" count="64" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
