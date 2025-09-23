@@ -1,0 +1,571 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Skynet概述 | Barbecue</title><meta name="keywords" content="Skynet"><meta name="author" content="Barbecue"><meta name="copyright" content="Barbecue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Skynet概述"><meta name="application-name" content="Skynet概述"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Skynet概述"><meta property="og:url" content="https://barbecue-g.github.io/FrameWork/Skynet/Skynet%E6%A6%82%E8%BF%B0"><meta property="og:site_name" content="Barbecue"><meta property="og:description" content="skynet概述skynet 是一个为网络游戏服务器设计的轻量框架。但它本身并没有任何为网络游戏业务而特别设计的部分，所以尽可以把它用于其它领域。 skynet 并不是一个开箱即用的引擎，使用它需要先对框架本身的结构有所了解，理解框架到底帮助开发者解决怎样的问题。如果你希望使用这个框架来开发网络游戏"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"><meta property="article:author" content="Barbecue"><meta property="article:tag" content="Barbecue"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"><meta name="description" content="skynet概述skynet 是一个为网络游戏服务器设计的轻量框架。但它本身并没有任何为网络游戏业务而特别设计的部分，所以尽可以把它用于其它领域。 skynet 并不是一个开箱即用的引擎，使用它需要先对框架本身的结构有所了解，理解框架到底帮助开发者解决怎样的问题。如果你希望使用这个框架来开发网络游戏"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"><link rel="canonical" href="https://barbecue-g.github.io/FrameWork/Skynet/Skynet%E6%A6%82%E8%BF%B0"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Barbecue","link":"链接: ","source":"来源: Barbecue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Barbecue',
+  title: 'Skynet概述',
+  postAI: '',
+  pageFillDescription: 'skynet概述, 框架 Framework, 网络 Network, 客户端 Client, 服务 Service, 消息 Message, 外部服务 External Service, 集群 Cluster概述是一个为网络游戏服务器设计的轻量框架但它本身并没有任何为网络游戏业务而特别设计的部分所以尽可以把它用于其它领域并不是一个开箱即用的引擎使用它需要先对框架本身的结构有所了解理解框架到底帮助开发者解决怎样的问题如果你希望使用这个框架来开发网络游戏服务器你将发现并不会引导你把服务器搭建起来它更像是一套工具只有你知道你想做什么它才会帮助你更有效率的完成理解并不复杂希望通过读完本篇文章你就能掌握它这篇文章没有提及任何的具体使用方法如何搭建开发环境也没有手把手示范如何写出一个简单的游戏服务器而仅仅介绍的基础概念所以在真正使用做开发时还需要参考中的其它文档框架作为服务器通常需要同时处理多份类似的业务例如在网络游戏中你需要同时向数千个用户提供服务同时运作上百个副本计算副本中的战斗让通过工作起来等等在单核年代我们通常在上轮流处理这些业务给用户造成并行的假象而现代计算机则可以配置多达数十个核心如何充分利用它们并行运作数千个相互独立的业务是设计的初衷简单的服务倾向于把和用户相关的状态信息设计好数据结构储存在数据库中通过网络收到用户请求后从数据库中读出关联该用户的状态信息处理后再写回数据库而网络游戏服务通常有更强的上下文状态以及多个用户间更复杂的交互如果采用相同的模式数据库和业务处理模块间很容易出现瓶颈这个瓶颈甚至不能通过增加一个内存层来完全解决在中用服务这个概念来表达某项具体业务它包括了处理业务的逻辑以及关联的数据状态使用实现游戏服务器时不建议把业务状态同步到数据库中而是存放在服务的内存数据结构里服务连同服务处理业务的逻辑代码和业务关联的状态数据都是常驻内存的如果数据库是你架构的一部分那么大多数情况下它扮演的是一个数据备份的角色你可以在状态改变时把数据推到数据库保存也可以定期写到数据库备份业务处理时直接使用服务内的内存数据结构由于服务并非独立进程所以服务间的通讯也可以被实现的高效的多另一方面由于这些服务同时存在于同一个进程下我们可以认为它们同生共死在编写服务间协作的代码时不用刻意考虑对方是否还活着通讯是否可靠的问题大多数服务使用编写的虚拟机帮助我们隔离了服务虽然的基础框架设计时并没有限制服务的实现形式理论上可以用其它语言实现服务但作为刚接触的开发者可以忽略这些细节仅使用做开发简单说可以把理解为一个简单的操作系统它可以用来调度数千个虚拟机让它们并行工作每个虚拟机都可以接收处理其它虚拟机发送过来的消息以及对其它虚拟机发送消息每个虚拟机可以看成这个操作系统下的独立进程你可以在工作时启动新的进程销毁不再使用的进程还可以通过调试控制台监管它们同时掌控了外部的网络数据输入和定时器的管理它会把这些转换为一致的类似进程间的消息消息输入给这些进程例如在网络游戏中你可以为每个在线用户创建一个虚拟机称之为服务姑且把它称为用户在不和其它用户交互而仅仅自娱自乐时完全可以满足要求在用户上线时从数据库加载关联于它的所有数据到中对用户的网络请求做出反应当然你也可以让一个服务管理多个在线用户每个用户是虚拟机内的一个对象你还可以用独立的服务处理网络游戏中的副本或是战场处理玩家和玩家间玩家协同对战的战斗会和副本服务通过消息进行交互而不必让用户客户端直接与副本通讯这些都是具体的游戏服务器架构设计并没有要求你应该怎么做甚至不会建议你该怎么做一切等你设计时做出决断网络作为网络服务器框架必然有封装好的网络层对于更是必不可少由于模拟了一个简单的操作系统它最重要的工作就是调度数千个服务如何让服务挂起时尽量减少对系统的影响就是首要解决的问题我们不建议你在的服务中再使用任何直接和系统网络打交道的模块因为一旦这些模块被网络阻塞影响的就不只是该服务本身而是里的工作线程了会被配置成固定数量的工作线程工作线程数通常和系统物理核心数量相关而所管理的服务数量则是动态的远超过工作线程数量内置的网络层可以和它的服务调度器协同工作使用提供的网络就可以在网络阻塞时完全释放出处理能力有监听连接对外建立连接收发数据包的能力你只需要一行代码就可以监听一个端口接收外部连接当有新的连接建立时通过一个回调函数可以获得这个新连接的句柄之后和普通的网络应用程序一样你可以读写这个句柄与你写过的不同网络应用程序不太一样的是你还可以把这个句柄转交给中的其它服务去处理以获得并行能力这有点像传统系统中接收一个新连接后一个子进程继承这个句柄来处理的模式但不一样的是的服务没有父子关系我们通常建议使用一个网关服务专门监听端口接受新连接在用户身份确定后再把真正的业务数据转交给特定的服务来处理同时网关还会负责按约定好的协议把连接上的数据流切分成一个个的包而不需要业务处理服务来分割数据流业务处理的服务不必直接面对句柄而由正常的内部消息驱动即可这样的网关服务在发布版里就提供了一个但它只是一个可选模块你大可以不用它或自己编写一个类似的服务以更符合你的项目需求另外的支持目前处于实验阶段需要切换到分支客户端完全不在意如何实现客户端应用基于的服务器可以用浏览器做客户端基于或协议通讯也可以自己用等等编写客户端你可以选用建立长连接通讯也可以使用基于协议的短连接或者基于来通讯这都可以自由选择没有提供直接相关的模块都需要你自己实现在发布版的示例中实现了一个用编写的最简单的客户端仅供参考它基于长连接基础协议是用字节大端字来表示每个数据包的长度的网关服务根据这个包长度切割成业务逻辑数据包分发给对应的内部服务处理如果你想使用内置的网关模块只需要遵循这个基础的分包约定即可对于每个业务包的编码协议约定在这个中使用了一种叫自定义协议它包含在的发布版中演示了如何打包数据解包数据但是否使用协议没有任何约束你也可以使用或是等只要你知道怎样将对应的协议解析模块自己集成进即可建议在网关或是使用一个独立服务将网络消息解包翻译成内部消息再转发给对应服务内部服务不必关心网络层如何传输这些消息的服务的服务使用编写只需要把符合规范的文件放在可以找到的路径下就可以由其它服务启动在的配置文件里配置了服务查询路径以及需要启动的第一个服务而其它服务都是由该服务直接或间接启动的每个服务拥有一个唯一的把这个称为服务地址由框架分配即使服务退出该地址也会尽可能长时间的保留以避免当消息发向一个正准备退出的服务后新启动的服务顶替该地址而导致消息发向了错误的实体每个服务分三个运行阶段首先是服务加载阶段当服务的源文件被加载时就会按的运行规则被执行到这个阶段不可以调用任何有可能阻塞住该服务的因为在这个阶段中和服务配套的设置并没有初始化完毕然后是服务初始化阶段由这个注册的初始化函数执行这个初始化函数理论上可以调用任何了但启动该服务的这个会一直等待到初始化函数结束才会返回最后是服务工作阶段当你在初始化阶段注册了消息处理函数的话只要有消息输入就会触发注册的消息处理函数这些消息都是内部消息外部的网络数据定时器也会通过内部消息的形式表达出来从底层框架来看每个服务就是一个消息处理器但在应用层看来并非如此它是利用的工作的当你的服务向另一个服务发送一个请求即一个带的消息后可以认为当前的消息已经处理完毕服务会被挂起待对应服务收到请求并做出回应发送一个回应类型的消息后服务会找到挂起的把回应信息传入延续之前未完的业务流程从使用者角度看更像是一个独立线程在处理这个业务流程每个业务流程有自己独立的上下文而不像等其它框架中使用的模式和不同一个服务在某个业务流程被挂起后即使回应消息尚未收到它还是可以处理其他的消息的所以同一个服务可以同时拥有多条业务执行线所以你尽可以让同一个服务处理很多消息它们会看起来并行和真正分拆到不同的服务中处理的区别是这些处理流程永远不会真正的并行它们只是在轮流工作一段业务会一直运行到下一个阻塞点然后切换到下一段逻辑你可以利用这一点让多条业务线在处理时共享同一组数据这些数据在同一个虚拟机下时读写起来都比通过消息交换要廉价的多互有利弊的是一旦你当前业务处理线挂起等回应到来继续运行时内部状态很可能被同期其它业务处理逻辑所改变请务必小心在文档中已经注明了哪些可能导致阻塞两次阻塞调用之间运行过程是原子的利用这个特性会比传统多线程程序更容易编写在同一服务内还可以有多个用户线程这些线程可以用传入一个函数启动也可以利用的定时器的回调函数启动上面提到的消息处理函数其实也是一条独立的用户线程可以理解为响应任何一个请求都启动了一条新的独立用户线程这些并不像真正操作系统的线程那样可以利用多个核心并行运行同一服务内的不同用户线程永远是轮流获得执行权的每个线程都会需要一个阻塞操作而挂起让出控制权也会在其它线程让出控制权后再延续运行如果一条用户线程永远不调用阻塞让出控制权那么它将永远占据系统工作线程并不是一个抢占式调度器没有时间片的设计不会因为一个工作线工作时间过长而强制挂起它所以需要开发者自己小心不要陷入死循环不过框架也做了一些监控工作会在某个服务内的某个工作线程占据了太长时间后以的形式报告提醒开发者修正导致死循环的对于代码中的死循环而不是由调用的模块导致的死循环还可以由框架强制中断具体知识可以在开发中遇到后逐步了解消息每条消息由部分构成消息类型发起服务地址接收服务地址消息指针消息长度每个服务都可以处理多类消息在中是用这个词来区分消息的但与其说消息类型不同不如说更接近网络端口这个概念每个服务都支持个不同的消息分发函数可以根据不同的来为不同的消息定制不同的消息处理流程预定义了一组消息类型需要开发者关心的有回应消息网络消息调试消息文本消息消息错误回应消息通常不需要特别处理它由基础库管理用来调度服务内的当你对外发起一个请求后对方会回应一个消息这个消息的类型就是回应消息发起请求方收到回应消息会根据消息的来找到之前对应的请求所在的并延续它网络消息也不必直接处理它提供了封装库封装管理这类消息改由一组更友好的方便使用调试消息已经被默认的基础库处理了它使得所有服务都提供有一些共同的能力比如反馈自身虚拟机所占用的内存情况当前被挂起的任务数量动态注入一段代码帮助调试等等是的并不是通过外框架直接控制每个虚拟机调试控制台只是通过向对应的服务发送调试消息服务自身配合运行才得以反馈自身的状态真正的业务逻辑是由文本类消息和类消息驱动的它们的区别仅在于消息的编码形式不同文本类消息主要方便一些底层的直接使用编写的服务处理它就是简单字节串而类消息则可以序列化的复杂数据类型大多数情况下我们都只使用类消息接管某类消息需要在服务的初始化过程中注册该消息的序列化及反序列化函数以及消息回调函数类的序列化函数已经由基础库默认注册它们会把框架传入的消息指针及长度信息转换为一组数据编写业务的开发者只需要注册消息回调函数即可这个回调函数会接收到别的服务发过来的一系列值以及发送服务的地址和该请求的号一个正整数一般我们不必关心地址和因为和这两个可以帮助你正确的将回应消息发还给请求者另外还约定如果一个请求不需要回应单向推送就置为在应用层还约定了错误类消息不需要开发者主动处理这类消息一般没有实际内容只有发送源地址和号它专门用来表示某个请求发生了异常或是某个服务即将或已经退出无法完成请求这类错误消息或由基础库转换为层的抛给调用者你可以将其理解为调用的异常外部服务我们应尽量可能的在同一个进程内完成所有的业务逻辑这样可以最大化利用系统的硬件能力但有时又必不可少的使用一些外部进程例如你可以将封装为一个服务供其它内部服务使用但你也可能希望使用独立的或是等独立的外部数据库服务发布版中提供了的驱动模块省去了开发者自行封装的烦恼这些驱动模块都是基于的实现的可以很好的协同工作如果你希望使用别的外部数据库则需要自行封装需要注意的是大多数外部数据库的默认驱动模块都内含了网络部分它们直接使用了系统的和的网络层有一定的性能冲突一个比较简单的兼容方案是额外再自定义一个中间进程一边使用外部数据库的默认驱动模块另一边用提供的和交互你还可能需要让提供协议的服务或是使用协议和外部服务对接自带了模块实现一个简单的服务器不会比用其它框架开发更复杂即使用做一个服务器也可以轻松获得高性能但是出于简化编译依赖的想法的默认编译脚本并没有将链接进去而支持需要它如果需要支持需要额外设置另外你也可以用制作一个反向代理服务器而不必直接使用的模块不建议把连接管理的网关实现成一个外部服务因为在管理大量连接这方面已经做的很好了放在内部做可以减少大量不必要的进程间数据传输集群在最开始设计的时候是希望把集群管理做成底层特性的所以每个服务的地址预留了作为集群节点编号最多台机器可以组成一个集群不同节点下的服务可以像同一节点进程内部那样自由的传递消息随着的演进和实际项目的实践发现其实把节点间的消息传播透明化抹平节点间和节点进程内的消息传播的区别并不是一个好主意在同一进程内我们可以认为服务以及服务间的通讯都是可靠的如果自身工作所处的硬件环境正常那么对方也一定是正常的而当服务部署在不同进程不同机器上时不可能保证完全可靠另外一些在同一进程内可以共享访问的内存提供的共享数据模块就基于此也变得不可共享这些差异无法完全被开发者忽视所以虽然可以被配置为多节点模式但不推荐使用目前推荐把不同的服务当作外部服务来对待发布版中提供了模块来简化开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-31 20:44:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">CPP规范</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh-google-styleguide.readthedocs.io/en/stable/contents.html" title="Google"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/Google-icon.jpg?raw=true" alt="Google"/><span class="back-menu-item-text">Google</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">推荐网址</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Barbecue</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>15</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>2</sup></a><a href="/tags/Nginx/" style="font-size: 1.05rem;">Nginx<sup>1</sup></a><a href="/tags/PicGo/" style="font-size: 1.05rem;">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 1.05rem;">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 1.05rem;">Redis<sup>1</sup></a><a href="/tags/Skynet/" style="font-size: 1.05rem;">Skynet<sup>1</sup></a><a href="/tags/Skynet-logger%E6%9C%8D%E5%8A%A1/" style="font-size: 1.05rem;">Skynet_logger服务<sup>2</sup></a><a href="/tags/Skynet-snlua%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%88%9B%E5%BB%BA/" style="font-size: 1.05rem;">Skynet_snlua服务的创建<sup>2</sup></a><a href="/tags/Skynet-%E6%9C%8D%E5%8A%A1%E9%97%B4%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/" style="font-size: 1.05rem;">Skynet_服务间请求和响应<sup>4</sup></a><a href="/tags/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">基本原理<sup>2</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>7</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Skynet/" itemprop="url">Skynet</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Skynet/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Skynet</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Skynet概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-10-31T08:43:12.000Z" title="发表于 2024-10-31 16:43:12">2024-10-31</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-10-31T12:44:41.000Z" title="更新于 2024-10-31 20:44:41">2024-10-31</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">5.8k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为上海"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>上海</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://barbecue-g.github.io/"><header><a class="post-meta-categories" href="/categories/Skynet/" itemprop="url">Skynet</a><a href="/tags/Skynet/" tabindex="-1" itemprop="url">Skynet</a><h1 id="CrawlerTitle" itemprop="name headline">Skynet概述</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Barbecue</span><time itemprop="dateCreated datePublished" datetime="2024-10-31T08:43:12.000Z" title="发表于 2024-10-31 16:43:12">2024-10-31</time><time itemprop="dateCreated datePublished" datetime="2024-10-31T12:44:41.000Z" title="更新于 2024-10-31 20:44:41">2024-10-31</time></header><h1 id="skynet概述"><a href="#skynet概述" class="headerlink" title="skynet概述"></a>skynet概述</h1><p>skynet 是一个为网络游戏服务器设计的轻量框架。但它本身并没有任何为网络游戏业务而特别设计的部分，所以尽可以把它用于其它领域。</p>
+<p>skynet 并不是一个开箱即用的引擎，使用它需要先对框架本身的结构有所了解，理解框架到底帮助开发者解决怎样的问题。如果你希望使用这个框架来开发网络游戏服务器，你将发现，skynet 并不会引导你把服务器搭建起来。它更像是一套工具，只有你知道你想做什么，它才会帮助你更有效率的完成。</p>
+<p>理解 skynet 并不复杂，希望通过读完本篇文章，你就能掌握它。这篇文章没有提及任何 api 的具体使用方法、如何搭建 skynet 开发环境、也没有手把手示范如何写出一个简单的游戏服务器，而仅仅介绍 skynet 的基础概念。所以在真正使用 skynet 做开发时还需要参考 wiki 中的其它文档。</p>
+<h2 id="框架-Framework"><a href="#框架-Framework" class="headerlink" title="框架 Framework"></a>框架 Framework</h2><p>作为服务器，通常需要同时处理多份类似的业务。例如在网络游戏中，你需要同时向数千个用户提供服务；同时运作上百个副本，计算副本中的战斗、让 NPC 通过 AI 工作起来，等等。在单核年代，我们通常在 CPU 上轮流处理这些业务，给用户造成并行的假象。而现代计算机，则可以配置多达数十个核心，如何充分利用它们并行运作数千个相互独立的业务，是设计 skynet 的初衷。</p>
+<p>简单的 web 服务倾向于把和用户相关的状态信息（设计好数据结构）储存在数据库中，通过网络收到用户请求后，从数据库中读出关联该用户的状态信息，处理后再写回数据库。而网络游戏服务通常有更强的上下文状态，以及多个用户间更复杂的交互。如果采用相同的模式，数据库和业务处理模块间很容易出现瓶颈，这个瓶颈甚至不能通过增加一个内存 cache 层来完全解决。</p>
+<p>在 skynet 中，用服务 (service) 这个概念来表达某项具体业务，它包括了处理业务的逻辑以及关联的数据状态。使用 skynet 实现游戏服务器时，不建议把业务状态同步到数据库中，而是存放在服务的内存数据结构里。服务、连同服务处理业务的逻辑代码和业务关联的状态数据，都是常驻内存的。如果数据库是你架构的一部分，那么大多数情况下，它扮演的是一个数据备份的角色。你可以在状态改变时，把数据推到数据库保存，也可以定期写到数据库备份。业务处理时直接使用服务内的内存数据结构。</p>
+<p>由于 skynet 服务并非独立进程，所以服务间的通讯也可以被实现的高效的多。另一方面，由于这些服务同时存在于同一个 skynet 进程下，我们可以认为它们同生共死。在编写服务间协作的代码时，不用刻意考虑对方是否还活着、通讯是否可靠的问题。大多数 skynet 服务使用 lua 编写，lua 的虚拟机帮助我们隔离了服务。虽然 skynet 的基础框架设计时并没有限制服务的实现形式，理论上可以用其它语言实现 skynet 服务，但作为刚接触 skynet 的开发者，可以忽略这些细节，仅使用 Lua 做开发。</p>
+<p>简单说，可以把 skynet 理解为一个简单的操作系统，它可以用来调度数千个 lua 虚拟机，让它们并行工作。每个 lua 虚拟机都可以接收处理其它虚拟机发送过来的消息，以及对其它虚拟机发送消息。每个 lua 虚拟机，可以看成 skynet 这个操作系统下的独立进程，你可以在 skynet 工作时启动新的进程、销毁不再使用的进程、还可以通过调试控制台监管它们。skynet 同时掌控了外部的网络数据输入，和定时器的管理；它会把这些转换为一致的（类似进程间的消息）消息输入给这些进程。</p>
+<p>例如：</p>
+<p>在网络游戏中，你可以为每个在线用户创建一个 lua 虚拟机（skynet 称之为 lua 服务），姑且把它称为 agent 。用户在不和其它用户交互而仅仅自娱自乐时，agent 完全可以满足要求。agent 在用户上线时，从数据库加载关联于它的所有数据到 lua vm 中，对用户的网络请求做出反应。当然你也可以让一个 lua 服务管理多个在线用户，每个用户是 lua 虚拟机内的一个对象。</p>
+<p>你还可以用独立的服务处理网络游戏中的副本（或是战场），处理玩家和玩家间，玩家协同对战 AI 的战斗。agent 会和副本服务通过消息进行交互，而不必让用户客户端直接与副本通讯。</p>
+<p>这些都是具体的游戏服务器架构设计，skynet 并没有要求你应该怎么做，甚至不会建议你该怎么做。一切等你设计时做出决断。</p>
+<h2 id="网络-Network"><a href="#网络-Network" class="headerlink" title="网络 Network"></a>网络 Network</h2><p>作为网络服务器框架，必然有封装好的网络层，对于 skynet 更是必不可少。由于 skynet 模拟了一个简单的操作系统，它最重要的工作就是调度数千个服务，如何让服务挂起时，尽量减少对系统的影响就是首要解决的问题。我们不建议你在 skynet 的服务中再使用任何直接和系统网络 api 打交道的模块，因为一旦这些模块被网络 IO 阻塞，影响的就不只是该服务本身，而是 skynet 里的工作线程了。skynet 会被配置成固定数量的工作线程，工作线程数通常和系统物理核心数量相关，而 skynet 所管理的服务数量则是动态的、远超过工作线程数量。skynet 内置的网络层可以和它的服务调度器协同工作，使用 skynet 提供的网络 API 就可以在网络 IO 阻塞时，完全释放出 CPU 处理能力。</p>
+<p>skynet 有监听 TCP 连接，对外建立 TCP 连接，收发 UDP 数据包的能力。你只需要一行代码就可以监听一个端口，接收外部 TCP 连接。当有新的连接建立时，通过一个回调函数可以获得这个新连接的句柄。之后，和普通的网络应用程序一样，你可以读写这个句柄。与你写过的不同网络应用程序不太一样的是，你还可以把这个句柄转交给 skynet 中的其它服务去处理，以获得并行能力。这有点像传统 posix 系统中，接收一个新连接后，fork 一个子进程继承这个句柄来处理的模式。但不一样的是，skynet 的服务没有父子关系。 Skynet provides the functionalities of listening TCP connection, creating TCP connection, send&#x2F;recv UDP packages. You only need one line of code to start listening on a port, accepting TCP connection. When there is a new connection, you can use a callback function to gain the handler of the new connection. After that, you can read&#x2F;write this handler just like other network applications. The difference compared to other network applications is that you can also pass this handler to other Service of Skynet in order to achieve paralleling processing. This is similar to the traditional POSIX system when a new connection is coming, a child process will be forked to inherit this handler to do the real work. The difference here is that there is no inheritance between Services.</p>
+<p>我们通常建议使用一个网关服务，专门监听端口，接受新连接。在用户身份确定后，再把真正的业务数据转交给特定的服务来处理。同时，网关还会负责按约定好的协议，把 TCP 连接上的数据流切分成一个个的包，而不需要业务处理服务来分割 TCP 数据流。业务处理的服务不必直接面对 socket 句柄，而由 skynet 正常的内部消息驱动即可。这样的网关服务，skynet 在发布版里就提供了一个，但它只是一个可选模块，你大可以不用它，或自己编写一个类似的服务以更符合你的项目需求。</p>
+<p>另外， skynet 的 websocket 支持目前处于实验阶段，需要切换到 websocket 分支。</p>
+<h2 id="客户端-Client"><a href="#客户端-Client" class="headerlink" title="客户端 Client"></a>客户端 Client</h2><p>skynet 完全不在意如何实现客户端应用，基于 skynet 的服务器，可以用浏览器做客户端（基于 http 或 websocket 协议 通讯），也可以自己用 C &#x2F; C++ &#x2F; Flash &#x2F; Unity3D 等等编写客户端。你可以选用 TCP socket 建立长连接通讯，也可以使用基于 http 协议的短连接，或者基于 UDP 来通讯。这都可以自由选择，skynet 没有提供直接相关的模块，都需要你自己实现。</p>
+<p>在 skynet 发布版的示例中，实现了一个用 C + Lua 编写的最简单的客户端 demo ，仅供参考。它基于 TCP 长连接，基础协议是用 2 字节大端字来表示每个数据包的长度，skynet 的网关服务根据这个包长度切割成业务逻辑数据包，分发给对应的内部服务处理。如果你想使用 skynet 内置的网关模块，只需要遵循这个基础的分包约定即可。</p>
+<p>对于每个业务包的编码协议约定，在这个 demo 中，使用了一种叫 sproto 自定义协议，它包含在 skynet 的发布版中。demo 演示了 sproto 如何打包数据，解包数据。但是否使用 sproto 协议，skynet 没有任何约束。你也可以使用 json 或是 google protocol buffers 等，只要你知道怎样将对应的协议解析模块自己集成进 Lua 即可。建议在网关，或是使用一个独立服务，将网络消息解包翻译成 skynet 内部消息再转发给对应服务，内部服务不必关心网络层如何传输这些消息的。</p>
+<h2 id="服务-Service"><a href="#服务-Service" class="headerlink" title="服务 Service"></a>服务 Service</h2><p>skynet 的服务使用 lua 5.4 编写。只需要把符合规范的 .lua 文件放在 skynet 可以找到的路径下就可以由其它服务启动。在 skynet 的配置文件里配置了服务查询路径，<strong>以及需要启动的第一个服务</strong>，而其它服务都是由该服务直接或间接启动的。每个服务拥有一个唯一的 32bit id ，skynet 把这个 id 称为服务地址，由 skynet 框架分配。即使服务退出，该地址也会尽可能长时间的保留，以避免当消息发向一个正准备退出的服务后，新启动的服务顶替该地址，而导致消息发向了错误的实体。</p>
+<p>每个服务分三个运行阶段：</p>
+<ul>
+<li><p>首先是服务加载阶段，当服务的源文件被加载时，就会按 lua 的运行规则被执行到。这个阶段不可以调用任何有可能阻塞住该服务的 skynet api 。因为，在这个阶段中，和服务配套的 skynet 设置并没有初始化完毕。</p>
+</li>
+<li><p>然后是服务初始化阶段，由 skynet.start 这个 api 注册的初始化函数执行。这个初始化函数理论上可以调用任何 skynet api 了，但启动该服务的 skynet.newservice 这个 api 会一直等待到初始化函数结束才会返回。</p>
+</li>
+<li><p>最后是服务工作阶段，当你在初始化阶段注册了消息处理函数的话，只要有消息输入，就会触发注册的消息处理函数。这些消息都是 skynet 内部消息，外部的网络数据，定时器也会通过内部消息的形式表达出来。</p>
+</li>
+</ul>
+<p>从 skynet 底层框架来看，每个服务就是一个消息处理器。但在应用层看来并非如此。它是利用 lua 的 coroutine 工作的。当你的服务向另一个服务发送一个请求（即一个带 session 的消息）后，可以认为当前的消息已经处理完毕，服务会被 skynet 挂起。待对应服务收到请求并做出回应（发送一个回应类型的消息）后，服务会找到挂起的 coroutine ，把回应信息传入，延续之前未完的业务流程。从使用者角度看，更像是一个独立线程在处理这个业务流程，每个业务流程有自己独立的上下文，而不像 nodejs 等其它框架中使用的 callback 模式。</p>
+<p>和 erlang 不同，一个 skynet 服务在某个业务流程被挂起后，即使回应消息尚未收到，它还是可以处理其他的消息的。所以同一个 skynet 服务可以同时拥有多条业务执行线。所以，你尽可以让同一个 skynet 服务处理很多消息，它们会看起来并行，和真正分拆到不同的服务中处理的区别是，这些处理流程永远不会真正的并行，它们只是在轮流工作。一段业务会一直运行到下一个 IO 阻塞点，然后切换到下一段逻辑。你可以利用这一点，让多条业务线在处理时共享同一组数据，这些数据在同一个 lua 虚拟机下时，读写起来都比通过消息交换要廉价的多。</p>
+<p>互有利弊的是，一旦你当前业务处理线挂起，等回应到来继续运行时，内部状态很可能被同期其它业务处理逻辑所改变，请务必小心。在 skynet api 文档中，已经注明了哪些 API 可能导致阻塞。两次阻塞 API 调用之间，运行过程是原子的，利用这个特性，会比传统多线程程序更容易编写。</p>
+<p>在同一服务内还可以有多个用户线程，这些线程可以用 skynet.fork 传入一个函数启动，也可以利用 skynet 的定时器的回调函数启动。上面提到的消息处理函数其实也是一条独立的用户线程（可以理解为：响应任何一个请求，都启动了一条新的独立用户线程）。这些并不像真正操作系统的线程那样，可以利用多个核心并行运行。同一服务内的不同用户线程永远是轮流获得执行权的，每个线程都会需要一个阻塞操作而挂起让出控制权，也会在其它线程让出控制权后再延续运行。</p>
+<p>如果一条用户线程永远不调用阻塞 API 让出控制权，那么它将永远占据系统工作线程。skynet 并不是一个抢占式调度器，没有时间片的设计，不会因为一个工作线工作时间过长而强制挂起它。所以需要开发者自己小心，不要陷入死循环。不过，skynet 框架也做了一些监控工作，会在某个服务内的某个工作线程占据了太长时间后，以 log 的形式报告。提醒开发者修正导致死循环的 bug 。对于 lua 代码中的死循环 bug （而不是由 lua 调用的 C 模块导致的死循环）还可以由框架强制中断。具体知识可以在开发中遇到后逐步了解。</p>
+<h2 id="消息-Message"><a href="#消息-Message" class="headerlink" title="消息 Message"></a>消息 Message</h2><p>每条 skynet 消息由 6 部分构成：消息类型、session 、发起服务地址 、接收服务地址 、消息 C 指针、消息长度。</p>
+<p>每个 skynet 服务都可以处理多类消息。在 skynet 中，是用 type 这个词来区分消息的。但与其说消息类型不同，不如说更接近网络端口 (port) 这个概念。每个 skynet 服务都支持 255 个不同的 port 。消息分发函数可以根据不同的 port 来为不同的消息定制不同的消息处理流程。</p>
+<p>skynet 预定义了一组消息类型，需要开发者关心的有：回应消息、网络消息、调试消息、文本消息、Lua 消息、错误。</p>
+<ul>
+<li><p>回应消息通常不需要特别处理，它由 skynet 基础库管理，用来调度服务内的 coroutine 。当你对外发起一个请求后，对方会回应一个消息，这个消息的类型就是回应消息。发起请求方收到回应消息，会根据消息的 session 来找到之前对应的请求所在的 coroutine ，并延续它。</p>
+</li>
+<li><p>网络消息也不必直接处理它，skynet 提供了 socket 封装库，封装管理这类消息，改由一组更友好的 socket api 方便使用。</p>
+</li>
+<li><p>调试消息已经被默认的 skynet 基础库处理了。它使得所有 skynet 服务都提供有一些共同的能力。比如反馈自身虚拟机所占用的内存情况、当前被挂起的任务数量、动态注入一段 lua 代码帮助调试、等等。是的、skynet 并不是通过外框架直接控制每个 lua 虚拟机，调试控制台只是通过向对应的服务发送调试消息，服务自身配合运行才得以反馈自身的状态。</p>
+</li>
+<li><p>真正的业务逻辑是由文本类消息和 Lua 类消息驱动的。它们的区别仅在于消息的编码形式不同，文本类消息主要方便一些底层的，直接使用 C 编写的服务处理，它就是简单字节串；而 Lua 类消息则可以序列化 Lua 的复杂数据类型。大多数情况下，我们都只使用 lua 类消息。</p>
+</li>
+</ul>
+<p>接管某类消息需要在服务的初始化过程中注册该消息的序列化及反序列化函数，以及消息回调函数。lua 类的序列化函数已经由 skynet 基础库默认注册，它们会把框架传入的消息 C 指针及长度信息转换为一组 Lua 数据。编写业务的开发者只需要注册消息回调函数即可。这个回调函数会接收到别的服务发过来的一系列 Lua 值，以及发送服务的地址和该请求的 session 号（一个 31bit 正整数）。一般我们不必关心地址和 session ，因为 skynet.ret 和 skynet.response 这两个 api 可以帮助你正确的将回应消息发还给请求者。另外，skynet 还约定，如果一个请求不需要回应（单向推送），就置 session 为 0 。</p>
+<p>skynet 在应用层还约定了错误类消息，不需要开发者主动处理。这类消息一般没有实际内容，只有发送源地址和 session 号。它专门用来表示某个请求发生了异常，或是某个服务即将或已经退出，无法完成请求。这类错误消息或由 skynet 基础库转换为 lua 层的 error ，抛给调用者。你可以将其理解为 RPC 调用的异常。</p>
+<h2 id="外部服务-External-Service"><a href="#外部服务-External-Service" class="headerlink" title="外部服务 External Service"></a>外部服务 External Service</h2><p>我们应尽量可能的在同一个 skynet 进程内完成所有的业务逻辑，这样可以最大化利用系统的硬件能力，但有时又必不可少的使用一些外部进程。例如，你可以将 SQLite 封装为一个服务供其它内部服务使用；但你也可能希望使用独立的 MySQL 或是 Redis MongoDB 等独立的外部数据库服务。</p>
+<p>skynet 发布版中提供了 mysql redis mongo 的驱动模块，省去了开发者自行封装的烦恼。这些驱动模块都是基于 skynet 的 socket API 实现的，可以很好的协同工作。如果你希望使用别的外部数据库，则需要自行封装。需要注意的是，大多数外部数据库的默认驱动模块都内含了网络部分，它们直接使用了系统的 socket api ，和 skynet 的网络层有一定的性能冲突。一个比较简单的兼容方案是额外再自定义一个中间进程，一边使用外部数据库的默认驱动模块，另一边用 skynet 提供的 socket channel 和 skynet 交互。</p>
+<p>你还可能需要让 skynet 提供 http 协议的 web 服务，或是使用 http 协议和外部 web 服务对接。skynet 自带了 http 模块，实现一个简单的 http 服务器不会比用其它框架开发更复杂。即使用 skynet 做一个 web 服务器也可以轻松获得高性能。但是，出于简化编译依赖的想法，skynet 的默认编译脚本并没有将 openssl 链接进去，而 https 支持需要它。如果需要支持 https ，需要额外设置 <code>TLS_MODULE=ltls</code>。另外，你也可以用 nginx 制作一个 https 反向代理服务器，而不必直接使用 skynet 的 https 模块。</p>
+<p>不建议把连接管理的网关实现成一个外部服务，因为 skynet 在管理大量 TCP 连接这方面已经做的很好了。放在 skynet 内部做可以减少大量不必要的进程间数据传输。</p>
+<h2 id="集群-Cluster"><a href="#集群-Cluster" class="headerlink" title="集群 Cluster"></a>集群 Cluster</h2><p>skynet 在最开始设计的时候，是希望把集群管理做成底层特性的。所以，每个服务的地址预留了 8bit 作为集群节点编号。最多 255 台机器可以组成一个集群，不同节点下的服务可以像同一节点进程内部那样自由的传递消息。</p>
+<p>随着 skynet 的演进和实际项目的实践，发现其实把节点间的消息传播透明化，抹平节点间和节点进程内的消息传播的区别并不是一个好主意。在同一进程内，我们可以认为服务以及服务间的通讯都是可靠的，如果自身工作所处的硬件环境正常，那么对方也一定是正常的。而当服务部署在不同进程（不同机器）上时，不可能保证完全可靠。另外一些在同一进程内可以共享访问的内存（skynet 提供的共享数据模块就基于此）也变得不可共享，这些差异无法完全被开发者忽视。</p>
+<p>所以，虽然 skynet 可以被配置为多节点模式，但不推荐使用。</p>
+<p>目前推荐把不同的 skynet 服务当作外部服务来对待，skynet 发布版中提供了 cluster 模块来简化开发。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"></a><div class="post-copyright__author_name">Barbecue</div><div class="post-copyright__author_desc">今天学习了吗</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://barbecue-g.github.io/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://barbecue-g.github.io/')">Skynet概述</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://barbecue-g.github.io/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Skynet概述&amp;url=https://barbecue-g.github.io/&amp;pic=https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">此文章版权归Barbeuce所有，如有转载，请注明明来自原作者</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/Skynet/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>Skynet<span class="categoryesPageCount">1</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Skynet/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Skynet<span class="tagsPageCount">1</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/FrameWork/Skynet/%E7%BD%91%E7%BB%9C/Skynet_%E5%86%99%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" onerror="onerror=null;src='/img/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Skynet_写网络数据</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#skynet%E6%A6%82%E8%BF%B0"><span class="toc-text">skynet概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6-Framework"><span class="toc-text">框架 Framework</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C-Network"><span class="toc-text">网络 Network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF-Client"><span class="toc-text">客户端 Client</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1-Service"><span class="toc-text">服务 Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF-Message"><span class="toc-text">消息 Message</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%9C%8D%E5%8A%A1-External-Service"><span class="toc-text">外部服务 External Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4-Cluster"><span class="toc-text">集群 Cluster</span></a></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2024 - 2025 By <a class="footer-bar-link" href="/" title="Barbecue" target="_blank">Barbecue</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="赣ICP备-2024039887号">赣ICP备-2024039887号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">10</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">CPP规范</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh-google-styleguide.readthedocs.io/en/stable/contents.html" title="Google"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/Google-icon.jpg?raw=true" alt="Google"/><span class="back-menu-item-text">Google</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">推荐网址</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem; color: rgb(174, 104, 101);">C<sup>15</sup></a><a href="/tags/Git/" style="font-size: 0.88rem; color: rgb(30, 41, 7);">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem; color: rgb(44, 48, 18);">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem; color: rgb(139, 23, 20);">MySQL<sup>2</sup></a><a href="/tags/PicGo/" style="font-size: 0.88rem; color: rgb(18, 66, 77);">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 0.88rem; color: rgb(147, 5, 22);">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 0.88rem; color: rgb(156, 103, 39);">Redis<sup>1</sup></a><a href="/tags/Skynet/" style="font-size: 0.88rem; color: rgb(88, 88, 127); font-weight: 500; color: var(--anzhiyu-lighttext)">Skynet<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem; color: rgb(199, 97, 70);">正则表达式<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2024 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Barbecue 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+      appKey: 'R50Ps7cdwVouTiBALXFKiUzI',
+      avatar: '“identicon”',
+      serverURLs: '',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=“identicon”'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://hnelsWgo.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+        "X-LC-Key": 'R50Ps7cdwVouTiBALXFKiUzI',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script id="canvas_nest" defer="defer" color="0,190,255" opacity="1" zIndex="-1" count="64" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

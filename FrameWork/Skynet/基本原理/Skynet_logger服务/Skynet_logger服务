@@ -1,0 +1,684 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Skynet_logger服务 | Barbecue</title><meta name="keywords" content="Skynet_logger服务"><meta name="author" content="Barbecue"><meta name="copyright" content="Barbecue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Skynet_logger服务"><meta name="application-name" content="Skynet_logger服务"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Skynet_logger服务"><meta property="og:url" content="https://barbecue-g.github.io/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_logger%E6%9C%8D%E5%8A%A1/Skynet_logger%E6%9C%8D%E5%8A%A1"><meta property="og:site_name" content="Barbecue"><meta property="og:description" content="Skynet_logger服务日志服务使用举例：默认是写到stdout 1skynet.error(&amp;quot;hello world&amp;quot;)  写日志主要分三步：  logger日志服务创建 把日志转变成 skynet_message 然后push到日志服务队列 日志服务处理消息时把日志提取"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"><meta property="article:author" content="Barbecue"><meta property="article:tag" content="Barbecue"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"><meta name="description" content="Skynet_logger服务日志服务使用举例：默认是写到stdout 1skynet.error(&amp;quot;hello world&amp;quot;)  写日志主要分三步：  logger日志服务创建 把日志转变成 skynet_message 然后push到日志服务队列 日志服务处理消息时把日志提取"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"><link rel="canonical" href="https://barbecue-g.github.io/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_logger%E6%9C%8D%E5%8A%A1/Skynet_logger%E6%9C%8D%E5%8A%A1"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Barbecue","link":"链接: ","source":"来源: Barbecue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Barbecue',
+  title: 'Skynet_logger服务',
+  postAI: '',
+  pageFillDescription: 'Skynet_logger服务, logger服务创建, 模块, push消息到日志服务队列, logger服务处理消息, tips服务日志服务使用举例默认是写到写日志主要分三步日志服务创建把日志转变成然后到日志服务队列日志服务处理消息时把日志提取出来写入文件或者标准输出服务创建读取配置中的日志服务主要展示配置的获取保存日志的文件名字默认日志模块生成的目的主要是读取配置文件中的配置项链接库执行配置文件把配置文件里面的配置项都读出来保存日志的文件名字默认日志模块是即所代表的模块通过创建日志服务主要展示的创建创建日志服务参数分别是给日志服务绑定一个名字通过名字获取模块并创建一个服务主要展示服务的创建通过名字获取模块模块实际上就是一些函数集合在一起用来专门实现某种功能使用模块的实例化函数实例化一个对象就是创建了一个实例使用某个模块的函数处理某个实例化对象使用完后释放对应实例获取模块根据模块创建对应实例内存分配模块模块的实例初始化引用数为应该先设置为以避免得到一个未初始化的不设置为的话是一个随机值如果注册没有返回前回收开始执行回收会从里面拿导致拿到一个随机值当每个服务分配一个唯一的创建一个私有队列函数可能使用了所以最后必须初始化服务总数加一个减少引用一次服务队列加入全局队列模块在初始化读取配置信息时有如下代码默认路径下的动态链接库有常用来创建模块实例在目录下有以为后缀的文件就对应一个模块假设某个模块第一次被查询获取模块的具体步骤是根据名字读取指定路径下的文件把文件里面的函数提取出来作为一个模块缓存起来返回对应模块创建模块的实例对实例进行初始化查询说明不是第一次查询因为已经缓存了则直接返回如果是第一次查询某个模块是第一次被查询可以认为是一个模块集合里面保存了所有模块是为新添加的模块分配一个位置打开对应模块对应的文件设置对应模块的名字设置对应模块对应的动态库用动态库里面的函数填充模块是返回结果即模块这里获取的是对应的模块由代码接下来是实例化模块模块里面的函数是从提取出来而文件是下面这个文件编译出来的模块里面的函数都是在里定义的所以实例化模块就是调用下面函数最终就是内存分配了一个由代码在实例化模块后创建了一个每一个服务都会分配一个每个服务的队列也会保存这个就是给去注册服务并且获取分配的注册一个服务返回为这个服务分配的的高八位是留给的所以用来查找槽位是靠剩下的位下一次分配就从这个值开始计算按位或运算等价于两个二进制位中只要有一个为结果位即为返回值由两部分合并而成下面这段代码是扩容把老槽位里面的服务数据转移到合适的新的槽位中返回的是位的主要是两部分组成高位的剩余位剩余的位才可以认为是所在的槽位唯一服务标识作用每个服务在启动时会被分配一个全局唯一的位无符号整数即使服务退出其也不会被重复使用确保系统内服务标识的持久性结构高位表示用于标识集群中的不同节点最多支持个节点低位服务在节点内的唯一索引单个节点最多支持约万个服务服务实例管理存储结构通过结构管理所有服务实例的上下文包含以下组件数组动态扩容的数组存储服务实例指针初始大小为满时以倍扩容类似的实现哈希映射通过取模运算映射到数组的索引快速定位服务实例生命周期注册为新服务分配并插入数组回收服务退出时通过回收并清空中的指针跨节点通信集群支持的高位允许跨节点通信例如节点的服务可通过和低位组合定位节点的服务实现分布式消息传递消息路由发送消息时目标会被解析为和本地索引确保消息正确路由至目标节点和服务名称服务名称绑定通过可为注册易读名称如名称存储在按字典序排序的数组中通过二分查找快速定位动态管理名称与的绑定支持动态增删避免上层逻辑依赖易变的数值消息队列关联专属队列每个服务拥有一个次级消息队列用于在全局队列中标识该队列的归属调度机制工作线程从全局队列中获取次级队列时通过找到对应的并调用其回调函数处理消息性能优化调度机制工作线程从全局队列中获取次级队列时通过找到对应的并调用其回调函数处理消息内存效率动态扩容的和数组减少内存碎片同时避免预分配过多资源由代码接下来是创建一个队列当创建队列时总是在服务创建和服务初始化之间设置标志以避免将其推送到全局队列如果服务初始化成功将调用将其推送到全局队列记录过载状态时的负载是多少过载的警戒线由代码对模块的实例进行初始化由代码在找对应的函数对模块的实例的各个成员进行填充判断参数文件是否存在这里的是打开的系统文件描述符不要和服务的搞混了申请文件名所需字符内存表示在释放的时候需要关闭文件描述符默认情况下是走这里没有配置日志写入哪个文件就写入标准输出设置模块实例和回调函数走到这里表示已经出现错误了注意默认情况下日志服务是把日志写到标准输出的由代码设置模块实例和回调函数调用函数就是实例注意绑定了日志服务的回调函数当日志服务队列里面有消息需要处理时就交给这个回调函数去做由代码接下来调用把之前创建的服务队列加入到全局队列要求必须是独立的查看代码到这里通过创建日志服务的代码总算调用完成了实际上在层调用写日志的基本原理是首先把要写入的字符串信息包装成一个到日志服务的队列之后工作线程检查到日志队列中有消息则取出消息并调用日志服务的回调函数处理通过基本概况里面介绍就知道日志服务和服务创建后才启动了多种线程也就是说如果当前日志服务里面有消息也是不会输出的因为还没有工作线程来驱动日志服务干活消息到日志服务队列服务已经有了可以调用写日志在中定义如下这里实际上是一个库全局查找一下即可知道这个库里面都往里面塞了什么函数在中写下可以认为就是调用了层函数最后返回了一个表这次关注的给创建一个表拿到注册索引从注册表中拿到了把中的函数填充到表中并共享上值把中的函数填充到表中但没有共享的上值以上代码主要是把函数塞进返回的表中所以调用实际上是调用函数获取以上代码最后调用了里面有个参数是表示的是层调用时所在的服务实际上服务是分为不同类型的主要关注的服务是类型源服务分配内存主要用来设置的属性找到默认的日志服务分配内存构建一个设置就是高八位表示消息类型是把消息到服务以上代码主要是把中的拷贝一份然后包装成到服务对应的队列中由代码接下来调用把消息到服务里面每个和服务一一对应这里是拿到日志服务将消息到日志服务的队列中以上代码往服务中消息主要是通过服务的得到服务然后把消息加入到服务对应的队列中调用代码没有在全局队列中使其加入服务处理消息处理队列消息已经说明了服务是怎么处理消息的最后消息的处理是交给的函数处理的也就是说服务的消息最后交给处理实例这里表示打开一个新的日志文件如果指定了日志文件则加点时间信息默认写日志以服务开头注意消息到队列时消息类型指定为实际上就是直接写入标准输出这里讨论的日志功能的服务是默认的日志服务实际上也可以配置为一个服务这样当调用时会发送一个消息给一个服务对比默认创建日志服务代码如下这里创建一个服务这个日志服务是代表的默认日志服务参数分别是实际上可以改成这里创建一个服务这个日志服务是代表的服务参数分别是表示服务对应的脚本文件即这两个配置项决定了默认的日志功能服务到底是什么',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-22 21:33:14',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">CPP规范</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh-google-styleguide.readthedocs.io/en/stable/contents.html" title="Google"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/Google-icon.jpg?raw=true" alt="Google"/><span class="back-menu-item-text">Google</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">推荐网址</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Barbecue</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C<sup>15</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>2</sup></a><a href="/tags/Nginx/" style="font-size: 1.05rem;">Nginx<sup>1</sup></a><a href="/tags/PicGo/" style="font-size: 1.05rem;">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 1.05rem;">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 1.05rem;">Redis<sup>1</sup></a><a href="/tags/Skynet/" style="font-size: 1.05rem;">Skynet<sup>1</sup></a><a href="/tags/Skynet-logger%E6%9C%8D%E5%8A%A1/" style="font-size: 1.05rem;">Skynet_logger服务<sup>2</sup></a><a href="/tags/Skynet-snlua%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%88%9B%E5%BB%BA/" style="font-size: 1.05rem;">Skynet_snlua服务的创建<sup>2</sup></a><a href="/tags/Skynet-%E6%9C%8D%E5%8A%A1%E9%97%B4%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/" style="font-size: 1.05rem;">Skynet_服务间请求和响应<sup>4</sup></a><a href="/tags/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" style="font-size: 1.05rem;">基本原理<sup>2</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.05rem;">正则表达式<sup>1</sup></a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.05rem;">网络<sup>7</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">18</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Skynet-logger%E6%9C%8D%E5%8A%A1/" itemprop="url">Skynet_logger服务</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Skynet-logger%E6%9C%8D%E5%8A%A1/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Skynet_logger服务</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Skynet_logger服务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-10-31T08:42:48.000Z" title="发表于 2024-10-31 16:42:48">2024-10-31</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-06-22T13:33:14.000Z" title="更新于 2025-06-22 21:33:14">2025-06-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">4.5k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为上海"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>上海</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://barbecue-g.github.io/"><header><a class="post-meta-categories" href="/categories/Skynet-logger%E6%9C%8D%E5%8A%A1/" itemprop="url">Skynet_logger服务</a><a href="/tags/Skynet-logger%E6%9C%8D%E5%8A%A1/" tabindex="-1" itemprop="url">Skynet_logger服务</a><h1 id="CrawlerTitle" itemprop="name headline">Skynet_logger服务</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Barbecue</span><time itemprop="dateCreated datePublished" datetime="2024-10-31T08:42:48.000Z" title="发表于 2024-10-31 16:42:48">2024-10-31</time><time itemprop="dateCreated datePublished" datetime="2025-06-22T13:33:14.000Z" title="更新于 2025-06-22 21:33:14">2025-06-22</time></header><h1 id="Skynet-logger服务"><a href="#Skynet-logger服务" class="headerlink" title="Skynet_logger服务"></a>Skynet_logger服务</h1><p>日志服务使用举例：默认是写到<code>stdout</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skynet.<span class="built_in">error</span>(<span class="string">&quot;hello world&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>写日志主要分三步：</p>
+<ol>
+<li>logger日志服务创建</li>
+<li>把日志转变成 <code>skynet_message</code> 然后push到日志服务队列</li>
+<li>日志服务处理消息时把日志提取出来，写入文件或者标准输出。</li>
+</ol>
+<h2 id="logger服务创建"><a href="#logger服务创建" class="headerlink" title="logger服务创建"></a>logger服务创建</h2><p> <code>skynet_main</code> ：读取配置中的日志服务（主要展示<code>logger</code>配置的获取）</p>
+<ol>
+<li><code>config.logger</code> ：保存日志的文件名字</li>
+<li><code>config.logservice</code> ：默认日志模块</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_config</span> <span class="title">config</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">lua_State</span> *<span class="title">L</span> =</span> luaL_newstate();<span class="comment">//生成luastate的目的主要是读取配置文件中的配置项</span></span><br><span class="line">	luaL_openlibs(L);	<span class="comment">// 链接 lua 库</span></span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> err =  luaL_loadbufferx(L, load_config, <span class="built_in">strlen</span>(load_config), <span class="string">&quot;=[skynet config]&quot;</span>, <span class="string">&quot;t&quot;</span>);</span><br><span class="line">	assert(err == LUA_OK);</span><br><span class="line">	lua_pushstring(L, config_file);</span><br><span class="line"></span><br><span class="line">	err = lua_pcall(L, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>);<span class="comment">//执行配置文件</span></span><br><span class="line"></span><br><span class="line">	_init_env(L);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//把配置文件里面的配置项 都读出来</span></span><br><span class="line">	config.logger = optstring(<span class="string">&quot;logger&quot;</span>, <span class="literal">NULL</span>);<span class="comment">//保存日志的文件名字</span></span><br><span class="line">	config.logservice = optstring(<span class="string">&quot;logservice&quot;</span>, <span class="string">&quot;logger&quot;</span>);<span class="comment">//默认日志模块是 logger 即 service_logger.c 所代表的模块</span></span><br><span class="line">	config.profile = optboolean(<span class="string">&quot;profile&quot;</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	lua_close(L);</span><br><span class="line"></span><br><span class="line">	skynet_start(&amp;config);<span class="comment">//next</span></span><br><span class="line">	skynet_globalexit();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <code>skynet_start</code> ：通过 <code>skynet_context_new</code> 创建<code>logger</code>日志服务（主要展示<code>logger</code> 的创建）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> </span><br><span class="line"><span class="title function_">skynet_start</span><span class="params">(<span class="keyword">struct</span> skynet_config * config)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	skynet_harbor_init(config-&gt;harbor);</span><br><span class="line">	skynet_handle_init(config-&gt;harbor);</span><br><span class="line">	skynet_mq_init();</span><br><span class="line">	skynet_module_init(config-&gt;module_path);</span><br><span class="line">	skynet_timer_init();</span><br><span class="line">	skynet_socket_init();</span><br><span class="line"></span><br><span class="line">  <span class="comment">//创建日志服务</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> *<span class="title">ctx</span> =</span> skynet_context_new(config-&gt;logservice, config-&gt;logger);<span class="comment">//参数分别是 &quot;logger&quot; NULL</span></span><br><span class="line">	skynet_handle_namehandle(skynet_context_handle(ctx), <span class="string">&quot;logger&quot;</span>);	<span class="comment">//给日志服务绑定一个名字</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <code>skynet_context_new</code>  ：通过名字获取模块并创建一个服务（主要展示服务的创建）</p>
+<ol>
+<li>通过名字获取模块 <code>m</code> (模块实际上就是一些函数集合在一起,用来专门实现某种功能)</li>
+<li>使用模块的实例化函数,实例化一个对象（eg： <code>inst = m.create()</code> 就是创建了一个实例）</li>
+<li>使用某个模块的函数处理某个实例化对象（eg： <code>m.init(inst,param)</code>、 <code>m.xxx(inst,param)</code> 、 <code>m.yyy(inst,param)</code> ）</li>
+<li>使用完后，释放对应实例（eg： <code>m.relaase(inst)</code> ）</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> skynet_context * </span><br><span class="line"><span class="title function_">skynet_context_new</span><span class="params">(<span class="type">const</span> <span class="type">char</span> * name, <span class="type">const</span> <span class="type">char</span> *param)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_module</span> * <span class="title">mod</span> =</span> skynet_module_query(name);<span class="comment">//获取模块</span></span><br><span class="line"></span><br><span class="line">	<span class="type">void</span> *inst = skynet_module_instance_create(mod);<span class="comment">//根据模块创建对应实例</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> * <span class="title">ctx</span> =</span> skynet_malloc(<span class="keyword">sizeof</span>(*ctx));<span class="comment">//内存分配</span></span><br><span class="line">	CHECKCALLING_INIT(ctx)</span><br><span class="line"></span><br><span class="line">	ctx-&gt;mod = mod;<span class="comment">//模块</span></span><br><span class="line">	ctx-&gt;instance = inst;<span class="comment">//模块的实例</span></span><br><span class="line">	ATOM_INIT(&amp;ctx-&gt;ref , <span class="number">2</span>);<span class="comment">//初始化引用数为 2</span></span><br><span class="line">	ctx-&gt;cb = <span class="literal">NULL</span>;</span><br><span class="line">	ctx-&gt;cb_ud = <span class="literal">NULL</span>;</span><br><span class="line">	ctx-&gt;session_id = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">  <span class="comment">// 应该先设置为0，以避免 skynet_handle_retireall 得到一个未初始化的handle。不设置为的话是一个随机值。如果注册没有返回前，回收开始执行，回收会从ctx里面拿handle，导致拿到一个随机值当handle</span></span><br><span class="line">	ctx-&gt;handle = <span class="number">0</span>;	</span><br><span class="line">	ctx-&gt;handle = skynet_handle_register(ctx);	<span class="comment">//每个服务分配一个唯一的handle</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">message_queue</span> * <span class="title">queue</span> =</span> ctx-&gt;<span class="built_in">queue</span> = skynet_mq_create(ctx-&gt;handle);	<span class="comment">//创建一个私有队列</span></span><br><span class="line">  <span class="comment">// init 函数可能使用了ctx-&gt;handle，所以最后必须初始化</span></span><br><span class="line">	context_inc();	<span class="comment">//服务总数加一个</span></span><br><span class="line"></span><br><span class="line">	CHECKCALLING_BEGIN(ctx)</span><br><span class="line">	<span class="type">int</span> r = skynet_module_instance_init(mod, inst, ctx, param);</span><br><span class="line">	CHECKCALLING_END(ctx)</span><br><span class="line">	<span class="keyword">if</span> (r == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> * <span class="title">ret</span> =</span> skynet_context_release(ctx);<span class="comment">//减少引用一次 </span></span><br><span class="line">		<span class="keyword">if</span> (ret) &#123;</span><br><span class="line">			ctx-&gt;init = <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		skynet_globalmq_push(<span class="built_in">queue</span>);<span class="comment">//服务队列加入全局队列</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p> <code>skynet_main</code> 在初始化读取配置信息时，有如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.module_path = optstring(<span class="string">&quot;cpath&quot;</span>,<span class="string">&quot;./cservice/?.so&quot;</span>);<span class="comment">//默认路径下的动态链接库有gate.so  harbor.so  logger.so  snlua.so 常用snlua.so来创建模块实例</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <code>config.module_path</code> 目录下有以so为后缀的文件。xxx.so就对应一个模块。假设某个模块第一次被查询。</p>
+<p> <code>skynet_module_query(name)</code> 获取模块的具体步骤是：根据名字读取指定路径下的 xxx.so文件。把文件里面的函数提取出来作为一个模块缓存起来，返回对应模块。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span></span><br><span class="line"><span class="title function_">open_sym</span><span class="params">(<span class="keyword">struct</span> skynet_module *mod)</span> &#123;</span><br><span class="line">	mod-&gt;create = get_api(mod, <span class="string">&quot;_create&quot;</span>);<span class="comment">//创建模块的实例</span></span><br><span class="line">	mod-&gt;init = get_api(mod, <span class="string">&quot;_init&quot;</span>);<span class="comment">//对实例进行初始化</span></span><br><span class="line">	mod-&gt;release = get_api(mod, <span class="string">&quot;_release&quot;</span>);</span><br><span class="line">	mod-&gt;signal = get_api(mod, <span class="string">&quot;_signal&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> mod-&gt;init == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> skynet_module * </span><br><span class="line"><span class="title function_">skynet_module_query</span><span class="params">(<span class="type">const</span> <span class="type">char</span> * name)</span> &#123;<span class="comment">//next</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_module</span> * <span class="title">result</span> =</span> _query(name);<span class="comment">//查询 </span></span><br><span class="line">	<span class="keyword">if</span> (result)<span class="comment">//说明不是第一次查询 因为已经缓存了 则直接返回</span></span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">	SPIN_LOCK(M)</span><br><span class="line"></span><br><span class="line">	result = _query(name); <span class="comment">// double check</span></span><br><span class="line">	<span class="comment">//如果是第一次查询</span></span><br><span class="line">	<span class="keyword">if</span> (result == <span class="literal">NULL</span> &amp;&amp; M-&gt;count &lt; MAX_MODULE_TYPE) &#123;<span class="comment">//某个模块是第一次被查询 </span></span><br><span class="line">		<span class="type">int</span> index = M-&gt;count;<span class="comment">//M可以认为是一个模块集合, 里面保存了所有模块 index是为新添加的模块分配一个位置</span></span><br><span class="line">		<span class="type">void</span> * dl = _try_open(M,name);<span class="comment">//打开对应模块对应的so文件</span></span><br><span class="line">		<span class="keyword">if</span> (dl) &#123;</span><br><span class="line">			M-&gt;m[index].name = name;<span class="comment">//设置对应模块的名字</span></span><br><span class="line">			M-&gt;m[index].module = dl;<span class="comment">//设置对应模块对应的动态库</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (open_sym(&amp;M-&gt;m[index]) == <span class="number">0</span>) &#123;<span class="comment">//用动态库里面的函数填充模块</span></span><br><span class="line">				M-&gt;m[index].name = skynet_strdup(name);</span><br><span class="line">				M-&gt;count ++;</span><br><span class="line">				result = &amp;M-&gt;m[index];<span class="comment">//result是返回结果 即模块</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	SPIN_UNLOCK(M)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里获取的是 <code>logger.so</code> 对应的模块。由 <code>skynet_context_new</code> 代码，接下来是实例化模块 <code>skynet_module_instance_create</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> * </span><br><span class="line"><span class="title function_">skynet_module_instance_create</span><span class="params">(<span class="keyword">struct</span> skynet_module *m)</span> &#123;<span class="comment">//next</span></span><br><span class="line">	<span class="keyword">if</span> (m-&gt;create) &#123;</span><br><span class="line">		<span class="keyword">return</span> m-&gt;create();<span class="comment">//next</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> (<span class="type">void</span> *)(<span class="type">intptr_t</span>)(~<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>logger 模块里面的 <code>create</code> 函数 是从 <code>logger.so</code> 提取出来，而 <code>logger.so</code> 文件是下面这个文件编译出来的。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_logger%E6%9C%8D%E5%8A%A1/Skynet_logger.png?raw=true" alt="Skynet_logger"></p>
+<p>logger 模块里面的函数都是在 <code>service_logger.c</code> 里定义的。所以实例化logger模块就是调用下面 <code>logger_create</code> 函数。最终就是内存分配了一个<code>struct logger</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">logger</span> &#123;</span></span><br><span class="line">	FILE * handle;</span><br><span class="line">	<span class="type">char</span> * filename;</span><br><span class="line">	<span class="type">uint32_t</span> starttime;</span><br><span class="line">	<span class="type">int</span> close;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> logger *</span><br><span class="line"><span class="title function_">logger_create</span><span class="params">(<span class="type">void</span>)</span> &#123;<span class="comment">//next</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">logger</span> * <span class="title">inst</span> =</span> skynet_malloc(<span class="keyword">sizeof</span>(*inst));</span><br><span class="line">	inst-&gt;handle = <span class="literal">NULL</span>;</span><br><span class="line">	inst-&gt;close = <span class="number">0</span>;</span><br><span class="line">	inst-&gt;filename = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> inst;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由 <code>skynet_context_new</code> 代码，在实例化模块后, 创建了一个 <code>skynet_context</code> 。每一个服务都会分配一个 <code>handle</code> ，每个服务的队列也会保存这个 <code>handle</code> 。 <code>skynet_handle_register</code>  就是给去注册服务并且获取分配的 <code>handle</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint32_t</span><span class="comment">//next</span></span><br><span class="line">skynet_handle_register(<span class="keyword">struct</span> skynet_context *ctx) &#123;<span class="comment">//注册一个服务 返回为这个服务分配的handle</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">handle_storage</span> *<span class="title">s</span> =</span> H;</span><br><span class="line"></span><br><span class="line">	rwlock_wlock(&amp;s-&gt;lock);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (;;) &#123;</span><br><span class="line">		<span class="type">int</span> i;</span><br><span class="line">		<span class="type">uint32_t</span> handle = s-&gt;handle_index;</span><br><span class="line">		<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;s-&gt;slot_size;i++,handle++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (handle &gt; HANDLE_MASK) &#123;<span class="comment">//handle的高八位是留给harbor的 所以handle用来查找槽位是靠剩下的24位</span></span><br><span class="line">				<span class="comment">// 0 is reserved</span></span><br><span class="line">				handle = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="type">int</span> hash = handle &amp; (s-&gt;slot_size<span class="number">-1</span>);</span><br><span class="line">			<span class="keyword">if</span> (s-&gt;slot[hash] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">				s-&gt;slot[hash] = ctx;</span><br><span class="line">				s-&gt;handle_index = handle + <span class="number">1</span>;<span class="comment">//下一次分配handle就从这个值开始计算</span></span><br><span class="line"></span><br><span class="line">				rwlock_wunlock(&amp;s-&gt;lock);</span><br><span class="line"></span><br><span class="line">				handle |= s-&gt;harbor;	<span class="comment">//按位或运算，a |= b 等价于 a = a | b。两个二进制位中只要有一个为1，结果位即为1</span></span><br><span class="line">				<span class="keyword">return</span> handle;<span class="comment">//返回值由两部分合并而成</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		assert((s-&gt;slot_size*<span class="number">2</span> - <span class="number">1</span>) &lt;= HANDLE_MASK);<span class="comment">//下面这段代码是扩容</span></span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> ** <span class="title">new_slot</span> =</span> skynet_malloc(s-&gt;slot_size * <span class="number">2</span> * <span class="keyword">sizeof</span>(<span class="keyword">struct</span> skynet_context *));</span><br><span class="line">		<span class="built_in">memset</span>(new_slot, <span class="number">0</span>, s-&gt;slot_size * <span class="number">2</span> * <span class="keyword">sizeof</span>(<span class="keyword">struct</span> skynet_context *));</span><br><span class="line">		<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;s-&gt;slot_size;i++) &#123;<span class="comment">//把老槽位里面的服务数据转移到合适的新的槽位中</span></span><br><span class="line">			<span class="type">int</span> hash = skynet_context_handle(s-&gt;slot[i]) &amp; (s-&gt;slot_size * <span class="number">2</span> - <span class="number">1</span>);</span><br><span class="line">			assert(new_slot[hash] == <span class="literal">NULL</span>);</span><br><span class="line">			new_slot[hash] = s-&gt;slot[i];</span><br><span class="line">		&#125;</span><br><span class="line">		skynet_free(s-&gt;slot);</span><br><span class="line">		s-&gt;slot = new_slot;</span><br><span class="line">		s-&gt;slot_size *= <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回的handle是32位的 ，主要是两部分组成。高8位的habor+剩余24位。剩余的24位才可以认为是ctx所在的槽位。</p>
+<ol>
+<li><p>唯一服务标识</p>
+<ul>
+<li><p><strong>作用</strong>：每个服务在Skynet启动时会被分配一个全局唯一的<code>handle</code>（32位无符号整数）。即使服务退出，其<code>handle</code>也不会被重复使用，确保系统内服务标识的持久性。</p>
+</li>
+<li><p><strong>结构</strong>：</p>
+<p><strong>高8位</strong>：表示<code>harbor id</code>，用于标识集群中的不同节点，最多支持255个节点。</p>
+<p><strong>低24位</strong>：服务在节点内的唯一索引，单个节点最多支持约1600万个服务。</p>
+</li>
+</ul>
+</li>
+<li><p>服务实例管理</p>
+<ul>
+<li><strong>存储结构</strong>：通过<code>handle_storage</code>结构管理所有服务实例的上下文（<code>skynet_context</code>），包含以下组件<ul>
+<li><strong>slot数组</strong>：动态扩容的数组，存储服务实例指针。初始大小为4，满时以2倍扩容（类似C++的<code>vector</code>实现）。</li>
+<li><strong>哈希映射</strong>：<code>handle</code>通过取模运算映射到<code>slot</code>数组的索引，快速定位服务实例。</li>
+</ul>
+</li>
+<li><strong>生命周期</strong>：<ul>
+<li><strong>注册</strong>：<code>skynet_handle_register</code>为新服务分配<code>handle</code>并插入<code>slot</code>数组。</li>
+<li><strong>回收</strong>：服务退出时通过<code>skynet_handle_retire</code>回收<code>handle</code>，并清空<code>slot</code>中的指针。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>跨节点通信</p>
+<ul>
+<li><strong>集群支持</strong>：<code>handle</code>的高8位<code>harbor id</code>允许跨节点通信。例如，节点A的服务可通过<code>harbor id</code>和低24位<code>handle</code>组合定位节点B的服务，实现分布式消息传递。</li>
+<li><strong>消息路由</strong>：发送消息时，目标<code>handle</code>会被解析为<code>harbor id</code>和本地索引，确保消息正确路由至目标节点和服务。</li>
+</ul>
+</li>
+<li><p>名称服务</p>
+<ul>
+<li><strong>名称绑定</strong>：通过<code>skynet_handle_namehandle</code>可为<code>handle</code>注册易读名称（如<code>logger</code>），名称存储在按字典序排序的<code>name</code>数组中，通过二分查找快速定位</li>
+<li><strong>动态管理</strong>：名称与<code>handle</code>的绑定支持动态增删，避免上层逻辑依赖易变的数值<code>handle</code>。</li>
+</ul>
+</li>
+<li><p>消息队列关联</p>
+<ul>
+<li><strong>专属队列</strong>：每个服务拥有一个次级消息队列（<code>message_queue</code>），<code>handle</code>用于在全局队列中标识该队列的归属。</li>
+<li><strong>调度机制</strong>：工作线程（Worker）从全局队列中获取次级队列时，通过<code>handle</code>找到对应的<code>skynet_context</code>，并调用其回调函数处理消息。</li>
+</ul>
+</li>
+<li><p>性能优化</p>
+<ul>
+<li><strong>调度机制</strong>：工作线程（Worker）从全局队列中获取次级队列时，通过<code>handle</code>找到对应的<code>skynet_context</code>，并调用其回调函数处理消息。</li>
+<li><strong>内存效率</strong>：动态扩容的<code>slot</code>和<code>name</code>数组减少内存碎片，同时避免预分配过多资源。</li>
+</ul>
+</li>
+</ol>
+<p>由 <code>skynet_context_new</code> 代码，接下来是创建一个队列 <code>skynet_mq_create</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">message_queue</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">spinlock</span> <span class="title">lock</span>;</span></span><br><span class="line">	<span class="type">uint32_t</span> handle;</span><br><span class="line">	<span class="type">int</span> cap;</span><br><span class="line">	<span class="type">int</span> head;</span><br><span class="line">	<span class="type">int</span> tail;</span><br><span class="line">	<span class="type">int</span> release;</span><br><span class="line">	<span class="type">int</span> in_global;</span><br><span class="line">	<span class="type">int</span> overload;</span><br><span class="line">	<span class="type">int</span> overload_threshold;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_message</span> *<span class="title">queue</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">message_queue</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> message_queue * </span><br><span class="line"><span class="title function_">skynet_mq_create</span><span class="params">(<span class="type">uint32_t</span> handle)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">message_queue</span> *<span class="title">q</span> =</span> skynet_malloc(<span class="keyword">sizeof</span>(*q));</span><br><span class="line">	q-&gt;handle = handle;</span><br><span class="line">	q-&gt;cap = DEFAULT_QUEUE_SIZE;<span class="comment">//64</span></span><br><span class="line">	q-&gt;head = <span class="number">0</span>;</span><br><span class="line">	q-&gt;tail = <span class="number">0</span>;</span><br><span class="line">	SPIN_INIT(q)</span><br><span class="line">	<span class="comment">// 当创建队列时（总是在服务创建和服务初始化之间）。</span></span><br><span class="line">	<span class="comment">// 设置 in_global 标志以避免将其推送到全局队列。</span></span><br><span class="line">	<span class="comment">// 如果服务初始化成功，skynet_context_new 将调用 skynet_mq_push 将其推送到全局队列。</span></span><br><span class="line">	q-&gt;in_global = MQ_IN_GLOBAL;</span><br><span class="line">	q-&gt;release = <span class="number">0</span>;</span><br><span class="line">	q-&gt;overload = <span class="number">0</span>;<span class="comment">//记录过载状态时的负载是多少</span></span><br><span class="line">	q-&gt;overload_threshold = MQ_OVERLOAD;<span class="comment">//过载的警戒线</span></span><br><span class="line">	q-&gt;<span class="built_in">queue</span> = skynet_malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> skynet_message) * q-&gt;cap);</span><br><span class="line">	q-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由 <code>skynet_context_new</code> 代码，对模块的实例进行初始化 <code>skynet_module_instance_init</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">skynet_module_instance_init</span><span class="params">(<span class="keyword">struct</span> skynet_module *m, <span class="type">void</span> * inst, <span class="keyword">struct</span> skynet_context *ctx, <span class="type">const</span> <span class="type">char</span> * parm)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> m-&gt;init(inst, ctx, parm);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由 <code>skynet_module_instance_init</code> 代码，在 <code>service_logger.c</code> 找对应的函数 <code>logger_init</code> ，对模块的实例的各个成员进行填充。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">logger_init</span><span class="params">(<span class="keyword">struct</span> logger * inst, <span class="keyword">struct</span> skynet_context *ctx, <span class="type">const</span> <span class="type">char</span> * parm)</span> &#123;<span class="comment">//next</span></span><br><span class="line">	<span class="type">const</span> <span class="type">char</span> * r = skynet_command(ctx, <span class="string">&quot;STARTTIME&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">	inst-&gt;starttime = strtoul(r, <span class="literal">NULL</span>, <span class="number">10</span>);</span><br><span class="line">	<span class="keyword">if</span> (parm) &#123;	<span class="comment">//判断parm参数文件是否存在</span></span><br><span class="line">		inst-&gt;handle = fopen(parm,<span class="string">&quot;a&quot;</span>);<span class="comment">//这里的handle是打开的系统文件描述符 不要和skynet服务的handle搞混了</span></span><br><span class="line">		<span class="keyword">if</span> (inst-&gt;handle == <span class="literal">NULL</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		inst-&gt;filename = skynet_malloc(<span class="built_in">strlen</span>(parm)+<span class="number">1</span>);	<span class="comment">//申请文件名所需字符内存</span></span><br><span class="line">		<span class="built_in">strcpy</span>(inst-&gt;filename, parm);	</span><br><span class="line">		inst-&gt;close = <span class="number">1</span>;<span class="comment">//表示在释放的时候 需要关闭文件描述符</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;<span class="comment">//默认情况下是走这里</span></span><br><span class="line">		inst-&gt;handle = <span class="built_in">stdout</span>;<span class="comment">//没有配置日志写入哪个文件 就写入标准输出 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (inst-&gt;handle) &#123;<span class="comment">//next</span></span><br><span class="line">		skynet_callback(ctx, inst, logger_cb);<span class="comment">//设置模块实例 和 回调函数</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//走到这里表示已经出现错误了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：默认情况下日志服务是把日志写到标准输出的。</p>
+</blockquote>
+<p>由 <code>logger_init</code> 代码，设置模块实例和回调函数，调用 <code>skynet_callback</code> 函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> </span><br><span class="line"><span class="title function_">skynet_callback</span><span class="params">(<span class="keyword">struct</span> skynet_context * context, <span class="type">void</span> *ud, skynet_cb cb)</span> &#123;</span><br><span class="line">	context-&gt;cb = cb;</span><br><span class="line">	context-&gt;cb_ud = ud;<span class="comment">//就是logger实例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意: <code>skynet_callback</code> 绑定了日志服务的回调函数。当日志服务队列里面有消息需要处理时,就交给这个回调函数去做。</p>
+</blockquote>
+<p>由 <code>skynet_context_new</code> 代码，接下来调用 <code>skynet_globalmq_push</code> 把之前创建的服务队列加入到全局队列。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> </span><br><span class="line"><span class="title function_">skynet_globalmq_push</span><span class="params">(<span class="keyword">struct</span> message_queue * <span class="built_in">queue</span>)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">global_queue</span> *<span class="title">q</span>=</span> Q;</span><br><span class="line"></span><br><span class="line">	SPIN_LOCK(q)</span><br><span class="line">	assert(<span class="built_in">queue</span>-&gt;next == <span class="literal">NULL</span>);<span class="comment">//要求queue必须是独立的 </span></span><br><span class="line">	<span class="keyword">if</span>(q-&gt;tail) &#123;</span><br><span class="line">		q-&gt;tail-&gt;next = <span class="built_in">queue</span>;</span><br><span class="line">		q-&gt;tail = <span class="built_in">queue</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		q-&gt;head = q-&gt;tail = <span class="built_in">queue</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	SPIN_UNLOCK(q)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看 <code>skynet_start</code> 代码，到这里通过 <code>skynet_context_new</code> 创建日志服务的代码总算调用完成了。</p>
+<p>实际上在 lua 层调用 <code>skynet.error(str)</code> 写日志的基本原理是：</p>
+<ol>
+<li>首先把要写入的字符串信息包装成一个 <code>skynet_message</code> 。</li>
+<li>push到日志服务的队列。</li>
+<li>之后工作线程检查到日志队列中有消息,则取出消息,并调用日志服务的回调函数处理。</li>
+</ol>
+<p> 通过 <code>skynet基本概况</code> 里面介绍就知道,日志服务和 <code>bootstrap</code> 服务创建后，才启动了多种线程。也就是说，如果当前日志服务里面有消息，也是不会输出的，因为还没有 工作线程 来驱动日志服务干活。</p>
+<h2 id="push消息到日志服务队列"><a href="#push消息到日志服务队列" class="headerlink" title="push消息到日志服务队列"></a>push消息到日志服务队列</h2><p>logger服务已经有了，可以调用 <code>skynet.error(&quot;hello&quot;)</code> 写日志。在 <code>skynet.lua</code> 中定义如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> c = <span class="built_in">require</span> <span class="string">&quot;skynet.core&quot;</span> <span class="comment">--这里实际上是一个c库 全局查找一下 skynet_core 即可知道这个库里面都往lua里面塞了什么函数</span></span><br><span class="line"></span><br><span class="line">skynet.<span class="built_in">error</span> = c.<span class="built_in">error</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_logger%E6%9C%8D%E5%8A%A1/Skynet_core.png?raw=true" alt="Skynet_core"></p>
+<p>在lua中写下 <code>require &quot;skynet.core&quot;</code> ，可以认为就是调用了 c层函数 <code>luaopen_skynet_core</code> ，最后返回了一个lua表。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">LUAMOD_API <span class="type">int</span></span><br><span class="line"><span class="title function_">luaopen_skynet_core</span><span class="params">(lua_State *L)</span> &#123;</span><br><span class="line">	luaL_checkversion(L);</span><br><span class="line"></span><br><span class="line">	luaL_Reg l[] = &#123;</span><br><span class="line">		</span><br><span class="line">		&#123; <span class="string">&quot;error&quot;</span>, lerror &#125;,<span class="comment">//这次关注的</span></span><br><span class="line">		</span><br><span class="line">		&#123; <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;,</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// functions without skynet_context</span></span><br><span class="line">	luaL_Reg l2[] = &#123;</span><br><span class="line">		&#123; <span class="string">&quot;tostring&quot;</span>, ltostring &#125;,</span><br><span class="line">		&#123; <span class="string">&quot;pack&quot;</span>, luaseri_pack &#125;,</span><br><span class="line">		&#123; <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	lua_createtable(L, <span class="number">0</span>, <span class="keyword">sizeof</span>(l)/<span class="keyword">sizeof</span>(l[<span class="number">0</span>]) + <span class="keyword">sizeof</span>(l2)/<span class="keyword">sizeof</span>(l2[<span class="number">0</span>]) <span class="number">-2</span>);<span class="comment">//给lua创建一个表 x </span></span><br><span class="line"></span><br><span class="line">	lua_getfield(L, LUA_REGISTRYINDEX, <span class="string">&quot;skynet_context&quot;</span>);	<span class="comment">//拿到注册索引</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> *<span class="title">ctx</span> =</span> lua_touserdata(L,<span class="number">-1</span>);<span class="comment">//从注册表中拿到了ctx</span></span><br><span class="line">	<span class="keyword">if</span> (ctx == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> luaL_error(L, <span class="string">&quot;Init skynet context first&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	luaL_setfuncs(L,l,<span class="number">1</span>);<span class="comment">//把l中的函数填充到表x中 并共享上值 ctx</span></span><br><span class="line"></span><br><span class="line">	luaL_setfuncs(L,l2,<span class="number">0</span>);<span class="comment">//把l2中的函数填充到表x中 但没有共享的上值</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码主要是把函数塞进返回的lua表中。所以调用 <code>skynet.error</code> 实际上是调用c函数 <code>lerror</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span></span><br><span class="line"><span class="title function_">lerror</span><span class="params">(lua_State *L)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> * <span class="title">context</span> =</span> lua_touserdata(L, lua_upvalueindex(<span class="number">1</span>));<span class="comment">//获取context</span></span><br><span class="line">	<span class="type">int</span> n = lua_gettop(L);</span><br><span class="line"></span><br><span class="line">	luaL_Buffer b;</span><br><span class="line">	luaL_buffinit(L, &amp;b);</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">		luaL_tolstring(L, i, <span class="literal">NULL</span>);</span><br><span class="line">		luaL_addvalue(&amp;b);</span><br><span class="line">		<span class="keyword">if</span> (i&lt;n) &#123;</span><br><span class="line">			luaL_addchar(&amp;b, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	luaL_pushresult(&amp;b);</span><br><span class="line">	skynet_error(context, <span class="string">&quot;%s&quot;</span>, lua_tostring(L, <span class="number">-1</span>));<span class="comment">//next</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码最后调用了 <code>skynet_error</code> 里面有个参数是 <code>context</code> 。 <code>context</code> 表示的是lua层调用 <code>skynet.error</code> 时所在的服务。</p>
+<p>实际上服务是分为不同类型的。skynet主要关注的服务是 <code>snlua</code> 类型。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_logger%E6%9C%8D%E5%8A%A1/Skynet_snlua.png?raw=true" alt="snlua处理过程"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">skynet_message</span> &#123;</span></span><br><span class="line">	<span class="type">uint32_t</span> source;	<span class="comment">//源lua服务</span></span><br><span class="line">	<span class="type">int</span> session;</span><br><span class="line">	<span class="type">void</span> * data;</span><br><span class="line">	<span class="type">size_t</span> sz;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *</span><br><span class="line"><span class="title function_">skynet_strdup</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *str)</span> &#123;</span><br><span class="line">	<span class="type">size_t</span> sz = <span class="built_in">strlen</span>(str);</span><br><span class="line">	<span class="type">char</span> * ret = skynet_malloc(sz+<span class="number">1</span>);<span class="comment">//分配内存</span></span><br><span class="line">	<span class="built_in">memcpy</span>(ret, str, sz+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="comment">//</span></span><br><span class="line">skynet_error(<span class="keyword">struct</span> skynet_context * context, <span class="type">const</span> <span class="type">char</span> *msg, ...) &#123;<span class="comment">//context主要用来设置 skynet_message 的source属性</span></span><br><span class="line">	<span class="type">static</span> <span class="type">uint32_t</span> logger = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (logger == <span class="number">0</span>) &#123;</span><br><span class="line">		logger = skynet_handle_findname(<span class="string">&quot;logger&quot;</span>);<span class="comment">//找到默认的日志服务</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (logger == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">char</span> tmp[LOG_MESSAGE_SIZE];</span><br><span class="line">	<span class="type">char</span> *data = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	va_list ap;</span><br><span class="line"></span><br><span class="line">	va_start(ap,msg);</span><br><span class="line">	<span class="type">int</span> len = vsnprintf(tmp, LOG_MESSAGE_SIZE, msg, ap);</span><br><span class="line">	va_end(ap);</span><br><span class="line">	<span class="keyword">if</span> (len &gt;=<span class="number">0</span> &amp;&amp; len &lt; LOG_MESSAGE_SIZE) &#123;</span><br><span class="line">		data = skynet_strdup(tmp);<span class="comment">//分配内存</span></span><br><span class="line">	&#125; </span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_message</span> <span class="title">smsg</span>;</span>	<span class="comment">//构建一个smsg</span></span><br><span class="line">	<span class="keyword">if</span> (context == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		smsg.source = <span class="number">0</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		smsg.source = skynet_context_handle(context);	<span class="comment">//设置source</span></span><br><span class="line">	&#125;</span><br><span class="line">	smsg.session = <span class="number">0</span>;</span><br><span class="line">	smsg.data = data;	<span class="comment">//就是&quot;hello world&quot;</span></span><br><span class="line">	smsg.sz = len | ((<span class="type">size_t</span>)PTYPE_TEXT &lt;&lt; MESSAGE_TYPE_SHIFT);	<span class="comment">//高八位表示skynet消息类型是 PTYPE_TEXT</span></span><br><span class="line">	skynet_context_push(logger, &amp;smsg);	<span class="comment">//把消息push到logger服务</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码主要是把 <code>skynet.error(str)</code> 中的 <code>str</code> 拷贝一份,然后包装成 <code>skynet_message</code> ，push到 <code>logger</code> 服务对应的队列中。</p>
+<p>由 <code>skynet_error</code> 代码，接下来调用 <code>skynet_context_push</code> 把消息push到logger服务里面。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">skynet_context_push</span><span class="params">(<span class="type">uint32_t</span> handle, <span class="keyword">struct</span> skynet_message *message)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> * <span class="title">ctx</span> =</span> skynet_handle_grab(handle);<span class="comment">//每个handle和服务一一对应，这里是拿到日志服务</span></span><br><span class="line">	<span class="keyword">if</span> (ctx == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	skynet_mq_push(ctx-&gt;<span class="built_in">queue</span>, message);	<span class="comment">//将消息push到日志服务的队列中</span></span><br><span class="line">	skynet_context_release(ctx);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码往服务中push消息。主要是通过服务的id得到服务，然后把消息加入到服务对应的队列中。调用 <code>skynet_mq_push</code> 代码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> </span><br><span class="line"><span class="title function_">skynet_mq_push</span><span class="params">(<span class="keyword">struct</span> message_queue *q, <span class="keyword">struct</span> skynet_message *message)</span> &#123;</span><br><span class="line">	assert(message);</span><br><span class="line">	SPIN_LOCK(q)</span><br><span class="line"></span><br><span class="line">	q-&gt;<span class="built_in">queue</span>[q-&gt;tail] = *message;</span><br><span class="line">	<span class="keyword">if</span> (++ q-&gt;tail &gt;= q-&gt;cap) &#123;</span><br><span class="line">		q-&gt;tail = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (q-&gt;head == q-&gt;tail) &#123;</span><br><span class="line">		expand_queue(q);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (q-&gt;in_global == <span class="number">0</span>) &#123;	<span class="comment">//q没有在全局队列中，使其加入</span></span><br><span class="line">		q-&gt;in_global = MQ_IN_GLOBAL;</span><br><span class="line">		skynet_globalmq_push(q);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	SPIN_UNLOCK(q)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="logger服务处理消息"><a href="#logger服务处理消息" class="headerlink" title="logger服务处理消息"></a>logger服务处理消息</h2><p>Skynet_处理队列消息，已经说明了服务是怎么处理消息的。最后消息的处理是交给 <code>ctx</code> 的 <code>cb</code> 函数处理的。也就是说 <code>logger</code> 服务的消息最后交给 <code>logger_cb</code> 处理。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span></span><br><span class="line"><span class="title function_">logger_cb</span><span class="params">(<span class="keyword">struct</span> skynet_context * context, <span class="type">void</span> *ud, <span class="type">int</span> type, <span class="type">int</span> session, <span class="type">uint32_t</span> source, <span class="type">const</span> <span class="type">void</span> * msg, <span class="type">size_t</span> sz)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">logger</span> * <span class="title">inst</span> =</span> ud;<span class="comment">//logger实例</span></span><br><span class="line">	<span class="keyword">switch</span> (type) &#123;</span><br><span class="line">	<span class="keyword">case</span> PTYPE_SYSTEM:	<span class="comment">//这里表示打开一个新的日志文件</span></span><br><span class="line">		<span class="keyword">if</span> (inst-&gt;filename) &#123;</span><br><span class="line">			inst-&gt;handle = freopen(inst-&gt;filename, <span class="string">&quot;a&quot;</span>, inst-&gt;handle);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> PTYPE_TEXT:</span><br><span class="line">		<span class="keyword">if</span> (inst-&gt;filename) &#123;	<span class="comment">//如果指定了日志文件 则加点时间信息</span></span><br><span class="line">			<span class="type">char</span> tmp[SIZETIMEFMT];</span><br><span class="line">			<span class="type">int</span> csec = timestring(ud, tmp);</span><br><span class="line">			<span class="built_in">fprintf</span>(inst-&gt;handle, <span class="string">&quot;%s.%02d &quot;</span>, tmp, csec);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fprintf</span>(inst-&gt;handle, <span class="string">&quot;[:%08x] &quot;</span>, source);	<span class="comment">//默认写日志，以服务id开头</span></span><br><span class="line">		fwrite(msg, sz , <span class="number">1</span>, inst-&gt;handle);</span><br><span class="line">		<span class="built_in">fprintf</span>(inst-&gt;handle, <span class="string">&quot;\n&quot;</span>);</span><br><span class="line">		fflush(inst-&gt;handle);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：push消息到 <code>logger</code> 队列时 ，消息类型指定为 <code>PTYPE_TEXT</code> 。实际上就是直接写入标准输出。</p>
+</blockquote>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips:"></a>tips:</h3><blockquote>
+<p>这里讨论的日志功能的服务是默认的日志服务。实际上，也可以配置为一个 <code>snlua</code> 服务，这样当调用 <code>skynet.error</code> 时，会发送一个 <code>PTYPE_TEXT</code>  消息给一个 <code>snlua</code> 服务。</p>
+</blockquote>
+<p>对比：</p>
+<ul>
+<li><p>默认创建日志服务代码如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里创建一个服务 这个日志服务是service_logger.c代表的默认日志服务</span></span><br><span class="line"><span class="comment">//参数分别是 &quot;logger&quot; NULL</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> *<span class="title">ctx</span> =</span> skynet_context_new(config-&gt;logservice, config-&gt;logger);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实际上可以改成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里创建一个服务 这个日志服务是service_snlua.c代表的lua服务</span></span><br><span class="line"><span class="comment">//参数分别是 &quot;snlua&quot; xxx;xxx表示lua服务对应的脚本文件</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">skynet_context</span> *<span class="title">ctx</span> =</span> skynet_context_new(config-&gt;logservice, config-&gt;logger);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>即 <code>config-&gt;logservice</code>, <code>config-&gt;logger</code> 。这两个配置项决定了默认的日志功能服务到底是什么。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/avatar.jpg?raw=true" title="头像" alt="头像"></a><div class="post-copyright__author_name">Barbecue</div><div class="post-copyright__author_desc">今天学习了吗</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://barbecue-g.github.io/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://barbecue-g.github.io/')">Skynet_logger服务</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/wechatpay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://barbecue-g.github.io/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Skynet_logger服务&amp;url=https://barbecue-g.github.io/&amp;pic=https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">此文章版权归Barbeuce所有，如有转载，请注明明来自原作者</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/Skynet-logger%E6%9C%8D%E5%8A%A1/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>Skynet_logger服务<span class="categoryesPageCount">2</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Skynet-logger%E6%9C%8D%E5%8A%A1/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Skynet_logger服务<span class="tagsPageCount">2</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_%E6%9C%8D%E5%8A%A1%E9%97%B4%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/Skynet_%E6%9C%8D%E5%8A%A1%E9%97%B4%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" onerror="onerror=null;src='/img/404.png'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Skynet_服务间请求和响应</div></div></a></div><div class="next-post pull-right"><a href="/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_%E6%9C%8D%E5%8A%A1%E9%97%B4%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/Skynet_%E5%8D%8F%E7%A8%8B"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" onerror="onerror=null;src='/img/404.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Skynet_协程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/FrameWork/Skynet/%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/Skynet_logger%E6%9C%8D%E5%8A%A1/Skynet_%E5%A4%84%E7%90%86%E9%98%9F%E5%88%97%E6%B6%88%E6%81%AF" title="Skynet_处理队列消息"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2025-06-22</div><div class="title">Skynet_处理队列消息</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Skynet-logger%E6%9C%8D%E5%8A%A1"><span class="toc-text">Skynet_logger服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#logger%E6%9C%8D%E5%8A%A1%E5%88%9B%E5%BB%BA"><span class="toc-text">logger服务创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-text">模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#push%E6%B6%88%E6%81%AF%E5%88%B0%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E9%98%9F%E5%88%97"><span class="toc-text">push消息到日志服务队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logger%E6%9C%8D%E5%8A%A1%E5%A4%84%E7%90%86%E6%B6%88%E6%81%AF"><span class="toc-text">logger服务处理消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-text">tips:</span></a></li></ol></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2024 - 2025 By <a class="footer-bar-link" href="/" title="Barbecue" target="_blank">Barbecue</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="赣ICP备-2024039887号">赣ICP备-2024039887号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">10</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">CPP文档</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh.cppreference.com/" title="中文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book-icon.png?raw=true" alt="中文版"/><span class="back-menu-item-text">中文版</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://cplusplus.com/" title="英文版"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://github.com/Barbecue-g/Imagehost/blob/master/Hexo/book1-cion.png?raw=true" alt="英文版"/><span class="back-menu-item-text">英文版</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">CPP规范</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://zh-google-styleguide.readthedocs.io/en/stable/contents.html" title="Google"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/Hexo/Google-icon.jpg?raw=true" alt="Google"/><span class="back-menu-item-text">Google</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">推荐网址</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://github.com/cloudwu/skynet" title="Skynet"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/Skynet/Skynet-icon.png?raw=true" alt="Skynet"/><span class="back-menu-item-text">Skynet</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.unrealengine.com/" title="UE5"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.png&quot;" data-lazy-src="https://cdn.jsdelivr.net/gh/Barbecue-g/imagehost/FrameWork/UE5/UE5-icon.png?raw=true" alt="UE5"/><span class="back-menu-item-text">UE5</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 目录</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/TOC/C"><i class="fa-solid fa-seedling faa-tada"></i><span> C语言</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/CPP"><i class="fa-solid fa-robot faa-tada"></i><span> CPP</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/Skynet"><i class="fa-solid fa-cloud faa-tada"></i><span> Skynet</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/TOC/UE5"><i class="fa-solid fa-gamepad faa-tada"></i><span> UE5</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 社交</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 推荐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem; color: rgb(174, 104, 101);">C<sup>15</sup></a><a href="/tags/Git/" style="font-size: 0.88rem; color: rgb(30, 41, 7);">Git<sup>3</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem; color: rgb(44, 48, 18);">Hexo<sup>1</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem; color: rgb(139, 23, 20);">MySQL<sup>2</sup></a><a href="/tags/PicGo/" style="font-size: 0.88rem; color: rgb(18, 66, 77);">PicGo<sup>1</sup></a><a href="/tags/Postman/" style="font-size: 0.88rem; color: rgb(147, 5, 22);">Postman<sup>1</sup></a><a href="/tags/Redis/" style="font-size: 0.88rem; color: rgb(156, 103, 39);">Redis<sup>1</sup></a><a href="/tags/Skynet/" style="font-size: 0.88rem; color: rgb(88, 88, 127); font-weight: 500; color: var(--anzhiyu-lighttext)">Skynet<sup>1</sup></a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 0.88rem; color: rgb(199, 97, 70);">正则表达式<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("01/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2024 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Barbecue 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+      appKey: 'R50Ps7cdwVouTiBALXFKiUzI',
+      avatar: '“identicon”',
+      serverURLs: '',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=“identicon”'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://hnelsWgo.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": 'hnelsWgo7rdNRClm4XkVzGRR-gzGzoHsz',
+        "X-LC-Key": 'R50Ps7cdwVouTiBALXFKiUzI',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script id="canvas_nest" defer="defer" color="0,190,255" opacity="1" zIndex="-1" count="64" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
